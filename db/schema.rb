@@ -21,10 +21,20 @@ ActiveRecord::Schema.define(version: 2019_12_02_091048) do
     t.integer "price"
     t.integer "stock", default: 1
     t.boolean "creator", default: false
+
+  create_table "order_details", force: :cascade do |t|
+    t.integer "artwork_id"
+    t.integer "quantity"
+    t.integer "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+  
   create_table "cart_details", force: :cascade do |t|
     t.integer "quantity"
     t.datetime "created_at", null: false
@@ -37,9 +47,24 @@ ActiveRecord::Schema.define(version: 2019_12_02_091048) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "custromer_id"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "private_messages", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "receiver_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "testimonials", force: :cascade do |t|
+    t.integer "artist_id"
+    t.integer "customer_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
