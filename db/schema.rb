@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_092733) do
+ActiveRecord::Schema.define(version: 2019_12_02_112849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,29 +21,27 @@ ActiveRecord::Schema.define(version: 2019_12_02_092733) do
     t.integer "price"
     t.integer "stock", default: 1
     t.boolean "creator", default: false
-    t.bigint "category_id"
-    t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_artworks_on_artist_id"
-    t.index ["category_id"], name: "index_artworks_on_category_id"
   end
 
   create_table "cart_details", force: :cascade do |t|
     t.integer "quantity"
-    t.bigint "cart_id"
-    t.bigint "artwork_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artwork_id"], name: "index_cart_details_on_artwork_id"
-    t.index ["cart_id"], name: "index_cart_details_on_cart_id"
   end
 
   create_table "carts", force: :cascade do |t|
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -54,23 +52,15 @@ ActiveRecord::Schema.define(version: 2019_12_02_092733) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
-  create_table "order_details", force: :cascade do |t|
-    t.integer "artwork_id"
-    t.integer "quantity"
-    t.integer "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
+  create_table "order_details", force: :cascade do |t|
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "custromer_id"
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -106,7 +96,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_092733) do
     t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
   end
 
+  add_foreign_key "carts", "users"
 end
