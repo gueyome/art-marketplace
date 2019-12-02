@@ -15,11 +15,12 @@ ActiveRecord::Schema.define(version: 2019_12_02_091048) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
+  create_table "artworks", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+    t.text "description"
+    t.integer "price"
+    t.integer "stock", default: 1
+    t.boolean "creator", default: false
 
   create_table "order_details", force: :cascade do |t|
     t.integer "artwork_id"
@@ -36,6 +37,12 @@ ActiveRecord::Schema.define(version: 2019_12_02_091048) do
   
   create_table "cart_details", force: :cascade do |t|
     t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

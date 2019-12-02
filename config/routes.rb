@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root 'artworks#index'
+  resources :artworks
   resources :private_messages
   resources :categories
   resources :orders 
