@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2019_12_02_121316) do
-
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,7 +75,6 @@ ActiveRecord::Schema.define(version: 2019_12_02_121316) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
     t.datetime "date"
     t.bigint "customer_id"
     t.datetime "created_at", null: false
@@ -122,12 +118,11 @@ ActiveRecord::Schema.define(version: 2019_12_02_121316) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-
   add_foreign_key "artworks", "categories"
   add_foreign_key "cart_details", "artworks"
   add_foreign_key "cart_details", "carts"
   add_foreign_key "carts", "users"
+  add_foreign_key "contacts", "users"
   add_foreign_key "order_details", "artworks"
   add_foreign_key "order_details", "orders"
-  add_foreign_key "contacts", "users"
 end
