@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_121316) do
+ActiveRecord::Schema.define(version: 2019_12_02_145332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,12 @@ ActiveRecord::Schema.define(version: 2019_12_02_121316) do
     t.integer "price"
     t.integer "stock", default: 1
     t.boolean "creator", default: false
-    t.bigint "artist_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
-    t.index ["artist_id"], name: "index_artworks_on_artist_id"
     t.index ["category_id"], name: "index_artworks_on_category_id"
+    t.index ["user_id"], name: "index_artworks_on_user_id"
   end
 
   create_table "cart_details", force: :cascade do |t|
@@ -76,10 +76,10 @@ ActiveRecord::Schema.define(version: 2019_12_02_121316) do
 
   create_table "orders", force: :cascade do |t|
     t.datetime "date"
-    t.bigint "customer_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "private_messages", force: :cascade do |t|
