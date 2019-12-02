@@ -14,6 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require common_func
-//= require common_scripts
+//= require common_scripts.min
 //= require validate
 //= require_tree .
