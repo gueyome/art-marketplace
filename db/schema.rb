@@ -10,14 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_090006) do
+ActiveRecord::Schema.define(version: 2019_12_02_091048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.integer "artwork_id"
+    t.integer "quantity"
+    t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "custromer_id"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "private_messages", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "receiver_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "testimonials", force: :cascade do |t|
+    t.integer "artist_id"
+    t.integer "customer_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
