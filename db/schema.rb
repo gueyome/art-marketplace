@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_114044) do
+ActiveRecord::Schema.define(version: 2019_12_02_121316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,9 +21,11 @@ ActiveRecord::Schema.define(version: 2019_12_02_114044) do
     t.integer "price"
     t.integer "stock", default: 1
     t.boolean "creator", default: false
+    t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
+    t.index ["artist_id"], name: "index_artworks_on_artist_id"
     t.index ["category_id"], name: "index_artworks_on_category_id"
   end
 
@@ -64,12 +66,18 @@ ActiveRecord::Schema.define(version: 2019_12_02_114044) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.bigint "artwork_id"
+    t.index ["artwork_id"], name: "index_order_details_on_artwork_id"
+    t.index ["order_id"], name: "index_order_details_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.datetime "date"
+    t.bigint "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   create_table "private_messages", force: :cascade do |t|
@@ -108,4 +116,6 @@ ActiveRecord::Schema.define(version: 2019_12_02_114044) do
   add_foreign_key "cart_details", "artworks"
   add_foreign_key "cart_details", "carts"
   add_foreign_key "carts", "users"
+  add_foreign_key "order_details", "artworks"
+  add_foreign_key "order_details", "orders"
 end
