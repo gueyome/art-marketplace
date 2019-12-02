@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  resources :contacts
   root 'artworks#index'
   resources :artworks
   resources :private_messages
