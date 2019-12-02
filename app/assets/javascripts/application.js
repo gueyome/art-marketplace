@@ -13,4 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require common_func
+//= require common_scripts
+//= require validate
 //= require_tree .
