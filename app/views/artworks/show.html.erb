@@ -12,6 +12,10 @@
 
 <p>Nom du propriétaire: <%= @artwork.user.username %></p>
 
-<%= link_to "Ajouter au panier", user_cart_path(nil, origin: "add"), data:{confirm: "Es-tu sûr?", method: "put"}, class: "btn btn-success btn-sm" %>
+<p>Stock: <%= @artwork.stock %></p>
 
+<%= form_tag cart_detail_path(origin: "add", cart_id: "current_user.cart.id", artwork_id: @artwork.id), method: "patch" do %>
+  <%= text_field_tag :quantity %>
+  <%= submit_tag "Ajouter au panier", data:{confirm: "Es-tu sûr?"} %>
+<% end %>
 

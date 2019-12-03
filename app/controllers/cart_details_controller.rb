@@ -15,7 +15,15 @@ class CartDetailsController < ApplicationController
   end
 
   def update
-    
+    @cart_detail_line = CartDetail.where(cart_id: params[:cart_id], artwork_id: params[:artwork_id])
+    if params[:origin] == "add"
+      if @cart_detail_line.empty?
+        #creer une ligne
+      else
+        #changer la quantite
+      end
+    end
+
   end
 
   def destroy
