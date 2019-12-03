@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  def current_cart
+  def create_cart_for_current_user
     if user_signed_in?
       if current_user.cart == nil
         @cart = Cart.create(user: current_user)
