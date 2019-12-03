@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :carts
     resources :orders
   end
+  resources :cart_details
+  resources :order_details
   resources :contacts
   resources :artworks
   resources :categories
