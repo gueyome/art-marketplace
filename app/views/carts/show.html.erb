@@ -9,10 +9,11 @@
           <th scope="col">Id</th>
           <th scope="col">Artwork</th>
           <th scope="col">Quantity</th>
-          <th scope="col">Amount</th>
+          <th scope="col">Price</th>
           <th scope="col">Show</th>
           <th scope="col">Update</th>
           <th scope="col">Delete</th>
+          <th scope="col">Amount</th>
         </tr>
       </thead>
       <tbody>
@@ -21,15 +22,25 @@
             <th scope="row"><%= cart_detail.artwork_id %></th>
             <td><%= cart_detail.artwork.name %></td>
             <td><%= cart_detail.quantity %></td>
+            <td><%= cart_detail.artwork.price %></td>
+            <td><%= link_to "show", artwork_path(cart_detail.artwork_id), class: "btn btn-primary btn-sm"%></td>
+            <td><%= link_to "update", cart_detail_path(cart_detail.id), class: "btn btn-success btn-sm", data: {confirm: "Es-tu sur?", method: "patch"}%></td>
+            <td><%= link_to "delete", cart_detail_path(cart_detail.id), class: "btn btn-danger btn-sm", data: {confirm: "Es-tu sur?", method: "delete"}%></td>
             <td>$<%= sum_line(cart_detail) %></td>
-            <td><%= link_to "voir", artwork_path(cart_detail.artwork_id), class: "btn btn-primary btn-sm"%></td>
-            <td><%= link_to "modifier", cart_detail_path(cart_detail.id), class: "btn btn-success btn-sm", data: {confirm: "Es-tu sur?", method: "patch"}%></td>
-            <td><%= link_to "supprimer", cart_detail_path(cart_detail.id), class: "btn btn-danger btn-sm", data: {confirm: "Es-tu sur?", method: "delete"}%></td>
           </tr>
         <% end %>
+        <tr>
+          <th scope="row">Total Amount :</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>$<%= sum_cart? %></td>
+        </tr>
       </tbody>
     </table>
-    <p class="mt-5"><%= sum_cart? %> dollars</p>
     <p class="mt-5"><%= link_to "Valider la commade", nil, class: "btn btn-warning"%></p>
     <br>
   </main>
