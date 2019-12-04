@@ -1,10 +1,10 @@
 class OrderMailer < ApplicationMailer
     default from: 'no-reply@monsite.fr'
  
-    def order_done_email(user)
+    def order_done_email(order)
       #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
-      @user = order.cart.user 
       @order = order
+      @user = order.user
       #on définit une variable @url qu'on utilisera dans la view d’e-mail
       @url  = 'http://monsite.fr/login' 
   
