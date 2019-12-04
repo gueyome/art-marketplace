@@ -1,2 +1,8 @@
-<h1>Artworks#index</h1>
-<p>Find me in app/views/artworks/index.html.erb</p>
+<h1>Liste de toutes les oeuvres</h1>
+<% @artworks.each do |artwork| %>
+  <p>Categorie: <%= artwork.category %></p>
+  <p>Nom: <%= artwork.name %></p>
+  <p>Prix: <%= artwork.price %>  euros</p>
+  <p>Stock: <%= artwork.stock %></p>
+  <%= link_to "Découvrir l'oeuvre", artwork_path(artwork.id), class: "btn btn-info"%>
+<% end %>
