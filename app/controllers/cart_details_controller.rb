@@ -1,4 +1,5 @@
 class CartDetailsController < ApplicationController
+  
   def index
   end
 
