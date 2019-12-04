@@ -38,6 +38,7 @@ class CartDetailsController < ApplicationController
   end
 
   def update
+    #change the quantity
   end
 
   def destroy

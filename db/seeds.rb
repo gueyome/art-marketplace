@@ -21,7 +21,7 @@ Category.destroy_all
 20.times do |index|   
     u = User.create(username: "user#{index}", first_name: "firstname#{index}", last_name: "Lastname#{index}", email: "email#{index}@yopmail.com", password: "xaxaxa")
     c = Category.create(name: "category#{index}")
-    a = Artwork.create(name: "Artwork#{index}", description: "description#{index}", price: 17, creator: index, category_id: c.id, user_id: u.id )
+    a = Artwork.create(name: "Artwork#{index}", description: "description#{index}", price: rand(100..1000), stock: 10, category_id: c.id, user_id: u.id )
     ctc = Contact.create(address: "#{index}rue de Paris", latitude: index, description: "description#{index}", longitude: index, phone: "123#{index}", user_id: u.id)
     cr = Cart.create(user_id: u.id)
     o = Order.create(user_id: u.id, date: Time.now)
@@ -29,5 +29,4 @@ Category.destroy_all
     t = Testimonial.create(artist_id: User.all.first.id, customer_id: u.id, content: "Content #{index}")
     crd = CartDetail.create(artwork_id: a.id, cart_id: cr.id)
     od = OrderDetail.create(artwork_id: a.id, order_id: o.id)
-
 end 
