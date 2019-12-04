@@ -41,5 +41,10 @@ class CartDetailsController < ApplicationController
   end
 
   def destroy
+    @cart_detail_line = CartDetail.find(params[:id])
+    if @event.destroy
+      flash[:success] = "L'événement a été supprimé."
+      redirect_to action: 'index'
+    end
   end
 end

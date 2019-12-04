@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @user.first_name %>, votre commande a bien été effectuée !</h1>
+ 
+    <p>
+        Voici le récapitulatif de ta commande
+    </p>
+
+     <p>
+      <% cart_details = @order.user.cart.artworks %>
+      <% cart_details.each do |cart_detail| %>
+      Item: <%= cart_detail.name %>
+      Quantité: <%= cart_detail.stock%>
+      <% end %>
+    </p>
+
+       <p>
+      Elle vous sera livrée dans les plus brefs délais <%= @user.email %>.
+    </p>
+
+    <p>
+      Pour accéder à votre espace client, connectez-vous via : <%= @url %>.
+    </p>
+    <p> À très vite sur monsite.fr !
+  </body>
+</html>
