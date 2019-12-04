@@ -18,7 +18,7 @@
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-                      <%= f.email_field :email, autofocus: true, placeholder: "Username", type: "text", class: "form-control" %>
+                      <%= f.text_field :username, autofocus: true, placeholder: "Username", type: "text", class: "form-control" %>
 										</div>
 									</div>
 								</div>
@@ -26,14 +26,14 @@
                 <div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-                      <%= f.email_field :first_name, autofocus: true, placeholder: "First name", type: "string", class: "form-control" %>
+                      <%= f.text_field :first_name, autofocus: true, placeholder: "First name", type: "string", class: "form-control" %>
 										</div>
 									</div>
 								</div>
                 <div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-                      <%= f.email_field :last_name, autofocus: true, placeholder: "Last name", type: "string", class: "form-control" %>
+                      <%= f.text_field :last_name, autofocus: true, placeholder: "Last name", type: "string", class: "form-control" %>
 										</div>
 									</div>
 								</div>
@@ -49,48 +49,20 @@
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-                      <%= f.email_field :password, autofocus: true, placeholder: "Password", type: "string", class: "form-control" %>
+                      <%= f.text_field :password, autofocus: true, placeholder: "Password", type: "string", class: "form-control" %>
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group">
-                      <%= f.email_field :password_confirmation, autofocus: true, placeholder: "Password confirmation", type: "string", class: "form-control" %>								
+                      <%= f.text_field :password_confirmation, autofocus: true, placeholder: "Password confirmation", type: "string", class: "form-control" %>								
 										</div>
 									</div>
 								</div>
 
-								<h6>Additional information </h6>
-								<div class="row add_bottom_15">
-									<div class="col-md-12">
-										<div class="form-group">
-                      <%= f.email_field :description, autofocus: true, placeholder: "Introduce yourself", type: "text", class: "form-control" %>						
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-                      <%= f.email_field :address, autofocus: true, placeholder: "Address", type: "string", class: "form-control" %>						
-										</div>
-									</div>
-                  <div class="col-md-6">
-										<div class="form-group">
-                      <%= f.email_field :phone, autofocus: true, placeholder: "Phone number", type: "string", class: "form-control" %>						
-											<input type="string" class="form-control" placeholder="Phone number" name="city_register" id="city_register">
-										</div>
-									</div>
-								</div>
 								<!-- /row -->
-								<h6>I am not a robot</h6>
-								<div class="row add_bottom_25">
-									<div class="col-lg-12">
-										<div class="form-group">
-											<input type="text" id="verify_register" class="form-control" placeholder="Human verify: 3 + 1 =?">
-										</div>
-									</div>
-								</div>
-								<!-- /row -->
-								<div class="form-group text-center"><input type="submit" class="btn_1" value="Submit" id="submit-register"></div>
+                <div class="form-group text-center mt-3"><%= f.submit "Sign up", class: "btn_1" %></div>
 							</form>
 					</div>
           <% end %>
