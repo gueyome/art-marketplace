@@ -11,7 +11,6 @@
           <th scope="col">Quantity</th>
           <th scope="col">Price</th>
           <th scope="col">Show</th>
-          <th scope="col">Update</th>
           <th scope="col">Delete</th>
           <th scope="col">Amount</th>
         </tr>
@@ -21,17 +20,20 @@
           <tr>
             <th scope="row"><%= cart_detail.artwork_id %></th>
             <td><%= cart_detail.artwork.name %></td>
-            <td><%= cart_detail.quantity %></td>
-            <td><%= cart_detail.artwork.price %></td>
+            <td>
+                <%= form_tag cart_detail_path(cart_detail.id), method: "patch" do %>
+                  <%= select_tag(:quantity, options_for_select(1..cart_detail.artwork.stock+cart_detail.quantity, cart_detail.quantity)) %> 
+                  <%= submit_tag "Modifier la quantité", class: "btn btn-info btn-sm" %>
+                <% end %>
+            </td>
+            <td>$<%= cart_detail.artwork.price %></td>
             <td><%= link_to "show", artwork_path(cart_detail.artwork_id), class: "btn btn-primary btn-sm"%></td>
-            <td><%= link_to "update", cart_detail_path(cart_detail.id), class: "btn btn-success btn-sm", data: {confirm: "Es-tu sur?", method: "patch"}%></td>
             <td><%= link_to "delete", cart_detail_path(cart_detail.id), class: "btn btn-danger btn-sm", data: {confirm: "Es-tu sur?", method: "delete"}%></td>
             <td>$<%= sum_line(cart_detail) %></td>
           </tr>
         <% end %>
         <tr>
           <th scope="row">Total Amount :</th>
-          <td></td>
           <td></td>
           <td></td>
           <td></td>
