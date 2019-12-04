@@ -1,2 +1,32 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<div class="container">
+
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+    <h1 class="text-center mb-5 mt-5">Mon joli petit panier</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Oeuvre</th>
+          <th scope="col">Quantité</th>
+          <th scope="col">Voir</th>
+          <th scope="col">Modifier</th>
+          <th scope="col">Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@cart.cart_details.each_with_index do |cart_detail, index|%>
+          <tr>
+            <th scope="row"><%= cart_detail.artwork_id %></th>
+            <td><%= cart_detail.artwork.name %></td>
+            <td><%= cart_detail.artwork.quantity %></td>
+            <td><%= link_to "voir", artwork_path(cart_detail.artwork_id), class: "btn btn-primary btn-sm", data: {confirm: "Es-tu sur?", method: "delete"}%></td>
+            <td><%= link_to "modifier", cart_detail_path(cart.detail.id), class: "btn btn-success btn-sm", data: {confirm: "Es-tu sur?", method: "patch"}%></td>
+            <td><%= link_to "supprimer", cart_detail_path(cart.detail.id), class: "btn btn-danger btn-sm", data: {confirm: "Es-tu sur?", method: "delete"}%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+  </main>
+</div>
