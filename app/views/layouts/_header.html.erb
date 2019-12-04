@@ -24,14 +24,8 @@
 <header class="header_in clearfix">
 		<div class="container">
 		<div id="logo">
-			<a href="index.html">
-        <%= image_tag ("logo_sticky.svg"), width: "140", height: "35"%>
-			</a>
+      <%= link_to image_tag("logo_sticky.svg"), root_path %>
 		</div>
-		<ul id="top_menu">
-			<li><a href="#sign-in-dialog" id="sign-in" class="login">Sign In</a></li>
-			<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
-		</ul>
 		<!-- /top_menu -->
 		<a href="#0" class="open_close">
 			<i class="icon_menu"></i><span>Menu</span>
@@ -45,59 +39,34 @@
 			</div>
 			<ul>
 				<li class="submenu">
-					<a href="#0" class="show-submenu">Home</a>
+					<a href="#0" class="show-submenu">Categories d'oeuvres</a>
 					<ul>
-						<li><a href="index.html">Default</a></li>
-						<li><a href="index-2.html">Video Background</a></li>
-						<li><a href="index-3.html">Slider</a></li>
-						<li><a href="index-5.html">Address Autocomplete</a></li>
-						<li><a href="index-6.html">Search Version 2</a></li>
-						<li><a href="index-7.html">Delivery/Takeaway version</a></li>
-						<li><a href="index-4.html">GDPR Cookie Bar EU Law</a></li>
-					</ul>
-				</li>
-				<li class="submenu">
-					<a href="#0" class="show-submenu">Listing</a>
-					<ul>
-						<li class="third-level"><a href="#0">List pages</a>
+						<li class="third-level"><a href="#0">Peintures</a>
 							<ul>
-								<li><a href="grid-listing-filterscol.html">List default</a></li>
-								<li><a href="grid-listing-filterscol-map.html">List with map</a></li>
-								<li><a href="listing-map.html">List side map</a></li>
-								<li><a href="grid-listing-filterscol-full-width.html">List full width</a></li>
-								<li><a href="grid-listing-filterscol-full-masonry.html">List Masonry Filter</a></li>
-								<li><a href="grid-listing-filterscol-delivery.html">List Delivery/Takeaway</a></li>
+								<li><a href="grid-listing-filterscol.html">A l'huile</a></li>
+								<li><a href="grid-listing-filterscol-map.html">A l'eau</a></li>
+								<li><a href="listing-map.html">Au pinceau</a></li>
 							</ul>
 						</li>
-						<li><a href="detail-restaurant.html">Detail page 1</a></li>
-						<li><a href="detail-restaurant-2.html">Detail page 2</a></li>
-						<li><a href="detail-restaurant-delivery.html">Detail Delivery/Takeaway</a></li>
-						<li><a href="submit-restaurant.html">Submit Restaurant</a></li>
-						<li><a href="wishlist.html">Wishlist</a></li>
-						<li><a href="admin_section/index.html" target="_blank">Admin Section</a></li>
-						
+						<li><a href="detail-restaurant.html">Sculptures</a></li>
+						<li><a href="detail-restaurant-2.html">Photographies</a></li>
 					</ul>
 				</li>
-				<li class="submenu">
-					<a href="#0" class="show-submenu">Other Pages</a>
+				<li><a href="submit-restaurant.html">Vendre une oeuvre</a></li>
+        <li class="submenu">
+					<a href="#0" class="show-submenu">S'inscrire / Se connecter</a>
 					<ul>
-						<li><a href="404.html">404 Error</a></li>
-						<li><a href="confirm.html">Confirm Booking</a></li>
-						<li><a href="confirm-delivery.html">Confirm Order</a></li>
-						<li><a href="help.html">Help and Faq</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="booking.html">Booking</a></li>
-						<li><a href="booking-delivery.html">Order Delivery/Takeaway</a></li>
-						<li><a href="leave-review.html">Leave a review</a></li>
-						<li><a href="contacts.html">Contacts</a></li>
-						<li><a href="coming_soon/index.html">Coming Soon</a></li>
-						<li><a href="account.html">Sign Up</a></li>
-						<li><a href="icon-pack-1.html">Icon Pack 1</a></li>
-						<li><a href="icon-pack-2.html">Icon Pack 2</a></li>
+            <li><%= link_to "S'inscrire", new_user_registration_path %></li>
+            <li><%= link_to "Se connecter", new_user_session_path %></li>
 					</ul>
 				</li>
-				<li><a href="submit-restaurant.html">Submit</a></li>
-				<li><a href="#0">Buy this template</a></li>
+        <% if user_signed_in? %>
+        <li><%= link_to "Se déconnecter", destroy_user_session_path, :method => "delete" %></li>
+        <li>
+        <%= link_to "", user_cart_path(current_user.id, current_user.cart.id), class: "icon_cart_alt" %>
+        <li><%= link_to "Mon panier", user_cart_path(current_user.id, current_user.cart.id) %></li>
+        </li>
+        <% end %>
 			</ul>
 		</nav>
 	</div>
