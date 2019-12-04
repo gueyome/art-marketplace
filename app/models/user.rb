@@ -15,4 +15,11 @@ class User < ApplicationRecord
   has_many :received_messages, foreign_key: 'receiver_id', class_name: "PrivateMessage"
   has_many :sent_testimonials, foreign_key: 'customer_id', class_name: "Testimonial"
   has_many :received_testimonials, foreign_key: 'artist_id', class_name: "Testimonial"
+
+  #after_create :welcome_send
+  
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
+  end
 end
+
