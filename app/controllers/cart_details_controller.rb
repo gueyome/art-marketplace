@@ -38,14 +38,20 @@ class CartDetailsController < ApplicationController
   end
 
   def update
-    #change the quantity
+    @line = CartDetail.find(params[:id])
+    @new_quantity = params[:quantity].to_i
+    @variation = @line.quantity - @new_quantity
+    @line.artwork.update(stock: @line.artwork.stock + @variation)
+    puts @line.update(quantity: @new_quantity)
   end
 
   def destroy
-    @cart_detail_line = CartDetail.find(params[:id])
-    if @event.destroy
+    @line = CartDetail.find(params[:id])
+    @previous_quantity = @line.quantity
+    @line.artwork.update(stock: @line.artwork.stock + @previous_quantity)
+    if @line.destroy
       flash[:success] = "L'événement a été supprimé."
-      redirect_to action: 'index'
+      redirect_to root_path
     end
   end
 end

@@ -22,7 +22,7 @@
             <td><%= cart_detail.artwork.name %></td>
             <td>
                 <%= form_tag cart_detail_path(cart_detail.id), method: "patch" do %>
-                  <%= select_tag(:quantity, options_for_select(1..cart_detail.artwork.stock, cart_detail.quantity)) %> 
+                  <%= select_tag(:quantity, options_for_select(1..cart_detail.artwork.stock+cart_detail.quantity, cart_detail.quantity)) %> 
                   <%= submit_tag "Modifier la quantité", class: "btn btn-info btn-sm" %>
                 <% end %>
             </td>
