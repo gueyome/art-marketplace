@@ -14,5 +14,6 @@
  *= require style
  *= require home
  *= require custom
-
+ *= require icons
+ *= require icons.min
  */
