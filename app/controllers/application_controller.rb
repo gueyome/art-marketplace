@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+  before_action :authenticate_user!
+
   def create_cart_for_current_user
     if user_signed_in?
       if current_user.cart == nil
