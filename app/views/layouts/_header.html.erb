@@ -39,26 +39,26 @@
 			</div>
 			<ul>
 				<li class="submenu">
-					<a href="#0" class="show-submenu">Categories d'oeuvres</a>
+					<a href="#0" class="show-submenu">Artworks Categories</a>
 					<ul>
-						<li class="third-level"><a href="#0">Peintures</a>
+						<li class="third-level"><a href="#0">Paintings</a>
 							<ul>
-								<li><a href="grid-listing-filterscol.html">A l'huile</a></li>
-								<li><a href="grid-listing-filterscol-map.html">A l'eau</a></li>
-								<li><a href="listing-map.html">Au pinceau</a></li>
+								<li><a href="grid-listing-filterscol.html">Oil Paintings</a></li>
+								<li><a href="grid-listing-filterscol-map.html">Aquarels</a></li>
+								<li><a href="listing-map.html">With knife</a></li>
 							</ul>
 						</li>
-						<li><a href="detail-restaurant.html">Sculptures</a></li>
-						<li><a href="detail-restaurant-2.html">Photographies</a></li>
+						<li><a href="detail-restaurant.html">Statues</a></li>
+						<li><a href="detail-restaurant-2.html">Photos</a></li>
 					</ul>
 				</li>
-				<li><a href="submit-restaurant.html">Vendre une oeuvre</a></li>
+				<li><a href="submit-restaurant.html">Sell an artwork</a></li>
         <% if user_signed_in? == false %>
         <li class="submenu">
-					<a href="#0" class="show-submenu">S'inscrire / Se connecter</a>
+					<a href="#0" class="show-submenu">Sign up / Sign in</a>
 					<ul>
-            <li><%= link_to "S'inscrire", new_user_registration_path %></li>
-            <li><%= link_to "Se connecter", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><%= link_to "Sign in", new_user_session_path %></li>
 					</ul>
 				</li>
         <% else %>
