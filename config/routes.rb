@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+=======
+  
+>>>>>>> development
   devise_for :users
   resources :users do
     resources :carts
@@ -11,7 +15,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :private_messages
   resources :testimonials 
-  root 'artworks#index'
+  root 'pages#index'
   resources :charges
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

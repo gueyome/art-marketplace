@@ -1,24 +1,3 @@
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Foogra - Discover & Book the best restaurants at the best price">
-    <meta name="author" content="Ansonika">
-
-    <!-- Favicons-->
-
-    <%= favicon_link_tag 'favicon.ico', rel: "shortcut icon", type: "image/x-icon" %>
-    <%= favicon_link_tag 'apple-touch-icon-57x57-precomposed.png', rel: "apple-touch-icon", type: "image/x-icon" %>
-    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', rel: "apple-touch-icon", type: "image/x-icon", sizes: "72x72" %>
-    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', rel: "apple-touch-icon", type: "image/x-icon", sizes: "114x114" %>
-    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', rel: "apple-touch-icon", type: "image/x-icon", sizes: "144x144" %>
-
-    <!-- GOOGLE WEB FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
 <header class="header_in clearfix">
 		<div class="container">
 		<div id="logo">
@@ -61,7 +40,7 @@
 				</li>
         <% else %>
         <li><%= link_to "Se déconnecter", destroy_user_session_path, :method => "delete" %></li>
-        <li><%= link_to "Mon profil", edit_user_path(current_user.id) %></li>
+        <li><%= link_to "Mon profil", user_path(current_user.id), :method => "delete" %></li>
         <li>
         <%= link_to "", user_cart_path(current_user.id, current_user.cart.id), class: "icon_cart_alt" %>
         <li><%= link_to "Mon panier", user_cart_path(current_user.id, current_user.cart.id) %></li>
@@ -72,7 +51,3 @@
 	</div>
 	</header>
 	<!-- /header -->				
-
-
-</body>
-</html>

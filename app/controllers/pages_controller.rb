@@ -1,6 +1,6 @@
-class ArtworksController < ApplicationController
+class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :create_cart_for_current_user
+  
   def index
     @artworks = Artwork.all
     @categories = Category.all
@@ -9,7 +9,7 @@ class ArtworksController < ApplicationController
   end
 
   def show
-    @artwork = Artwork.find(params[:id])
+    
   end
 
   def new

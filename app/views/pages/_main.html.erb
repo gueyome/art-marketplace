@@ -1,0 +1,159 @@
+<main>
+		<div class="bg_gray">
+			<div class="container margin_60_40">
+				<div class="main_title center">
+					<span><em></em></span>
+					<h2>Popular Categories</h2>
+					<p>Make your own choice, they only wait for you</p>
+				</div>
+				<!-- /main_title -->
+				<div class="owl-carousel owl-theme categories_carousel owl-loaded owl-drag">
+
+          <div class="owl-stage-outer">
+            <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1778px;">
+            <!-- Boucle -->
+              <% @categories.each do |category| %>
+                <div class="owl-item active" style="width: 234px; margin-right: 20px;">
+                  <div class="item_version_2">
+                    <%= link_to category_path(category.id) do%>
+                      <figure>
+                        <span><%= category.artworks.size %></span>
+                        <%= image_tag "category_generique.jpg", data: {src: "category_generique.jpg"}, alt: "" ,width: 350, height: 450,class: "owl-lazy", style: "opacity: 1;"%>
+                        <div class="info">
+                          <h3><%= category.name %></h3>
+                        </div>
+                      </figure>							
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            
+          </div>
+				<!-- /carousel -->
+			  </div>
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /bg_gray -->
+		
+		<div class="container margin_60_40">
+			<div class="main_title">
+				<span><em></em></span>
+				<h2>Popular Artists</h2>
+				<p>Awesome Artists, for Awesome People</p>
+				<%= link_to "View all", nil%>
+			</div>
+			<!-- /main_title -->
+			<div class="owl-carousel owl-theme carousel_4 owl-loaded owl-drag">
+
+			<div class="owl-stage-outer">
+				<div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 2223px;">
+					<% @users.each do |user|%>
+						<div class="owl-item active" style="width: 297.5px; margin-right: 20px;">
+							<div class="item">
+								<div class="strip">
+										<figure>
+												<span class="ribbon off">hot</span>
+                        <%= image_tag "artist.jpg", data: {src: "artist.jpg"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
+												<%= link_to root_path, class: "strip_info" do%>
+													<div class="item_title">
+														<h3><%= user.username%></h3>
+													</div>						
+                        <% end %>
+										</figure>
+										<ul>
+												<li><span class="loc_open">contact</span></li>
+												<li>
+														<div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div>
+												</li>
+										</ul>
+								</div>
+							</div>
+						</div>
+					<%end%>
+				</div>
+			</div>
+					</div>
+			<!-- /carousel -->
+
+			<div class="banner lazy home_custom" data-bg="url(home_section_2.jpg)" data-was-processed="true">
+				<div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.2)" style="background-color: rgba(0, 0, 0, 0.2);">
+					<div>
+						<small>ArtCrafBay</small>
+						<h3>More than <%= @artworks.size %> Artworks available</h3>
+						<p>Make your Passion a Reality </p>
+						<%= link_to "View all", artworks_path, class: "btn_1"%>
+					</div>
+				</div>
+				<!-- /wrapper -->
+			</div>
+			<!-- /banner -->
+
+			<div class="row">
+				<div class="col-12">
+					<div class="main_title version_2">
+						<span><em></em></span>
+						<h2>Our Last Wonders</h2>
+						<p>Choose wich one drive you crazy</p>
+						<%= link_to "View all", artworks_path %>
+					</div>
+				</div>
+				<!-- boucle -->
+				<% @artworks.each do |artwork| %>		
+					<div class="col-md-6">
+						<div class="list_home">
+							<ul>
+								<li>
+									<%= link_to artwork_path(artwork.id) do%>
+											<figure>
+												<%= image_tag "artwork_generique.png", data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
+										</figure>
+										<div class="score"><strong><%= artwork.category.name %></strong></div>
+										<h3><%= artwork.name %></h3>
+										<small><%= artwork.user.username %></small>
+										<ul>
+											<li><span class="ribbon off">New</span></li>
+										</ul>						
+                  <% end %>
+								</li>
+							</ul>
+						</div>
+					</div>
+				<% end %>
+			</div>
+			<!-- /row -->
+			<p class="text-center d-block d-md-block d-lg-none"><%= link_to "View all", nil, class: "btn_1"%></p>
+			<!-- /button visibile on tablet/mobile only -->
+
+			<div class="owl-carousel owl-theme carousel_1 testimonials add_top_30 owl-loaded owl-drag">
+				<div class="owl-stage-outer">
+					<div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 3750px;">
+						<div class="owl-item active" style="width: 1250px;">
+							<div class="item">
+										<blockquote>"ArtCraftBay has changed my life forever".</blockquote>
+										<figure><%= image_tag "man_generique.jpg", data: {src: "man_generique.jpg"}, alt: "",class: "lazy"%></figure>
+										<cite>
+												<strong>James Powell</strong>
+												<span>3 October 2019</span>
+										</cite>
+								</div>
+						</div>
+						<div class="owl-item" style="width: 1250px;">
+							<div class="item">
+								<blockquote>"The Artworks are so beautiful !!".</blockquote>
+								<figure><%= image_tag "artwork_generique.png", data: {src: "artwork_generique.jpg"}, alt: "",class: "lazy"%></figure>
+								
+								<cite>
+										<strong>Frederick Smith</strong>
+										<span>25 November 2019</span>
+								</cite>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
+			<!-- /carousel testimonials-->
+		</div>
+
+	</main>
