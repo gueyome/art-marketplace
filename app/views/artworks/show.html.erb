@@ -11,14 +11,33 @@
 <p>catégorie: <%= @artwork.category.name %></p>
 
 <p>Nom du propriétaire: <%= @artwork.user.username %></p>
-
 <p>Stock: <%= @artwork.stock %></p>
+
+<!-- FORM WORKING -->
+
+<div class="container">
 <% if check_stock(@artwork) %>
   <%= form_tag cart_details_path(origin: "add", cart_id: "current_user.cart.id", artwork_id: @artwork.id), method: "post" do %>
-    <%= select_tag(:quantity, options_for_select(1..@artwork.stock)) %> 
-    <%= submit_tag "Ajouter au panier", data:{confirm: "Es-tu sûr?"} %>
+    <div class="row no-gutters custom-search-input">
+      <div class="col-lg-8 custom_select">
+        <%= select_tag(:quantity, options_for_select(1..@artwork.stock), {class: "wide", style: "display: none;"}) %> 
+        <div class="nice-select wide" tabindex="0"><span class="current">1</span>
+          <ul class="list">
+            <% @artwork.stock.times do |index| %>
+              <li data-value=<%=index+1%> class="option"><%=index+1%></li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <%= submit_tag "Ajouter au panier", data:{confirm: "Es-tu sûr?"} %>
+      </div>
+    </div>
   <% end %>
 <% else %>
   <p>Stock à zéro :)</p>
 <% end %>
+</div>
+
+<!-- FORM WORKING -->
 
