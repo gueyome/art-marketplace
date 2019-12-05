@@ -72,34 +72,29 @@
         <li class="breadcrumb-item active">Orders passed</li>
       </ol>
       <div class="box_general">
-			<div class="header_box">
-				<h2 class="d-inline-block">Orders passed</h2>
-				<div class="filter">
-					<select name="orderby" class="selectbox">
-						<option value="Any status">Any status</option>
-						<option value="Approved">Approved</option>
-						<option value="Pending">Pending</option>
-						<option value="Cancelled">Cancelled</option>
-					</select>
-				</div>
-			</div>
 			<div class="list_general">
-				<ul>
+				<% @orders.each do |order| %>
+        <ul>
+          <div class="header_box">
+            <h2 class="d-inline-block"> Order passed on <%= order.date %></h2>
+          </div>
+          <% order.order_details.each do |order_detail| %>
 					<li>
 						<figure><img src="img/item_1.jpg" alt=""></figure>
-						<h4>La Monnalisa <i class="pending">Pending</i></h4>
+						<h4> <%= order_detail.artwork.name %> </h4>
 						<ul class="booking_list">
-							<li><strong>Booking date</strong> 5 November 2019</li>
-              <li><strong>Booking details</strong> 2 People</li>
-							<li><strong>Client</strong> Mark Twain</li>
+							<li><strong>Number of products </strong> <%=order_detail.quantity %> </li>
+              <li><strong>Unitary price </strong> $ <%= order_detail.artwork.price %> </li>
+							<li><strong>Description</strong> <%= order_detail.artwork.description %> </li>
 						</ul>
-						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a></p>
 						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
-							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
+							<li><a href="#0" class="btn_1 gray approve"> Download Bill </a></li>
+							<li><a href="#0" class="btn_1 gray delete"> Contact Seller </a></li>
 						</ul>
 					</li>
+          <% end %>
 				</ul>
+        <% end %>
 			</div>
 		</div>
 

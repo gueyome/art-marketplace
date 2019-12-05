@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   layout "no_header", :only => [:index]
 
   def index
+    @orders=Order.where(user_id: params[:user_id])
   end
 
   def show
