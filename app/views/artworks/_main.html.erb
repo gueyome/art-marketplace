@@ -59,17 +59,15 @@
 								<div class="strip">
 										<figure>
 												<span class="ribbon off">hot</span>
-                        <%= image_tag "artist.jpg", data: {src: "category_generique.jpg"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
-												<a href="detail-restaurant.html" class="strip_info">
-														<small>Pizza</small>
-														<div class="item_title">
-																<h3>Da Alfredo</h3>
-																<small>27 Old Gloucester St</small>
-														</div>
-												</a>
+                        <%= image_tag "artist.jpg", data: {src: "artist.jpg"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
+												<%= link_to root_path, class: "strip_info" do%>
+													<div class="item_title">
+														<h3><%= user.username%></h3>
+													</div>						
+                        <% end %>
 										</figure>
 										<ul>
-												<li><span class="loc_open">Now Open</span></li>
+												<li><span class="loc_open">contact</span></li>
 												<li>
 														<div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div>
 												</li>
