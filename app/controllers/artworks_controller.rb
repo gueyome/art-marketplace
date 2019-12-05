@@ -3,6 +3,7 @@ class ArtworksController < ApplicationController
   before_action :create_cart_for_current_user
   def index
     @artworks = Artwork.all
+    @categories = Category.all
   end
 
   def show
