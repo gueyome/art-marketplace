@@ -2,7 +2,7 @@
 <%= render "main" %>
 <h1>Liste de toutes les oeuvres</h1>
 <% @artworks.each do |artwork| %>
-  <p>Categorie: <%= artwork.category %></p>
+  <p>Categorie: <%= artwork.category.name %></p>
   <p>Nom: <%= artwork.name %></p>
   <p>Prix: <%= artwork.price %>  euros</p>
   <p>Stock: <%= artwork.stock %></p>
