@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_action :create_cart_for_current_user
+  layout "no_header", :only => [:index]
+
   def index
   end
 
