@@ -42,7 +42,7 @@
 				<span><em></em></span>
 				<h2>Popular Artists</h2>
 				<p>Awesome Artists, for Awesome People</p>
-				<a href="#0">View All</a>
+				<%= link_to "View all", nil%>
 			</div>
 			<!-- /main_title -->
 			<div class="owl-carousel owl-theme carousel_4 owl-loaded owl-drag">
@@ -83,7 +83,7 @@
 						<small>ArtCrafBay</small>
 						<h3>More than <%= @artworks.size %> Artworks available</h3>
 						<p>Make your Passion a Reality </p>
-						<a href="grid-listing-filterscol.html" class="btn_1">View All</a>
+						<%= link_to "View all", artworks_path, class: "btn_1"%>
 					</div>
 				</div>
 				<!-- /wrapper -->
@@ -96,7 +96,7 @@
 						<span><em></em></span>
 						<h2>Our Last Wonders</h2>
 						<p>Choose wich one drive you crazy</p>
-						<a href="#0">View All</a>
+						<%= link_to "View all", artworks_path %>
 					</div>
 				</div>
 				<!-- boucle -->
@@ -123,7 +123,7 @@
 				<% end %>
 			</div>
 			<!-- /row -->
-			<p class="text-center d-block d-md-block d-lg-none"><a href="grid-listing-filterscol.html" class="btn_1">View All</a></p>
+			<p class="text-center d-block d-md-block d-lg-none"><%= link_to "View all", nil, class: "btn_1"%></p>
 			<!-- /button visibile on tablet/mobile only -->
 
 			<div class="owl-carousel owl-theme carousel_1 testimonials add_top_30 owl-loaded owl-drag">
