@@ -18,4 +18,8 @@
  *= require icons
  *= require icons.min
  *= require detail-page-delivery
+ *= require admin
+ *= require font-awesome.min
+ *= require dataTables.bootstrap4
+ *= require dropzone
  */

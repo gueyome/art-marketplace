@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout "no_header", :only => [:edit]
   def index
   end
 
