@@ -4,6 +4,8 @@ class ArtworksController < ApplicationController
   def index
     @artworks = Artwork.all
     @categories = Category.all
+    # where creator is true
+    @users = User.all
   end
 
   def show
