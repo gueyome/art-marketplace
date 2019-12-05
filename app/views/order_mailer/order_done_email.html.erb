@@ -13,7 +13,7 @@
       <% cart_details = @order.user.cart.artworks %>
       <% cart_details.each do |cart_detail| %>
       Item: <%= cart_detail.name %>
-      Quantité: <%= cart_detail.stock%>
+      Quantité: <%= cart_detail.quantity%>
       <% end %>
     </p>
 
