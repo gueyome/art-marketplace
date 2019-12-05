@@ -9,6 +9,7 @@
           <h1><%= @artwork.name %> - $ <%= @artwork.price %></h1>
           <ul class="tags">
             <li><%= link_to "#{@artwork.category.name}", category_path(@artwork.category.id)%></li>
+            <li><%= @artwork.user.username%></li>
           </ul>
         </div>
         <div class="rating">
