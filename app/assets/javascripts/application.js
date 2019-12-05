@@ -16,4 +16,6 @@
 //= require common_scripts.min
 //= require common_func
 //= require validate
+//= require sticky_sidebar.min
+//= require specific_detail
 //= require_tree .
