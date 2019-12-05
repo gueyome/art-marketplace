@@ -1,78 +1,15 @@
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Foogra - Discover & Book the best restaurants at the best price">
-    <meta name="author" content="Ansonika">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Foogra - Discover & Book the best restaurants at the best price">
+<meta name="author" content="Ansonika">
 
-    <!-- Favicons-->
+<!-- Favicons-->
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" type="image/x-icon" href="apple-touch-icon-57x57-precomposed.png">
+<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png">
 
-    <%= favicon_link_tag 'favicon.ico', rel: "shortcut icon", type: "image/x-icon" %>
-    <%= favicon_link_tag 'apple-touch-icon-57x57-precomposed.png', rel: "apple-touch-icon", type: "image/x-icon" %>
-    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', rel: "apple-touch-icon", type: "image/x-icon", sizes: "72x72" %>
-    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', rel: "apple-touch-icon", type: "image/x-icon", sizes: "114x114" %>
-    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', rel: "apple-touch-icon", type: "image/x-icon", sizes: "144x144" %>
-
-    <!-- GOOGLE WEB FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-<header class="header_in clearfix">
-		<div class="container">
-		<div id="logo">
-      <%= link_to image_tag("logo_sticky.svg"), root_path %>
-		</div>
-		<!-- /top_menu -->
-		<a href="#0" class="open_close">
-			<i class="icon_menu"></i><span>Menu</span>
-		</a>
-		<nav class="main-menu">
-			<div id="header_menu">
-				<a href="#0" class="open_close">
-					<i class="icon_close"></i><span>Menu</span>
-				</a>
-				<a href="index.html"><img src="img/logo.svg" width="140" height="35" alt=""></a>
-			</div>
-			<ul>
-				<li class="submenu">
-					<a href="#0" class="show-submenu">Artworks Categories</a>
-					<ul>
-						<li class="third-level"><a href="#0">Paintings</a>
-							<ul>
-								<li><a href="grid-listing-filterscol.html">Oil Paintings</a></li>
-								<li><a href="grid-listing-filterscol-map.html">Aquarels</a></li>
-								<li><a href="listing-map.html">With knife</a></li>
-							</ul>
-						</li>
-						<li><a href="detail-restaurant.html">Statues</a></li>
-						<li><a href="detail-restaurant-2.html">Photos</a></li>
-					</ul>
-				</li>
-				<li><a href="submit-restaurant.html">Sell an artwork</a></li>
-        <% if user_signed_in? == false %>
-        <li class="submenu">
-					<a href="#0" class="show-submenu">Sign up / Sign in</a>
-					<ul>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
-            <li><%= link_to "Sign in", new_user_session_path %></li>
-					</ul>
-				</li>
-        <% else %>
-        <li><%= link_to "Se déconnecter", destroy_user_session_path, :method => "delete" %></li>
-        <li><%= link_to "Mon profil", edit_user_path(current_user.id) %></li>
-        <li>
-        <%= link_to "", user_cart_path(current_user.id, current_user.cart.id), class: "icon_cart_alt" %>
-        <li><%= link_to "Mon panier", user_cart_path(current_user.id, current_user.cart.id) %></li>
-        </li>
-        <% end %>
-			</ul>
-		</nav>
-	</div>
-	</header>
-	<!-- /header -->				
-
-
-</body>
-</html>
+<!-- GOOGLE WEB FONT -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
