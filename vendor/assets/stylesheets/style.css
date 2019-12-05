@@ -2327,7 +2327,7 @@ ul#top_menu li a.login:before {
 }
 .hero_single.version_2 {
   height: 580px;
-  background: #ededed url(home_section_1.jpg) center center no-repeat;
+  background: #ededed url(home2.jpg) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -2341,6 +2341,25 @@ ul#top_menu li a.login:before {
   -o-background-size: cover;
   background-size: cover;
 }
+
+.home_custom {
+  height: 350px;
+  background: #ededed url(home3.jpg) center center no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.home_down {
+  height: 343px;
+  background: #ededed url(testi.jpg) center center no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .hero_single.inner_pages {
   height: 480px;
   background-position: center center;
