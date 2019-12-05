@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
   
->>>>>>> development
   devise_for :users
   resources :users do
     resources :carts
