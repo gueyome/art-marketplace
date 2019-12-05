@@ -23,7 +23,7 @@ class OrderDetailsController < ApplicationController
       customer: customer.id,
       amount: @amount,
       description: 'Paiement de la commande',
-      currency: 'eur',
+      currency: 'usd',
     })
 
     puts "#"*60
