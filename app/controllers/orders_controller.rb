@@ -29,18 +29,20 @@ class OrdersController < ApplicationController
     puts "#"*60
     puts "paiement ok"
     puts "#"*60   
-    flash[:success] = "La commande a été payé"
-    redirect_to root_path  
-    #@cart = current_user.cart
-    #@order = Order.new
-    #@order.user = current_user
-    #@order.order_details = @cart.cart_details
-    #if @order.save
-    #  @cart.items.clear
+    
+    @cart = current_user.cart
+    @order = Order.new
+    @order.user = current_user
+    @cart.cart_details.each do |cart_detail|
+    @order.order_details << cart_detail 
+    end
+
+    if @order.save
+      @cart.cart_details.clear
       # verifier l'etat du stock
-    #  flash[:success] = "La commande a été payé"
-    #  redirect_to root_path
-    #end
+    flash[:success] = "La commande a été payé"
+    redirect_to root_path
+    end
 
     rescue Stripe::CardError => e
       flash.now[:error] = e.message
