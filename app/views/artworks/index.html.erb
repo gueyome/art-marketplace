@@ -1,10 +1,1 @@
-<%= render "jumbotron" %>
-<%= render "main" %>
-<h1>Liste de toutes les oeuvres</h1>
-<% @artworks.each do |artwork| %>
-  <p>Categorie: <%= artwork.category.name %></p>
-  <p>Nom: <%= artwork.name %></p>
-  <p>Prix: <%= artwork.price %>  euros</p>
-  <p>Stock: <%= artwork.stock %></p>
-  <%= link_to "Découvrir l'oeuvre", artwork_path(artwork.id), class: "btn btn-info"%>
-<% end %>
+<%= render "index"%>

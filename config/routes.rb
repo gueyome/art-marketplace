@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   resources :users do
     resources :carts
     resources :orders
+    resources :artworks
   end
   resources :cart_details
   resources :order_details
   resources :contacts
-  resources :artworks
   resources :categories
   resources :private_messages
   resources :testimonials 
