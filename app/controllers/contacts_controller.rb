@@ -19,6 +19,7 @@ class ContactsController < ApplicationController
   end
 
   def update
+    flash[:success] = "Contacts successfully updated"
   end
 
   def destroy

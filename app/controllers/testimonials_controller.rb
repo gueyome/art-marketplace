@@ -9,18 +9,24 @@ class TestimonialsController < ApplicationController
   def show
   end
 
-  def edit
+  def new
   end
 
   def create
+    flash[:success] = "Testimonial successfully created"
   end
 
-  def destroy
+  def edit
   end
 
   def update
+    flash[:success] = "Testimonial successfully updated"
   end
 
-  def delete
+  def destroy
+    flash[:success] = "Testimonial successfully deleted"
   end
+
+  
+
 end

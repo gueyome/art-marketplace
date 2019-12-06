@@ -18,14 +18,17 @@ class ArtworksController < ApplicationController
   end
 
   def create
+    flash[:success] = "Artwork successfully created"
   end
 
   def edit
   end
 
   def update
+    flash[:success] = "Artwork successfully updated"
   end
 
   def destroy
+    flash[:success] = "Artwork successfully deleted"
   end
 end
