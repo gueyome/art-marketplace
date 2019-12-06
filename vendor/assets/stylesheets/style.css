@@ -2327,7 +2327,7 @@ ul#top_menu li a.login:before {
 }
 .hero_single.version_2 {
   height: 580px;
-  background: #ededed url(home2.jpg) center center no-repeat;
+  background: #ededed url(asset_path(home2.jpg)) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -2335,7 +2335,7 @@ ul#top_menu li a.login:before {
 }
 .hero_single.version_3 {
   height: 580px;
-  background: #ededed url(home_section_2.jpg) center center no-repeat;
+  background: #ededed url(asset_path(home_section_2.jpg)) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -2344,7 +2344,7 @@ ul#top_menu li a.login:before {
 
 .home_custom {
   height: 350px;
-  background: #ededed url(home3.jpg) center center no-repeat;
+  background: #ededed url(asset_path(home3.jpg)) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -2353,7 +2353,7 @@ ul#top_menu li a.login:before {
 
 .home_down {
   height: 343px;
-  background: #ededed url(testi.jpg) center center no-repeat;
+  background: #ededed url(asset_path(testi.jpg)) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
