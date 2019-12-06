@@ -12,15 +12,18 @@ class PrivateMessagesController < ApplicationController
   end
 
   def create
+    flash[:success] = "Message successfully sent"
   end
 
   def edit
   end
 
   def update
+    flash[:success] = "Message successfully updated"
   end
 
   def destroy
+    flash[:success] = "Message successfully deleted"
   end
 
 end
