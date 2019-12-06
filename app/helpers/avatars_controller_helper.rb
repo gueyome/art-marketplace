@@ -1,0 +1,2 @@
+module AvatarsControllerHelper
+end
