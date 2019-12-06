@@ -25,4 +25,12 @@ Rails.application.routes.draw do
       resources :avatars, only: [:create]
     end
   end
+
+ 
+  Rails.application.routes.draw do
+    resources :artworks, only: [:show] do
+      resources :avatar_artworks, only: [:create]
+    end
+  end
+  
 end
