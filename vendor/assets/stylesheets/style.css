@@ -3404,6 +3404,7 @@ ul#top_menu li a.login:before {
   background: -moz-linear-gradient(top, transparent 5%, black 100%);
   background: -webkit-linear-gradient(top, transparent 5%, black 100%);
   background: linear-gradient(to bottom, transparent 5%, black 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
 }
 .strip figure .item_title h3 {
   font-size: 16px;

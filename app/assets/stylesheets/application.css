@@ -12,7 +12,6 @@
 
  *= require bootstrap
  *= require bootstrap_customized.min
- *= require style
  *= require home
  *= require custom
  *= require icons
