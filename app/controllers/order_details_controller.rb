@@ -25,14 +25,10 @@ class OrderDetailsController < ApplicationController
     charge = Stripe::Charge.create({
       customer: customer.id,
       amount: @amount,
-      description: 'Paiement de la commande',
+      description: 'Order payment',
       currency: 'usd',
     })
 
-    puts "#"*60
-    puts "paiement ok"
-    puts "#"*60   
-    
     @cart = current_user.cart
     @order = Order.create(user_id: current_user.id, date: Time.now)
     @cart.cart_details.each do |cart_detail|
@@ -44,7 +40,7 @@ class OrderDetailsController < ApplicationController
     end
     @cart.cart_details.clear
       # verifier l'etat du stock
-    flash[:success] = "La commande a été payé"
+    flash[:success] = "Order successfully paid"
     redirect_to root_path
 
     rescue Stripe::CardError => e
