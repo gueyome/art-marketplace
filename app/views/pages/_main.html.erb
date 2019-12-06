@@ -21,7 +21,7 @@
 									<span><%= category.artworks.size %></span>
 									<%= image_tag "category_generique.jpg", data: {src: "category_generique.jpg"}, alt: "" ,width: 350, height: 450,class: "owl-lazy", style: "opacity: 1;"%>
 									<div class="info">
-										<h3><%= category.name %></h3>
+										<h3 class="text-white"><%= category.name %></h3>
 									</div>
 								</figure>
 								<% end %>
@@ -86,7 +86,7 @@
 					<small>ArtCrafBay</small>
 					<h3 class="text-white">More than <%= @artworks.size %> Artworks available</h3>
 					<p>Make your Passion a Reality </p>
-					<%= link_to "View all", artworks_path, class: "btn_1"%>
+					<%= link_to "View all", nil, class: "btn_1"%>
 				</div>
 			</div>
 			<!-- /wrapper -->
@@ -99,7 +99,7 @@
 					<span><em></em></span>
 					<h2>Our Last Wonders</h2>
 					<p>Choose wich one drive you crazy</p>
-					<%= link_to "View all", artworks_path %>
+					<%= link_to "View all", nil %>
 				</div>
 			</div>
 			<!-- boucle -->
@@ -108,7 +108,7 @@
 				<div class="list_home">
 					<ul>
 						<li>
-							<%= link_to artwork_path(artwork.id) do%>
+							<%= link_to nil do%>
 							<figure>
 								<%= image_tag "artwork_generique.png", data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
 							</figure>
