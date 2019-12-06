@@ -10,14 +10,26 @@
       </ol>
 		<div class="box_general padding_bottom">
 			<div class="header_box version_2">
-				<h2><i class="fa fa-user"></i>Artwork details</h2>
+				<h2>Artwork details</h2>
 			</div>
 			<div class="row">
 				<div class="col-md-4">
 					<div class="form-group">
-					<label>Artwork photo</label>
-						<form action="/file-upload" class="dropzone"></form>
-				    </div>
+            <label>Artwork photo</label>
+            <div class="dropzone">
+              <%if @artwork.avatar.attached?%>
+              <figure>
+              <%= image_tag @artwork.avatar, style: "width: 340px;" %>
+              </figure>
+              <%else%>
+              <<%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded"%>>
+              <%end%>
+            </div> 
+            <%= form_tag artwork_avatar_artworks_path(@artwork), multipart: true do %>
+              <%= file_field_tag :avatar %>
+              <%= submit_tag "mettre à jour" %>
+            <% end %>
+				  </div>
 				</div>
 				<div class="col-md-8 add_top_30">
 					<div class="row">

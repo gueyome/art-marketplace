@@ -20,9 +20,9 @@
           <small> - $ <%=artwork.price%></small>
           <h4><%=artwork.name%></h4>
           <p><%=artwork.description%></p>
-          <p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> View item</a></p>
+          <%= link_to "View Artwork", user_artwork_path(current_user.id, artwork.id), class: "btn_1 gray" %>
           <ul class="buttons">
-            <li><a href="#0" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i> Delete Artwork</a></li>
+            <li><a href="#0" class="btn_1 gray delete wishlist_close">Delete Artwork</a></li>
             <%= link_to "Edit Artwork", edit_user_artwork_path(current_user.id, artwork.id), class: "btn_1 gray edit wishlist_close" %>
           </ul>
         </li>
