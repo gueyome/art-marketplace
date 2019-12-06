@@ -3,27 +3,18 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @user.first_name %>, votre commande a bien été effectuée !</h1>
- 
-    <p>
-        Voici le récapitulatif de ta commande
-    </p>
+    <h1>Hey <%= @user.username %>, your order has been done !</h1>
 
-     <p>
-      <% cart_details = @order.user.cart.artworks %>
-      <% cart_details.each do |cart_detail| %>
-      Item: <%= cart_detail.name %>
-      Quantité: <%= cart_detail.quantity%>
-      <% end %>
-    </p>
+    <p>Here is the summary of your order</p>
 
-       <p>
-      Elle vous sera livrée dans les plus brefs délais <%= @user.email %>.
-    </p>
+    <% @order.order_details.each do |order_detail| %>
+      <p>Item: <%= order_detail.artwork.name %> Quantity: <%= order_detail.quantity%> .</p>
+    <% end %>
+    
+    <p>The seller(s) will contact you soon for the delivery of your masterpiece(s) at this email : <%= @user.email %>.</p>
 
-    <p>
-      Pour accéder à votre espace client, connectez-vous via : <%= @url %>.
-    </p>
-    <p> À très vite sur monsite.fr !
+    <p> To access to your profil, log in at this url : <%= @url %>.</p>
+    <p> ArtCraftBay loves you !</p>
+    <p> See you soon on https://production-art.herokuapp.com !</p>
   </body>
 </html>
