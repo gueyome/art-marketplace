@@ -40,7 +40,7 @@
 				</li>
         <% else %>
         <li><%= link_to "Se déconnecter", destroy_user_session_path, :method => "delete" %></li>
-        <li><%= link_to "Mon profil", user_path(current_user.id), :method => "delete" %></li>
+        <li><%= link_to "Mon profil", edit_user_path(current_user.id) %></li>
         <li>
         <%= link_to "", user_cart_path(current_user.id, current_user.cart.id), class: "icon_cart_alt" %>
         <li><%= link_to "Mon panier", user_cart_path(current_user.id, current_user.cart.id) %></li>
@@ -50,4 +50,4 @@
 		</nav>
 	</div>
 	</header>
-	<!-- /header -->				
+	<!-- /header -->			

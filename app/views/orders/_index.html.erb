@@ -1,0 +1,102 @@
+<body class="fixed-nav sticky-footer" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
+    <%= link_to image_tag("logo_sticky.svg"), root_path %>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+        <%= link_to "My Profile", edit_user_path(current_user.id), class: "nav-link" %>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+          <a class="nav-link" href="messages.html">
+            <i class="fa fa-fw fa-envelope-open"></i>
+            <span class="nav-link-text">Messages</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
+          <%= link_to "Order passed", user_orders_path(current_user.id), class: "nav-link" %>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMylistings" data-parent="#mylistings">
+            <i class="fa fa-fw fa-list"></i>
+          <span class="nav-link-text">My Artcrafts</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseMylistings">
+            <li>
+              <a href="listings.html">Pending <span class="badge badge-pill badge-primary">6</span></a>
+            </li>
+			      <li>
+              <a href="listings.html">Active <span class="badge badge-pill badge-success">6</span></a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
+          <a class="nav-link" href="reviews.html">
+            <i class="fa fa-fw fa-star"></i>
+            <span class="nav-link-text">Reviews</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
+          <a class="nav-link" href="add-listing.html">
+            <i class="fa fa-fw fa-plus-circle"></i>
+            <span class="nav-link-text">Add Artcraft</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Leave My Profile</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- /Navigation-->
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <%= link_to "My Profile", edit_user_path(current_user.id) %>
+        </li>
+        <li class="breadcrumb-item active">Orders passed</li>
+      </ol>
+      <div class="box_general">
+			<div class="list_general">
+				<% @orders.each do |order| %>
+        <ul>
+          <div class="header_box">
+            <h2 class="d-inline-block"> Order passed on <%= order.date %></h2>
+          </div>
+          <% order.order_details.each do |order_detail| %>
+					<li>
+						<figure><img src="img/item_1.jpg" alt=""></figure>
+						<h4> <%= order_detail.artwork.name %> </h4>
+						<ul class="booking_list">
+							<li><strong>Number of products </strong> <%=order_detail.quantity %> </li>
+              <li><strong>Unitary price </strong> $ <%= order_detail.artwork.price %> </li>
+							<li><strong>Description</strong> <%= order_detail.artwork.description %> </li>
+						</ul>
+						<ul class="buttons">
+							<li><a href="#0" class="btn_1 gray approve"> Download Bill </a></li>
+							<li><a href="#0" class="btn_1 gray delete"> Contact Seller </a></li>
+						</ul>
+					</li>
+          <% end %>
+				</ul>
+        <% end %>
+			</div>
+		</div>
+
+
+    </body>

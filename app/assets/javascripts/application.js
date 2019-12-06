@@ -18,4 +18,15 @@
 //= require validate
 //= require sticky_sidebar.min
 //= require specific_detail
+//= require jquery
+//= require bootstrap.bundle.min
+//= require jquery.easing.min
+//= require Chart.min
+//= require jquery.dataTables
+//= require dataTables.bootstrap4
+//= require jquery.selectbox-0.2
+//= require retina-replace.min
+//= require jquery.magnific-popup.min
+//= require admin
+//= require dropzone.min
 //= require_tree .
