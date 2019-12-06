@@ -58,9 +58,9 @@
 								<figure>
 									<span class="ribbon off">hot</span>
 									<%= image_tag "artist.jpg", data: {src: "artist.jpg"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
-									<%= link_to root_path, class: "strip_info" do%>
+									<%= link_to user_path(user.id), class: "strip_info" do%>
 									<div class="item_title">
-										<h3><%= user.username%></h3>
+										<h3 class="text-white"><%= user.username%></h3>
 									</div>
 									<% end %>
 								</figure>
@@ -86,7 +86,7 @@
 					<small>ArtCrafBay</small>
 					<h3 class="text-white">More than <%= @artworks.size %> Artworks available</h3>
 					<p>Make your Passion a Reality </p>
-					<%= link_to "View all", nil, class: "btn_1"%>
+					<%= link_to "View all", search_index_path, class: "btn_1"%>
 				</div>
 			</div>
 			<!-- /wrapper -->
@@ -99,7 +99,7 @@
 					<span><em></em></span>
 					<h2>Our Last Wonders</h2>
 					<p>Choose wich one drive you crazy</p>
-					<%= link_to "View all", nil %>
+					<%= link_to "View all", search_index_path %>
 				</div>
 			</div>
 			<!-- boucle -->
@@ -108,7 +108,7 @@
 				<div class="list_home">
 					<ul>
 						<li>
-							<%= link_to nil do%>
+							<%= link_to search_path(artwork.id) do%>
 							<figure>
 								<%= image_tag "artwork_generique.png", data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
 							</figure>
@@ -159,12 +159,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span
-						aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span
-						aria-label="Next">›</span></button></div>
-			<div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button"
-					class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div>
-		</div>
+			
 		<!-- /carousel testimonials-->
 	</div>
 

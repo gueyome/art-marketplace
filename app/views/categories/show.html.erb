@@ -1,2 +1,33 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<div class="container">
+
+    <div class=" text-center mt-5">
+      <h2>Masterpieces category : <%= @category.name %></h2>
+      <p>Choose wisely</p>
+    </div>
+
+<div class="row">
+
+<!-- boucle -->
+<% @artworks.each do |artwork| %>
+<div class="col-md-6">
+  <div class="list_home">
+    <ul>
+      <li>
+        <%= link_to nil do%>
+        <figure>
+          <%= image_tag "artwork_generique.png", data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
+        </figure>
+        <div class="score"><strong><%= artwork.category.name %></strong></div>
+        <h3><%= artwork.name %></h3>
+        <small><%= artwork.user.username %></small>
+        <ul>
+          <li><span class="ribbon off">New</span></li>
+        </ul>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+<% end %>
+</div>
+</div>
