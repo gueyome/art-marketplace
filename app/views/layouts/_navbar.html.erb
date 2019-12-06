@@ -17,7 +17,6 @@
 						<%end%>
 					</ul>
 				</li>
-				<li><%= link_to "Sell an artwork", new_user_artwork_path(current_user.id) %></li>
 				<% if user_signed_in? == false %>
 				<li class="submenu">
 					<a href="#0" class="show-submenu">Sign up / Sign in</a>
@@ -27,6 +26,7 @@
 					</ul>
 				</li>
 				<% else %>
+				<li><%= link_to "Sell an artwork", new_user_artwork_path(current_user.id) %></li>
 				<li><%= link_to "Log out", destroy_user_session_path, :method => "delete" %></li>
 				<li><%= link_to "My profil", edit_user_path(current_user.id) %></li>
 				<li><%= link_to "My cart", user_cart_path(current_user.id, current_user.cart.id) %></li>
