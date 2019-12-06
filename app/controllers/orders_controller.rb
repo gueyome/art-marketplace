@@ -1,14 +1,9 @@
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :create_cart_for_current_user
-<<<<<<< HEAD
   layout "artist_application", :only => [:index]
-
-=======
   before_action :create_contact_for_current_user
-  layout "no_navbar", :only => [:index]
   
->>>>>>> development
   def index
     @orders=Order.where(user_id: current_user.id)
   end
