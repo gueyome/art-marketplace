@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   before_action :create_cart_for_current_user
-  layout "no_navbar", :only => [:index]
+  layout "artist_application", :only => [:index]
 
   def index
-    @orders=Order.where(user_id: params[:user_id])
+    @orders=Order.where(user_id: current_user.id)
   end
 
   def show
