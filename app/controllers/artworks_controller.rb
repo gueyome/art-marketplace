@@ -1,14 +1,11 @@
 class ArtworksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :create_cart_for_current_user
-  layout "artist_application", :only => [:new, :index]
+  layout "artist_application", :only => [:new, :index, :edit]
   before_action :create_contact_for_current_user
 
   def index
-    @artworks = Artwork.all
-    @categories = Category.all
-    # where creator is true
-    @users = User.all
+    @my_artworks = Artwork.where(user_id: current_user.id)
   end
 
   def show
@@ -21,17 +18,21 @@ class ArtworksController < ApplicationController
   end
 
   def create
-    puts params
     Artwork.create(user_id: current_user, name: params[:name], price: params[:price], stock: params[:stock], category_id: params[:category_id], creator: params[:creator], description: params[:description])
     flash[:success] = "Artwork successfully created"
     redirect_to user_artworks_path(current_user.id)
   end
 
   def edit
+    @artwork=Artwork.find(params[:id])
+    @categories = Category.all
   end
 
   def update
+    @artwork = Artwork.find(params[:id])
+    @artwork.update(user_id: current_user.id, name: params[:name], price: params[:price], stock: params[:stock], category_id: params[:category_id], creator: params[:creator], description: params[:description])
     flash[:success] = "Artwork successfully updated"
+    redirect_to user_artworks_path(current_user.id)
   end
 
   def destroy
