@@ -9,4 +9,13 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def create_contact_for_current_user
+    if user_signed_in?
+      if current_user.contact == nil
+        @contact = Contact.create(user: current_user)
+      end
+    end
+  end
+  
 end

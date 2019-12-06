@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :create_cart_for_current_user
+  before_action :create_contact_for_current_user
+
   layout "no_navbar", :only => [:edit]
   def index
   end
