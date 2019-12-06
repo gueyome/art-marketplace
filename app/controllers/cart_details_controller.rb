@@ -44,7 +44,8 @@ class CartDetailsController < ApplicationController
     @new_quantity = params[:quantity].to_i
     @variation = @line.quantity - @new_quantity
     @line.artwork.update(stock: @line.artwork.stock + @variation)
-    puts @line.update(quantity: @new_quantity)
+    @line.update(quantity: @new_quantity)
+    redirect_to user_cart_path(current_user.cart.id)
   end
 
   def destroy
