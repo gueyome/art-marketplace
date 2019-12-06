@@ -5,4 +5,5 @@ class Artwork < ApplicationRecord
   has_many :carts, through: :cart_details
   has_many :order_details
   has_many :orders, through: :order_details
+  has_one_attached :avatar
 end
