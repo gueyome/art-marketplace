@@ -1,68 +1,61 @@
-<div class="container text-center">
-
-  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-    <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-    <h1 class="mb-5 mt-5">My nice Cart Baby</h1>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Artwork</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Price</th>
-          <th scope="col">Show</th>
-          <th scope="col">Delete</th>
-          <th scope="col">Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%@cart.cart_details.each_with_index do |cart_detail, index|%>
-          <tr>
-            <th scope="row"><%= cart_detail.artwork_id %></th>
-            <td><%= cart_detail.artwork.name %></td>
-            <td>
-                <%= form_tag cart_detail_path(cart_detail.id), method: "patch" do %>
-                  <%= select_tag(:quantity, options_for_select(1..cart_detail.artwork.stock+cart_detail.quantity, cart_detail.quantity)) %> 
-                  <%= submit_tag "Modifier la quantité", class: "btn btn-info btn-sm" %>
-                <% end %>
-            </td>
-            <td>$<%= cart_detail.artwork.price %></td>
-            <td><%= link_to "show", artwork_path(cart_detail.artwork_id), class: "btn btn-primary btn-sm"%></td>
-            <td><%= link_to "delete", cart_detail_path(cart_detail.id), class: "btn btn-danger btn-sm", data: {confirm: "Es-tu sur?", method: "delete"}%></td>
-            <td>$<%= sum_line(cart_detail) %></td>
-          </tr>
-        <% end %>
-        <tr>
-          <th scope="row">Total Amount :</th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>$<%= sum_cart? %></td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="mt-5"><%= link_to "Valider la commade", nil, class: "btn btn-warning"%></p>
-    <%= form_tag order_details_path, method: "post" do %>
+<div class="container-fluid">
+  <!-- OKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK -->
+  <div class="text-center mt-5 mb-5">
+    <h1>My Cart</h1>
+  </div>
+  <div class="box_general pt-0">
+    <div class="list_general">
+      <%@cart.cart_details.each_with_index do |cart_detail, index|%>
+      <ul>
+        <li>
+          <figure><img src="img/item_1.jpg" alt=""></figure>
+          <h4><%= cart_detail.artwork.name %></h4>
+          <ul class="booking_list">
+            <li>
+              <%= form_tag cart_detail_path(cart_detail.id), method: "patch" do %>
+              <strong>Quantity :</strong>
+              <%= select_tag(:quantity, options_for_select(1..cart_detail.artwork.stock+cart_detail.quantity, cart_detail.quantity), {class: "custom-select col-md-1"}) %>
+              <%= submit_tag "Change quantity", class: "btn_1 bg-info" %>
+              <% end %>
+            </li>
+            <li><strong>Price :</strong>$<%= cart_detail.artwork.price %></li>
+            <li><strong>Amount :</strong>$<%= sum_line(cart_detail) %></li>
+          </ul>
+          <ul class="buttons">
+            <li><%= link_to "show", artwork_path(cart_detail.artwork_id), class: "btn_1 green approve"%></li>
+            <li>
+              <%= link_to "delete", cart_detail_path(cart_detail.id), class: "btn_1 bg-danger delete", data: {confirm: "Es-tu sur?", method: "delete"}%>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <%end%>
+      <ul>
+        <li>
+          <h4>Total Amount</h4>
+        </li>
+      </ul>
+    </div>
+    <div class="text-right">
+      <!--FORM STRIPE-->
+      <%= form_tag order_details_path, method: "post" do %>
       <article>
         <% if flash[:error].present? %>
-          <div id="error_explanation">
-            <p><%= flash[:error] %></p>
-          </div>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
         <% end %>
         <label class="amount">
-          <span>Amount : $<%= sum_cart? %></span>
+          <span class="text-dark">Amount : $<%= sum_cart? %></span>
         </label>
       </article>
 
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-description="A month's subscription"
-              data-amount="<%= sum_cart?*100 %>"
-              data-locale="auto">
-      </script>
-    <% end %>
-    <br>
-  </main>
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Pay it Bambino"
+        data-amount="<%= sum_cart?*100 %>" data-locale="auto">
+        </script>
+      <% end %>
+      <!--FORM STRIPE-->
+    </div>
+  </div>
 </div>

@@ -2,8 +2,8 @@ Hey <%= @user.username %>, your order has been done !
 ==========================================================
 Here is the summary of your order
 
-<% @order.order_details.each do |order_detail| %>
-  Item: <%= order_detail.artwork.name %> Quantity: <%= order_detail.quantity%>.
+<% @cart.cart_details.each do |cart_detail| %>
+  Item: <%= cart_detail.artwork.name %> Quantity: <%= cart_detail.quantity%>.
 <% end %>
 
 The seller(s) will contact you soon for the delivery of your masterpiece(s) at this email : <%= @user.email %>.
