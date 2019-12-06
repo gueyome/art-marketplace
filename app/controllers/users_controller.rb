@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  before_action :create_cart_for_current_user
+  before_action :create_contact_for_current_user
+
+  layout "no_navbar", :only => [:edit]
   def index
   end
 
@@ -13,9 +17,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    puts "*******************************"
+    puts params
+    @user.update(first_name: params[:first_name], last_name: params[:last_name], username: params[:username])
+    @user.contact.update(address: params[:address], description: params[:description], phone: params[:phone])
+    flash[:success] = "Your profile have been modified"
+    redirect_to edit_user_path(@user.id)
   end
 
   def destroy

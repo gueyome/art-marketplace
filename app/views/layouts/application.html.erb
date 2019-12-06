@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= render "layouts/header" %>
     <title>ArtMarketplace</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,6 +9,7 @@
   </head>
 
   <body>
+    <%= render "layouts/header" %>
     <%= render "layouts/navbar" %>
     <%= render "layouts/flash" %>
     <%= yield %>
