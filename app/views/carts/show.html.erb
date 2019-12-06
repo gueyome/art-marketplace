@@ -44,6 +44,7 @@
       </tbody>
     </table>
     <p class="mt-5"><%= link_to "Valider la commade", nil, class: "btn btn-warning"%></p>
+    <!--FORM STRIPE-->
     <%= form_tag order_details_path, method: "post" do %>
       <article>
         <% if flash[:error].present? %>
@@ -63,6 +64,7 @@
               data-locale="auto">
       </script>
     <% end %>
+    <!--FORM STRIPE-->
     <br>
   </main>
 </div>

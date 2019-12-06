@@ -5,10 +5,10 @@
   <body>
     <h1>Hey <%= @user.username %>, your order has been done !</h1>
 
-    <p>Here is the summary of your order</p>
+    <p>Here is the summary of your order :</p>
 
-    <% @order.order_details.each do |order_detail| %>
-      <p>Item: <%= order_detail.artwork.name %> Quantity: <%= order_detail.quantity%> .</p>
+    <% @cart.cart_details.each do |cart_detail| %>
+      <p>Item: <%= cart_detail.artwork.name %> Quantity: <%= cart_detail.quantity%> .</p>
     <% end %>
     
     <p>The seller(s) will contact you soon for the delivery of your masterpiece(s) at this email : <%= @user.email %>.</p>

@@ -29,10 +29,6 @@ class OrderDetailsController < ApplicationController
       currency: 'usd',
     })
 
-    puts "#"*60
-    puts "paiement ok"
-    puts "#"*60   
-    
     @cart = current_user.cart
     @order = Order.create(user_id: current_user.id, date: Time.now)
     @cart.cart_details.each do |cart_detail|

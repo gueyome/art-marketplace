@@ -18,15 +18,9 @@
 				<li class="submenu">
 					<a href="#0" class="show-submenu">Artworks Categories</a>
 					<ul>
-						<li class="third-level"><a href="#0">Paintings</a>
-							<ul>
-								<li><a href="grid-listing-filterscol.html">Oil Paintings</a></li>
-								<li><a href="grid-listing-filterscol-map.html">Aquarels</a></li>
-								<li><a href="listing-map.html">With knife</a></li>
-							</ul>
-						</li>
-						<li><a href="detail-restaurant.html">Statues</a></li>
-						<li><a href="detail-restaurant-2.html">Photos</a></li>
+						<% Category.all.each do |category|%>
+							<li><a href="detail-restaurant.html"><%= category.name%></a></li>
+						<%end%>
 					</ul>
 				</li>
 				<li><a href="submit-restaurant.html">Sell an artwork</a></li>
@@ -39,12 +33,9 @@
 					</ul>
 				</li>
         <% else %>
-        <li><%= link_to "Se déconnecter", destroy_user_session_path, :method => "delete" %></li>
-        <li><%= link_to "Mon profil", edit_user_path(current_user.id) %></li>
-        <li>
-        <%= link_to "", user_cart_path(current_user.id, current_user.cart.id), class: "icon_cart_alt" %>
-        <li><%= link_to "Mon panier", user_cart_path(current_user.id, current_user.cart.id) %></li>
-        </li>
+        <li><%= link_to "Log out", destroy_user_session_path, :method => "delete" %></li>
+        <li><%= link_to "My profil", edit_user_path(current_user.id) %></li>
+        <li><%= link_to "My cart", user_cart_path(current_user.id, current_user.cart.id) %></li>
         <% end %>
 			</ul>
 		</nav>
