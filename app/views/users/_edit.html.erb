@@ -17,8 +17,20 @@
 				<div class="col-md-4">
 					<div class="form-group">
 					<label>Your photo</label>
-						<form action="/file-upload" class="dropzone"></form>
-				    </div>
+						<div class="dropzone">
+              <%if @user.avatar.attached?%>
+              <figure>
+              <%= image_tag @user.avatar, style: "width: 340px;" %>
+              </figure>
+              <%else%>
+              <%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded"%>
+              <%end%>
+            </div> 
+            <%= form_tag user_avatars_path(@user), multipart: true do %>
+              <%= file_field_tag :avatar %>
+              <%= submit_tag "mettre à jour" %>
+            <% end %>
+				  </div>
 				</div>
 				<div class="col-md-8 add_top_30">
 					<div class="row">
@@ -83,7 +95,7 @@
 			<div class="col-md-12">
 				<div class="box_general padding_bottom">
 					<div class="header_box version_2">
-						<h2><i class="fa fa-lock"></i>Change email and password</h2>
+						<h2>Change email and password</h2>
 					</div>
           <div class="text-center">
             <%= button_to "Modify email/password", edit_user_registration_path, :method => "get", class: "btn btn-secondary mb-3 mt-3 text-center" %>
