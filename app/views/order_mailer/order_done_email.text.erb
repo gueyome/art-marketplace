@@ -1,8 +1,12 @@
-Salut <%= @user.first_name %> et ta commande a bien été effectuée !
+Hey <%= @user.username %>, your order has been done !
 ==========================================================
- 
-Tu as commandé sur le site en utilisant l'e-mail suivant : <%= @user.email %>.
- 
-Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
- 
-À très vite sur monsite.fr !
+Here is the summary of your order
+
+<% @order.order_details.each do |order_detail| %>
+  Item: <%= order_detail.artwork.name %> Quantity: <%= order_detail.quantity%>.
+<% end %>
+
+The seller(s) will contact you soon for the delivery of your masterpiece(s) at this email : <%= @user.email %>.
+To access to your profil, log in at this url : <%= @url %>.
+ArtCraftBay loves you !
+See you soon on https://production-art.herokuapp.com !

@@ -1,5 +1,7 @@
 class CartDetailsController < ApplicationController
+  before_action :authenticate_user!
   before_action :create_cart_for_current_user
+  before_action :create_contact_for_current_user
   def index
   end
 
@@ -26,11 +28,11 @@ class CartDetailsController < ApplicationController
         @cart_detail_line.save
         @artwork.update(stock: @artwork.stock - @quantity_chosen)
       end
-      flash[:success] = "Ajouté au panier."
-      redirect_to root_path
+      flash[:success] = "Added to the cart."
+      redirect_to user_cart_path(@current_user.id, current_user.cart.id)
     else
-      flash[:warning] = "Quantité trop grande."
-      redirect_to artwork_path(@artwork.id)
+      flash[:warning] = "Quantity too high."
+      redirect_to user_cart_path(@current_user.id, current_user.cart.id)
     end
   end
 
@@ -43,6 +45,8 @@ class CartDetailsController < ApplicationController
     @variation = @line.quantity - @new_quantity
     @line.artwork.update(stock: @line.artwork.stock + @variation)
     puts @line.update(quantity: @new_quantity)
+    flash[:success] = "Quantity successfully modified"
+    redirect_to user_cart_path(@current_user.id, current_user.cart.id)
   end
 
   def destroy
@@ -50,8 +54,12 @@ class CartDetailsController < ApplicationController
     @previous_quantity = @line.quantity
     @line.artwork.update(stock: @line.artwork.stock + @previous_quantity)
     if @line.destroy
-      flash[:success] = "L'événement a été supprimé."
-      redirect_to root_path
+      flash[:success] = "Artwork successfully removed from the cart"
+      redirect_to user_cart_path(@current_user.id, current_user.cart.id)
     end
+  end
+
+  def okok
+    
   end
 end
