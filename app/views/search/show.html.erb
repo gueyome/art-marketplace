@@ -1,0 +1,74 @@
+<h1>Search#show</h1>
+<p>Find me in app/views/search/show.html.erb</p>
+<main class="mt-5" style="transform: none;">
+    <div class="text-center">
+    <%if @artwork.avatar.attached?%>
+    <%= image_tag @artwork.avatar, alt: 'avatar' %>
+    <%else%>
+    <<%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded"%>>
+    <%end%>
+    </div>  
+  <div class="container margin_detail" style="transform: none;">
+      <div class="detail_page_head clearfix">
+
+        <div class="title">
+          <h1><%= @artwork.name %> - $ <%= @artwork.price %></h1>
+          <ul class="tags">
+            <li><%= link_to "#{@artwork.category.name}", category_path(@artwork.category.id)%></li>
+            <li><%= @artwork.user.username%></li>
+          </ul>
+        </div>
+        <div class="rating">
+          <div class="score"><span>Still available</span><strong><%= @artwork.stock %></strong></div>
+        </div>
+      </div>
+
+      <div class="mt-5 text-center">
+        <h2>The story behind this Masterpiece</h2>
+        <p>
+          <%= @artwork.description%>
+        </p>
+      </div>
+<!-- FORM WORKING -->
+  <div class="container">
+    <% if check_stock(@artwork) %>
+      <%= form_tag cart_details_path(origin: "add", cart_id: "current_user.cart.id", artwork_id: @artwork.id), method: "post" do %>
+        <div class="row no-gutters custom-search-input">
+          <div class="col-lg-3 custom_select">
+            <%= select_tag(:quantity, options_for_select(1..@artwork.stock), {class: "wide", style: "display: none;"}) %> 
+            <div class="nice-select wide" tabindex="0"><span class="current">1</span>
+              <ul class="list">
+                <% @artwork.stock.times do |index| %>
+                  <li data-value=<%=index+1%> class="option"><%=index+1%></li>
+                <%end%>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <%= submit_tag "Ajouter au panier", data:{confirm: "Es-tu sûr?"} %>
+          </div>
+        </div>
+      <% end %>
+      
+    <% end %>
+    </div>
+  <!-- FORM WORKING -->
+  </div>
+  <!-- /container -->
+</main>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h3>Changer avatar de l'artwork ?</h3>
+<%= form_tag artwork_avatar_artworks_path(@artwork), multipart: true do %>
+  <%= file_field_tag :avatar %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
