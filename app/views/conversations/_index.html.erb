@@ -21,10 +21,10 @@
               <%end%>
             </figure>
             <div>
-              <p><% if message.sender == current_user %>
-              <%= message.receiver.first_name %></p>
+              <% if message.sender == current_user %>
+              <%= link_to "#{message.receiver.first_name}", user_conversation_path(message.sender_id, message.receiver_id) %>
               <% else %>
-              <%= message.sender.first_name %>
+              <%= link_to "#{message.sender.first_name}", user_conversation_path(message.sender_id, message.receiver_id) %>
               <% end %>
 						  <p><%= message.content %></p>
             </div>
