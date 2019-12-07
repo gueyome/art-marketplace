@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   
+  get 'conversations/index'
+  get 'conversations/show'
   devise_for :users
   resources :users do
     resources :carts
     resources :orders
     resources :artworks
+    resources :conversations
   end
   resources :cart_details
   resources :order_details
@@ -22,6 +25,5 @@ Rails.application.routes.draw do
   resources :artworks, only: [:show] do
     resources :avatar_artworks, only: [:create]
   end
-
   
 end
