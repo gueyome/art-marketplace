@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     resources :carts
     resources :orders
     resources :artworks
+    resources :contacts
   end
   resources :cart_details
   resources :order_details
-  resources :contacts
   resources :categories
   resources :private_messages
   resources :testimonials 
