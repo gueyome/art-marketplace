@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   resources :search
   root 'pages#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  namespace :admin do
-    root "admin#index"
+  namespace :statistic do
+    root "statistic#index"
     resources :users, :carts, :orders, :artworks, :cart_details, :order_details, :contacts, :categories, :private_messages, :testimonials, :search
   end
 

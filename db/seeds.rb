@@ -30,3 +30,5 @@ Category.destroy_all
     crd = CartDetail.create(artwork_id: a.id, cart_id: cr.id)
     od = OrderDetail.create(artwork_id: a.id, order_id: o.id)
 end 
+
+User.create!(username: "Real", first_name: "Last", last_name: "King", email: "admin@example.com", password: "password", is_admin: true)

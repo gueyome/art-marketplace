@@ -9,11 +9,14 @@
 		</a>
 		<nav class="main-menu">
 			<ul>
+				<% if current_user.is_admin%>
+					<li><%= link_to "Dasboard admin", statistic_root_path %></li>
+				<% end %>
 				<li class="submenu">
 					<a href="#0" class="show-submenu">Artworks Categories</a>
 					<ul>
 						<% Category.all.each do |category|%>
-							<li><%= link_to "#{category.name}", category_path(category.id) %></li>
+						<li><%= link_to "#{category.name}", category_path(category.id) %></li>
 						<%end%>
 					</ul>
 				</li>
