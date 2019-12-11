@@ -7,7 +7,13 @@ class PagesController < ApplicationController
     @artworks = Artwork.limit(8)
     @categories = Category.limit(5)
     # where creator is true
-    @users = User.limit(5)
+    @users = User.limit(4).order("updated_at DESC")
+puts "--------------------"
+@users.each do |user|
+  user.avatar.attached?
+end 
+puts "--------------------"
+
   end
 
   def show
