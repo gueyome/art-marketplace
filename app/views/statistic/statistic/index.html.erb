@@ -1,1 +1,108 @@
 <h1>okok</h1>
+
+<div class="container-fluid">
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Dashboard</h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 list-group-item-primary">
+          <h4 class="card-header">Orders : <%= @orders.all.count%></h4>
+          <div class="card-body">
+            <p class="card-text">Statistics :</p>
+            <ul>
+              <li>Montant moyen d'une commande: 28 EUR </li>
+              <li>Nombre moyens de photos par commande : 2</li>
+              <li>CA total généré : 345 EUR</li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <p>adminachat, voici</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 list-group-item-success">
+          <h4 class="card-header">Carts : <%= @carts.all.count%></h4>
+          <div class="card-body">
+            <p class="card-text">Statistics :</p>
+            <ul>
+              <li>Average Amount: 34 EUR</li>
+              <li>Average number : 3</li>
+              <li>CA total potentiel : 90 EUR</li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <p>as tu du thon ?</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 list-group-item-warning">
+          <h4 class="card-header">Users : <%= @users.all.count%></h4>
+          <div class="card-body">
+            <p class="card-text">Statistics :</p>
+            <ul>
+              <li>Nombre moyens de commandes par utilisateurs : 3</li>
+              <li>Nombre moyens de paniers par utilisateurs : 6</li>
+              <li>CA moyen par utilisateurs : 34 EUR</li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <p>tu es le chef</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 list-group-item-danger">
+          <h4 class="card-header">Artworks : <%= @artworks.all.count%></h4>
+          <div class="card-body">
+            <p class="card-text">Statistics :</p>
+            <ul>
+              <li>Prix moyen par produit : EUR</li>
+              <li>Valeur du stock :  EUR</li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <p>le roi des chats</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 list-group-item-danger">
+          <h4 class="card-header">Testimonials : <%= @testimonials.all.count%></h4>
+          <div class="card-body">
+            <p class="card-text">Statistics :</p>
+            <ul>
+              <li>Prix moyen par produit : EUR</li>
+              <li>Valeur du stock :  EUR</li>
+
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <p>le roi des chats</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 list-group-item-danger">
+          <h4 class="card-header">Private Messages : <%= @private_messages.all.count%></h4>
+          <div class="card-body">
+            <p class="card-text">Statistics :</p>
+            <ul>
+              <li>Prix moyen par produit : EUR</li>
+              <li>Valeur du stock :  EUR</li>
+
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <p>le roi des chats</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<br>
+<br>
