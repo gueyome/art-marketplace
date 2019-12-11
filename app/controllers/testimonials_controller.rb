@@ -10,10 +10,21 @@ class TestimonialsController < ApplicationController
   end
 
   def new
+    puts current_user
+    
   end
 
   def create
-    flash[:success] = "Testimonial successfully created"
+    @artist = User.find(params[:user_id])
+    @testimonial = Testimonial.new(artist_id: @artist.id, content: params[:content], customer_id: current_user.id)
+
+    if @testimonial.save 
+      flash[:success] = "Testimonial successfully created"
+      #Faire redirection 
+    else 
+      flash[:error] = "Fail total"
+    end 
+
   end
 
   def edit
