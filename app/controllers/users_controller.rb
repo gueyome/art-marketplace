@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :create_contact_for_current_user
 
   def index
+    
   end
 
   def show
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(first_name: params[:first_name], last_name: params[:last_name], username: params[:username])
     @user.contact.update(address: params[:address], description: params[:description], phone: params[:phone])
+
     flash[:success] = "Your profile have been modified"
     redirect_to edit_user_path(@user.id)
   end

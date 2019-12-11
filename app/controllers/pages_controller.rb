@@ -4,10 +4,13 @@ class PagesController < ApplicationController
   before_action :create_contact_for_current_user
 
   def index
-    @artworks = Artwork.limit(8)
+    @artworks = Artwork.limit(8).order("updated_at DESC")
     @categories = Category.limit(5)
     # where creator is true
-    @users = User.limit(5)
+    @users = User.limit(4).order("updated_at DESC")
+
+
+
   end
 
   def show
