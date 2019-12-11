@@ -9,9 +9,6 @@ class PagesController < ApplicationController
     # where creator is true
     @users = User.limit(4).order("updated_at DESC")
 
-puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-puts @artworks.first.avatar
-puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
 
 
   end

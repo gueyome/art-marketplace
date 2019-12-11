@@ -79,7 +79,8 @@
                                   <% @user.artworks.each do |artwork|%>
                                   <tr>
                                     <td class="d-md-flex align-items-center">
-                                                  <figure><img src="img/menu-thumb-placeholder.jpg" data-src="img/menu-thumb-1.jpg" alt="thumb" class="lazy"></figure>
+                                                  <figure><%= image_tag artwork.avatar, data: {src: "#{artwork.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
+								<% else %></figure>
                                                   <div class="flex-md-column">
                                         <h4> <%= artwork.name %> </h4>
                                         <p>
@@ -253,7 +254,7 @@
 		            <div class="box_booking">
 		                <div class="head">
 		                    <div class="col-md-2 user_info">
-                            <figure><img src="img/avatar6.jpg" alt=""></figure>
+                            <figure> <%= image_tag @user.avatar, size: "120x120"%></figure>
                             <h5>Lukas</h5>
 							
                         </div>

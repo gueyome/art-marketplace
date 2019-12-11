@@ -9,7 +9,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
+    puts "&&&&&&&&&&&&&&&&"
+    puts @user.avatar
+    puts "&&&&&&&&&&&&&&&&"
   end
 
   def new
