@@ -2327,7 +2327,7 @@ ul#top_menu li a.login:before {
 }
 .hero_single.version_2 {
   height: 580px;
-  background: #ededed url(https://cdn.pixabay.com/photo/2019/11/12/23/00/studio-4622221_960_720.jpg) center center no-repeat;
+  background: #ededed url(https://cdn.pixabay.com/photo/2018/01/28/17/48/gallery-3114279_1280.jpg) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -2491,6 +2491,10 @@ ul#top_menu li a.login:before {
   filter: brightness(115%);
 }
 
+.titi {
+  background-image: url(https://cdn.pixabay.com/photo/2018/02/04/09/09/brushes-3129361_1280.jpg);
+
+}
 .hero_in.detail_page {
   width: 100%;
   height: 450px;

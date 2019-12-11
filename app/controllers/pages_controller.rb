@@ -4,15 +4,15 @@ class PagesController < ApplicationController
   before_action :create_contact_for_current_user
 
   def index
-    @artworks = Artwork.limit(8)
+    @artworks = Artwork.limit(8).order("updated_at DESC")
     @categories = Category.limit(5)
     # where creator is true
     @users = User.limit(4).order("updated_at DESC")
-puts "--------------------"
-@users.each do |user|
-  user.avatar.attached?
-end 
-puts "--------------------"
+
+puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+puts @artworks.first.avatar
+puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+
 
   end
 

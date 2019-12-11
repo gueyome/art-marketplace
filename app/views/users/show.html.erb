@@ -1,7 +1,7 @@
 <body>
 	<main>
 
-		<div class="hero_in detail_page background-image" style="background-color: black" data-background="url(img/restaurant_detail_hero.jpg)">
+		<div class="hero_in detail_page titi" style="background-color:" data-background="url(img/artist.jpg)">
 			<div class="wrapper opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 				
 				<div class="container">
@@ -9,7 +9,7 @@
 						<div class="row">
 							<div class="col-xl-4 col-lg-5 col-md-6">
 								<div class="head"><div class="score"><span>Superb<em><%= @user.received_testimonials.length%> Reviews</em></span><strong>8.9</strong></div></div>
-								<h1><%= @user.username%></h1>
+								<h1 class="text-white"><%= @user.username%></h1>
 								REMPLIR ADDRESS VIA SEED <%= @user.contact.address if @user.contact != nil %>
 							</div>
 							<div class="col-xl-8 col-lg-7 col-md-6">
