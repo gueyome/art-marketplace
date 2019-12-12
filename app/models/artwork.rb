@@ -8,4 +8,12 @@ class Artwork < ApplicationRecord
   has_one_attached :avatar
 
   has_many :testimonials 
+
+  def self.search(search)
+    if search
+      
+    else
+      Artwork.all
+    end
+  end
 end
