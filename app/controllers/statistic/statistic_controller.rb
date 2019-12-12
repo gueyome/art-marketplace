@@ -1,5 +1,6 @@
 class Statistic::StatisticController < ApplicationController
   include Statistic::StatisticHelper
+  before_action :true_admin
   def index
     @artworks = Artwork.all
     @cart_details = CartDetail.all

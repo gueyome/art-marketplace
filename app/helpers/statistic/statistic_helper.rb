@@ -79,4 +79,16 @@ module Statistic::StatisticHelper
     return @total_price.round(2)
   end
 
+  def true_admin
+    if current_user
+    unless current_user.is_admin == true 
+      flash[:error] = "You're not the real admin King"
+      redirect_to root_path
+    end
+    else
+      flash[:danger] = "Not connected little Boy"
+      redirect_to root_path
+    end
+  end
+
 end
