@@ -17,5 +17,10 @@ class User < ApplicationRecord
   has_many :received_testimonials, foreign_key: 'artist_id', class_name: "Testimonial"
 
   has_one_attached :avatar
+
+  validates :username, uniqueness: true
+  validates :email, uniqueness: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
+
 end
 
