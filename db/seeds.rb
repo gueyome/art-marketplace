@@ -48,5 +48,8 @@ Category.destroy_all
         vv = "https://cdn.pixabay.com/photo/2017/07/23/11/46/statue-of-hercules-2531191_1280.jpg"
     end 
 end 
+
+User.create!(username: "Real", first_name: "Last", last_name: "King", email: "admin@example.com", password: "password", is_admin: true)
+
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
