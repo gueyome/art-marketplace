@@ -17,5 +17,20 @@ class User < ApplicationRecord
   has_many :received_testimonials, foreign_key: 'artist_id', class_name: "Testimonial"
 
   has_one_attached :avatar
+
+  validates :username, uniqueness: true
+  validates :email, uniqueness: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
+
+  devise :omniauthable, :omniauth_providers => [:google_oauth2]
+  def self.from_omniauth(auth)
+    # Either create a User record or update it based on the provider (Google) and the UID   
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.token = auth.credentials.token
+      user.expires = auth.credentials.expires
+      user.expires_at = auth.credentials.expires_at
+      user.refresh_token = auth.credentials.refresh_token
+    end
+  end
 end
 

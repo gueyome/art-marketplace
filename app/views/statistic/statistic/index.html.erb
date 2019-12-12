@@ -1,0 +1,103 @@
+<div class="container-fluid">
+  <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div>
+        <h1>Statistics Dashboard</h1>
+        <div><%= link_to "Access to all the CRUD", nil%></div>
+      </div>  
+    </div>
+    <div class="row mt-5 text-white">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 bg-primary">
+          <h4 class="card-header text-white">Orders : <%=@orders.all.count%></h4>
+          <div class="card-body">
+            <h5 class="card-text text-white mb-5">Statistics :</h5>
+            <ul class="h5">
+              <li class="mb-3">Average amount per order : $ <%=(amount_of_all_orders/@orders.all.count).round(2)%> </li>
+              <li class="mb-3">Average number of Artworks per Order : <%= average_number_artworks_per_order%></li>
+              <li class="mb-3">Sales : $ <%=amount_of_all_orders%></li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <p>All about your orders</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 bg-success">
+          <h4 class="card-header text-white">Carts : <%= @carts.all.count%></h4>
+          <div class="card-body">
+            <h5 class="card-text text-white mb-5">Statistics :</h5>
+            <ul class="h5">
+              <li class="mb-3">Average Amount per Cart : $ <%=(amount_of_all_orders/@carts.all.count).round(2) %></li>
+              <li class="mb-3">Average number of Artworks per Cart :  <%= average_number_artworks_per_cart %></li>
+              <li class="mb-3"> Potential Sales : $ <%=amount_of_all_orders%></li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <p>All about your carts</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 bg-secondary">
+          <h4 class="card-header text-white">Users : <%= @users.all.count%></h4>
+          <div class="card-body">
+            <h5 class="card-text text-white mb-5">Statistics :</h5>
+            <ul class="h5">
+              <li class="mb-3">Average number of Orders per User : <%= average_number_order_per_user %></li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <p>All about your users</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 bg-danger">
+          <h4 class="card-header text-white">Artworks : <%= @artworks.all.count%></h4>
+          <div class="card-body">
+            <h5 class="card-text text-white mb-5">Statistics :</h5>
+            <ul class="h5">
+              <li class="mb-3">Average Price per Artwork : $ <%=average_price(@artworks)%></li>
+              <li class="mb-3">Total value : $ <%= total(@artworks)%></li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <p>All about your Artworks</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 bg-warning">
+          <h4 class="card-header text-white">Testimonials : <%= @testimonials.all.count%></h4>
+          <div class="card-body">
+            <h5 class="card-text text-white mb-5">Statistics :</h5>
+            <ul class="h5">
+              <li class="mb-3">Average number of testimonials per User : <%=average_number_testimonials_per_user%></li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <p>All about your testimonials</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 bg-info">
+          <h4 class="card-header text-white">Private Messages : <%= @private_messages.all.count%></h4>
+          <div class="card-body">
+            <h5 class="card-text text-white mb-5">Statistics :</h5>
+            <ul class="h5">
+              <li class="mb-3">Average number of Private Messages per User : <%=average_number_pm_per_user%></li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+            <p>All about your private messages</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<br>
+<br>
