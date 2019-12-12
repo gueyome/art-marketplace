@@ -18,6 +18,7 @@ Artwork.destroy_all
 Category.destroy_all
 
 
+
     vv = "https://cdn.pixabay.com/photo/2016/01/19/15/01/paints-1149122_1280.jpg"
     count = 0 
 
