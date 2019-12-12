@@ -32,3 +32,6 @@ Category.destroy_all
 end 
 
 User.create!(username: "Real", first_name: "Last", last_name: "King", email: "admin@example.com", password: "password", is_admin: true)
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
