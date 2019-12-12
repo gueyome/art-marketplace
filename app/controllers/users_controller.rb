@@ -9,9 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    puts "&&&&&&&&&&&&&&&&"
-    puts @user.avatar
-    puts "&&&&&&&&&&&&&&&&"
+    @testimonial = Testimonial.all
   end
 
   def new

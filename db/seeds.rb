@@ -32,6 +32,7 @@ Category.destroy_all
     t = Testimonial.create(artist_id: User.all.first.id, customer_id: u.id, content: "Content #{index}")
     crd = CartDetail.create(artwork_id: a.id, cart_id: cr.id)
     od = OrderDetail.create(artwork_id: a.id, order_id: o.id)
+
     count = count + 1 
 
     if count == 1 
@@ -46,6 +47,6 @@ Category.destroy_all
     elsif count == 4
         vv = "https://cdn.pixabay.com/photo/2017/07/23/11/46/statue-of-hercules-2531191_1280.jpg"
     end 
-    puts vv 
-    puts count 
 end 
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+

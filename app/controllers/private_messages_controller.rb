@@ -19,11 +19,9 @@ class PrivateMessagesController < ApplicationController
   end
 
   def update
-    flash[:success] = "Message successfully updated"
   end
 
   def destroy
-    flash[:success] = "Message successfully deleted"
   end
 
 end
