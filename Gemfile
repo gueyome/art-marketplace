@@ -68,4 +68,12 @@ gem 'table_print'
 gem 'dotenv-rails'
 gem 'stripe'
 gem "aws-sdk-s3", require: false
+gem 'activeadmin'
+
+# Plus integrations with:
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
+
 gem 'geocoder'
+
