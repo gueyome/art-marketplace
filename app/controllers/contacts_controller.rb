@@ -19,7 +19,17 @@ class ContactsController < ApplicationController
   end
 
   def update
-    flash[:success] = "Contacts successfully updated"
+    @contact = current_user.contact
+
+    if params[:address].present?
+      if @contact.update(address: params[:address], latitude: params[:latitude], longitude: params[:longitude])
+        flash[:success] = "Contacts successfully updated"
+        redirect_to root_path
+      end
+    else
+      flash[:error] = "please enter an adress"
+      redirect_to root_path
+    end
   end
 
   def destroy

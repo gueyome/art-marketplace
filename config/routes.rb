@@ -2,19 +2,22 @@ Rails.application.routes.draw do
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
   devise_for :users
   resources :users do
     resources :carts
     resources :orders
     resources :artworks
+    resources :contacts
   end
+  resources :conversations
   resources :cart_details
   resources :order_details
-  resources :contacts
   resources :categories
   resources :private_messages
   resources :testimonials 
   resources :search
+  resources :results
   root 'pages#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -24,6 +27,5 @@ Rails.application.routes.draw do
   resources :artworks, only: [:show] do
     resources :avatar_artworks, only: [:create]
   end
-
   
 end
