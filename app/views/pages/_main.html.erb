@@ -19,7 +19,7 @@
 								<%= link_to category_path(category.id) do%>
 								<figure>
 									<span><%= category.artworks.size %></span>
-									<%= image_tag "category_generique.jpg", data: {src: "category_generique.jpg"}, alt: "" ,width: 350, height: 450,class: "owl-lazy", style: "opacity: 1;"%>
+									<%= image_tag category.url_image, alt: "" ,width: 350, height: 450,class: "owl-lazy", style: "opacity: 1;"%>
 									<div class="info">
 										<h3 class="text-white"><%= category.name %></h3>
 									</div>
