@@ -10,14 +10,15 @@ Rails.application.routes.draw do
     resources :carts
     resources :orders
     resources :artworks
+    resources :testimonials 
+    resources :conversations
     resources :contacts
   end
-  resources :conversations
+  
   resources :cart_details
   resources :order_details
   resources :categories
   resources :private_messages
-  resources :testimonials 
   resources :search
   resources :results
   root 'pages#index'
@@ -29,5 +30,4 @@ Rails.application.routes.draw do
   resources :artworks, only: [:show] do
     resources :avatar_artworks, only: [:create]
   end
-  
 end
