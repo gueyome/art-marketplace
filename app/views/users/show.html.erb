@@ -155,19 +155,20 @@
 		                                </div>
 
 		                                <div id="reviews">
+                                    <%  @testimonial.each do | testimonial |%> 
+                                      <% if testimonial.artist_id == @user.id%>   
 		                                    <div class="review_card">
 		                                        <div class="row">
 		                                            <div class="col-md-2 user_info">
 		                                                <figure><img src="img/avatar4.jpg" alt=""></figure>
-		                                                <h5>Lukas</h5>
+		                                                <h5> Username </h5>
 		                                            </div>
 		                                            <div class="col-md-10 review_content">
 		                                                <div class="clearfix add_bottom_15">
 		                                                    <span class="rating">8.5<small>/10</small> <strong>Rating average</strong></span>
-		                                                    <em>Published 54 minutes ago</em>
+		                                                    <em>Created at <%= testimonial.created_at %></em>
 		                                                </div>
-		                                                <h4>"Great Location!!"</h4>
-		                                                <p>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his. Tollit molestie suscipiantur his et.</p>
+		                                                <h4><%= testimonial.content%></h4>
 		                                                <ul>
 		                                                    <li><a href="#0"><i class="icon_like"></i><span>Useful</span></a></li>
 		                                                    <li><a href="#0"><i class="icon_dislike"></i><span>Not useful</span></a></li>
@@ -175,53 +176,11 @@
 		                                                </ul>
 		                                            </div>
 		                                        </div>
+                                        <% end%>
+                                      <% end %>
 		                                        <!-- /row -->
 		                                    </div>
-		                                    <!-- /review_card -->
-		                                    <div class="review_card">
-		                                        <div class="row">
-		                                            <div class="col-md-2 user_info">
-		                                                <figure><img src="img/avatar6.jpg" alt=""></figure>
-		                                                <h5>Lukas</h5>
-		                                            </div>
-		                                            <div class="col-md-10 review_content">
-		                                                <div class="clearfix add_bottom_15">
-		                                                    <span class="rating">8.5<small>/10</small> <strong>Rating average</strong></span>
-		                                                    <em>Published 10 Oct. 2019</em>
-		                                                </div>
-		                                                <h4>"Awesome Experience"</h4>
-		                                                <p>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his. Tollit molestie suscipiantur his et.</p>
-		                                                <ul>
-		                                                    <li><a href="#0"><i class="icon_like"></i><span>Useful</span></a></li>
-		                                                    <li><a href="#0"><i class="icon_dislike"></i><span>Not useful</span></a></li>
-		                                                    <li><a href="#0"><i class="arrow_back"></i> <span>Reply</span></a></li>
-		                                                </ul>
-		                                            </div>
-		                                        </div>
-		                                        <!-- /row -->
-		                                    </div>
-		                                    <!-- /review_card -->
-		                                    <div class="review_card">
-		                                        <div class="row">
-		                                            <div class="col-md-2 user_info">
-		                                                <figure><img src="img/avatar1.jpg" alt=""></figure>
-		                                                <h5>Marika</h5>
-		                                            </div>
-		                                            <div class="col-md-10 review_content">
-		                                                <div class="clearfix add_bottom_15">
-		                                                    <span class="rating">9.0<small>/10</small> <strong>Rating average</strong></span>
-		                                                    <em>Published 11 Oct. 2019</em>
-		                                                </div>
-		                                                <h4>"Really great dinner!!"</h4>
-		                                                <p>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his. Tollit molestie suscipiantur his et.</p>
-		                                                <ul>
-		                                                    <li><a href="#0"><i class="icon_like"></i><span>Useful</span></a></li>
-		                                                    <li><a href="#0"><i class="icon_dislike"></i><span>Not useful</span></a></li>
-		                                                    <li><a href="#0"><i class="arrow_back"></i> <span>Reply</span></a></li>
-		                                                </ul>
-		                                            </div>
-		                                        </div>
-		                                        <!-- /row -->
+		                              
 		                                        <div class="row reply">
 		                                            <div class="col-md-2 user_info">
 		                                                <figure><img src="img/avatar.jpg" alt=""></figure>
@@ -303,6 +262,17 @@
             });
 		});
 	</script>
-  
+
+<% current_user.orders.each do | order |%>
+	<% order.order_details.each do | details | %>
+	  <% if details.artwork.user_id == @user.id%>
+      <%= form_tag user_testimonials_path(params[:id]), method: "post" do %>
+        <input type="text" name="content" />
+        <input type="submit" value="Post a testimonial" />
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
 </body>
 </html>

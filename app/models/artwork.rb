@@ -6,4 +6,14 @@ class Artwork < ApplicationRecord
   has_many :order_details
   has_many :orders, through: :order_details
   has_one_attached :avatar
+
+  has_many :testimonials 
+
+  def self.search(search)
+    if search
+      
+    else
+      Artwork.all
+    end
+  end
 end

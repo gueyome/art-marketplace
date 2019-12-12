@@ -1,5 +1,3 @@
-<h1>Search#show</h1>
-<p>Find me in app/views/search/show.html.erb</p>
 <main class="mt-5" style="transform: none;">
     <div class="text-center">
     <%if @artwork.avatar.attached?%>
@@ -30,11 +28,11 @@
         </p>
       </div>
 <!-- FORM WORKING -->
-  <div class="container">
+  <div class="container text-right">
     <% if check_stock(@artwork) %>
-      <%= form_tag cart_details_path(origin: "add", cart_id: "current_user.cart.id", artwork_id: @artwork.id), method: "post" do %>
+      <%= form_tag cart_details_path(origin: "add", cart_id: "current_user.cart.id", artwork_id: @artwork.id), class: "col-md-5", method: "post" do %>
         <div class="row no-gutters custom-search-input">
-          <div class="col-lg-3 custom_select">
+          <div class="col-lg-5 custom_select">
             <%= select_tag(:quantity, options_for_select(1..@artwork.stock), {class: "wide", style: "display: none;"}) %> 
             <div class="nice-select wide" tabindex="0"><span class="current">1</span>
               <ul class="list">
@@ -44,7 +42,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-lg-9">
+          <div class="col-lg-7">
             <%= submit_tag "Ajouter au panier", data:{confirm: "Es-tu sûr?"} %>
           </div>
         </div>

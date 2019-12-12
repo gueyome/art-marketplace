@@ -30,3 +30,4 @@ Category.destroy_all
     crd = CartDetail.create(artwork_id: a.id, cart_id: cr.id)
     od = OrderDetail.create(artwork_id: a.id, order_id: o.id)
 end 
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
