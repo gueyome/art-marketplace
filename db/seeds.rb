@@ -18,7 +18,7 @@ User.destroy_all
 Artwork.destroy_all
 Category.destroy_all
 
-20.times do |index|   
+5.times do |index|   
     u = User.create(username: "user#{index}", first_name: "firstname#{index}", last_name: "Lastname#{index}", email: "email#{index}@yopmail.com", password: "xaxaxa")
     c = Category.create(name: "category#{index}")
     a = Artwork.create(name: "Artwork#{index}", description: "description#{index}", price: rand(100..1000), stock: 10, category_id: c.id, user_id: u.id )

@@ -19,7 +19,7 @@
             <div class="dropzone">
               <%if @artwork.avatar.attached?%>
               <figure>
-              <%= image_tag @artwork.avatar, style: "width: 340px;" %>
+              <%= image_tag @artwork.avatar, style: "width: 240px;" %>
               </figure>
               <%else%>
               <<%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded"%>>
