@@ -162,6 +162,12 @@ ActiveRecord::Schema.define(version: 2019_12_12_002159) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "is_admin", default: false
+    t.string "provider"
+    t.string "uid"
+    t.string "token"
+    t.integer "expires_at"
+    t.boolean "expires"
+    t.string "refresh_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
