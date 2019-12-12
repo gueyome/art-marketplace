@@ -1,0 +1,2 @@
+module Statistic::OrderDetailsHelper
+end

@@ -5,16 +5,16 @@
         <h1>Hey <%= current_user.email %>, this is your Dashboard</h1>
       </div>  
       </div>
-    <div class="row mt-5">
+    <div class="row mt-5 text-white">
       <div class="col-lg-4 mb-4">
-        <div class="card h-100 list-group-item-primary">
-          <h4 class="card-header">Orders : <%= @orders.all.count%></h4>
+        <div class="card h-100 bg-primary">
+          <h4 class="card-header text-white">Orders : <%=@orders.all.count%></h4>
           <div class="card-body">
-            <p class="card-text">Statistics :</p>
-            <ul>
-              <li>Montant moyen d'une commande: 28 EUR </li>
-              <li>Nombre moyens de photos par commande : 2</li>
-              <li>CA total généré : 345 EUR</li>
+            <h5 class="card-text text-white mb-5">Statistics :</h5>
+            <ul class="h5">
+              <li class="mb-3">Average amount per order : $ <%=(amount_of_all_orders/@orders.all.count).round(2)%> </li>
+              <li class="mb-3">Average number of Artworks per Order : <%= average_number_artworks_per_order%></li>
+              <li class="mb-3">Sales : $ <%=amount_of_all_orders%></li>
             </ul>
           </div>
           <div class="card-footer text-center">
@@ -23,14 +23,14 @@
         </div>
       </div>
       <div class="col-lg-4 mb-4">
-        <div class="card h-100 list-group-item-success">
-          <h4 class="card-header">Carts : <%= @carts.all.count%></h4>
+        <div class="card h-100 bg-success">
+          <h4 class="card-header text-white">Carts : <%= @carts.all.count%></h4>
           <div class="card-body">
-            <p class="card-text">Statistics :</p>
-            <ul>
-              <li>Average Amount: 34 EUR</li>
-              <li>Average number : 3</li>
-              <li>CA total potentiel : 90 EUR</li>
+            <h5 class="card-text text-white mb-5">Statistics :</h5>
+            <ul class="h5">
+              <li class="mb-3">Average Amount per Cart : $ <%=(amount_of_all_orders/@carts.all.count).round(2) %></li>
+              <li class="mb-3">Average number of Artworks per Cart :  <%= average_number_artworks_per_cart %></li>
+              <li class="mb-3"> Potential Sales : $ <%=amount_of_all_orders%></li>
             </ul>
           </div>
           <div class="card-footer text-center">
@@ -39,14 +39,12 @@
         </div>
       </div>
       <div class="col-lg-4 mb-4">
-        <div class="card h-100 list-group-item-warning">
-          <h4 class="card-header">Users : <%= @users.all.count%></h4>
+        <div class="card h-100 bg-secondary">
+          <h4 class="card-header text-white">Users : <%= @users.all.count%></h4>
           <div class="card-body">
-            <p class="card-text">Statistics :</p>
-            <ul>
-              <li>Nombre moyens de commandes par utilisateurs : 3</li>
-              <li>Nombre moyens de paniers par utilisateurs : 6</li>
-              <li>CA moyen par utilisateurs : 34 EUR</li>
+            <h5 class="card-text text-white mb-5">Statistics :</h5>
+            <ul class="h5">
+              <li class="mb-3">Average number of Orders per User : <%= average_number_order_per_user %></li>
             </ul>
           </div>
           <div class="card-footer text-center">
@@ -55,13 +53,13 @@
         </div>
       </div>
       <div class="col-lg-4 mb-4">
-        <div class="card h-100 list-group-item-danger">
-          <h4 class="card-header">Artworks : <%= @artworks.all.count%></h4>
+        <div class="card h-100 bg-danger">
+          <h4 class="card-header text-white">Artworks : <%= @artworks.all.count%></h4>
           <div class="card-body">
-            <p class="card-text">Statistics :</p>
-            <ul>
-              <li>Prix moyen par produit : EUR</li>
-              <li>Valeur du stock :  EUR</li>
+            <h5 class="card-text text-white mb-5">Statistics :</h5>
+            <ul class="h5">
+              <li class="mb-3">Average Price per Artwork : $ <%=average_price(@artworks)%></li>
+              <li class="mb-3">Total value : $ <%= total(@artworks)%></li>
             </ul>
           </div>
           <div class="card-footer text-center">
@@ -70,14 +68,12 @@
         </div>
       </div>
       <div class="col-lg-4 mb-4">
-        <div class="card h-100 list-group-item-danger">
-          <h4 class="card-header">Testimonials : <%= @testimonials.all.count%></h4>
+        <div class="card h-100 bg-warning">
+          <h4 class="card-header text-white">Testimonials : <%= @testimonials.all.count%></h4>
           <div class="card-body">
-            <p class="card-text">Statistics :</p>
-            <ul>
-              <li>Prix moyen par produit : EUR</li>
-              <li>Valeur du stock :  EUR</li>
-
+            <h5 class="card-text text-white mb-5">Statistics :</h5>
+            <ul class="h5">
+              <li class="mb-3">Average number of testimonials per User : <%=average_number_testimonials_per_user%></li>
             </ul>
           </div>
           <div class="card-footer text-center">
@@ -86,14 +82,12 @@
         </div>
       </div>
       <div class="col-lg-4 mb-4">
-        <div class="card h-100 list-group-item-danger">
-          <h4 class="card-header">Private Messages : <%= @private_messages.all.count%></h4>
+        <div class="card h-100 bg-info">
+          <h4 class="card-header text-white">Private Messages : <%= @private_messages.all.count%></h4>
           <div class="card-body">
-            <p class="card-text">Statistics :</p>
-            <ul>
-              <li>Prix moyen par produit : EUR</li>
-              <li>Valeur du stock :  EUR</li>
-
+            <h5 class="card-text text-white mb-5">Statistics :</h5>
+            <ul class="h5">
+              <li class="mb-3">Average number of Private Messages per User : <%=average_number_pm_per_user%></li>
             </ul>
           </div>
           <div class="card-footer text-center">

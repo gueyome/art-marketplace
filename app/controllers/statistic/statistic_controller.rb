@@ -1,4 +1,5 @@
 class Statistic::StatisticController < ApplicationController
+  include Statistic::StatisticHelper
   def index
     @artworks = Artwork.all
     @cart_details = CartDetail.all
