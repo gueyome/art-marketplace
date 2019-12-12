@@ -68,6 +68,10 @@ gem 'table_print'
 gem 'dotenv-rails'
 gem 'stripe'
 gem "aws-sdk-s3", require: false
+
+gem 'omniauth-google-oauth2'
+gem 'google-api-client'
+
 gem 'activeadmin'
 
 # Plus integrations with:
