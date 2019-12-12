@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
-  get 'conversations/index'
-  get 'conversations/show'
+ 
   devise_for :users
   resources :users do
     resources :carts
