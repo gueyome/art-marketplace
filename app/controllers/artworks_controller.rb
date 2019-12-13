@@ -41,6 +41,9 @@ class ArtworksController < ApplicationController
   end
 
   def destroy
+    @artwork = Artwork.find(params[:id])
+    @artwork.destroy
+    redirect_to user_artworks_path(current_user.id)
     flash[:success] = "Artwork successfully deleted"
   end
 end
