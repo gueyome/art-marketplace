@@ -15,7 +15,13 @@
       </div>
       <% order.order_details.each do |order_detail| %>
       <li>
-        <figure><img src="img/item_1.jpg" alt=""></figure>
+        <figure>
+        <%if order_detail.artwork.avatar.attached?%>
+            <%= image_tag order_detail.artwork.avatar, style: "width: 240px;", class: "img-fluid rounded lazy loaded mb-2 mt-2" %>
+        <%else%>
+          <%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded mb-2 mt-2"%>
+        <%end%>
+        </figure>
         <h4> <%= order_detail.artwork.name %> </h4>
         <ul class="booking_list">
           <li><strong>Number of products </strong> <%=order_detail.quantity %> </li>

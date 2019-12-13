@@ -1,114 +1,87 @@
-<<<<<<< HEAD
-
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <%= link_to "My Profile", edit_user_path(current_user.id) %>
-        </li>
-        <li class="breadcrumb-item active">Create Artwork</li>
-      </ol>
-		<div class="box_general padding_bottom">
-			<div class="header_box version_2">
-				<h2>Artwork details</h2>
-			</div>
-			<div class="row">
-				<div class="col-md-12 add_top_30">
-					<div class="row">
-						<div class="col-md-6">
-              <%= form_tag url_for(user_artworks_path(current_user.id)), method: "post" do %>
-							<div class="form-group">
-								<label>Name</label>
-                <%= text_field_tag 'name', @artwork.name, class: "form-control", placeholder: "Artwork name", type: "text" %>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Price</label>
-                <%= number_field_tag 'price', @artwork.price, min: 0, class: "form-control", placeholder: "Artwork Price" %>
-							</div>
-=======
-	<div class="content-wrapper">
-		<div class="container-fluid">
-			<!-- Breadcrumbs-->
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item">
-					<%= link_to "My Profile", edit_user_path(current_user.id) %>
-				</li>
-				<li class="breadcrumb-item active">Create Artwork</li>
-			</ol>
-			<div class="box_general padding_bottom">
-				<div class="header_box version_2">
-					<h2>Artwork details</h2>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<div class="form-group">
-							<label>Artwork photo</label>
-							<form action="/file-upload" class="dropzone"></form>
->>>>>>> development
-						</div>
-					</div>
-					<div class="col-md-8 add_top_30">
-						<%= form_tag user_artworks_path(current_user.id), method: "post" do %>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Name</label>
-									<%= text_field_tag 'name', @artwork.name, class: "form-control", placeholder: "Artwork name", type: "text" %>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Price</label>
-									<%= number_field_tag 'price', @artwork.price, min: 0, class: "form-control", placeholder: "Artwork Price" %>
-								</div>
-							</div>
-						</div>
-						<!-- /row-->
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Artwork Stock</label>
-									<%= number_field_tag 'stock', @artwork.stock, min: 0, class: "form-control", placeholder: "Artwork Stock" %>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Artwork Category</label>
-									<%= select_tag "category_id", options_from_collection_for_select(@categories, 'id', 'name', @artwork.category.id), class: "nice-select wide" %>
-								</div>
-							</div>
-						</div>
-						<!-- /row-->
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>I have created this artwork</label>
-									<%= check_box_tag 'creator', 1, @artwork.creator, label: "I am the creator" %>
-								</div>
-							</div>
-						</div>
-						<!-- /row-->
-						<div class="row">
-							<div class="col-md-12">
-								<div class="form-group">
-									<label>Artwork description</label>
-									<%= text_area_tag 'description', @artwork.description, class: "form-control", placeholder: "Artwork description", type: "text" %>
-								</div>
-							</div>
-						</div>
-						<!-- /row-->
-						<div class="actions mt-3 mb-5">
-							<%= submit_tag "Create Artwork", class: "btn btn-lg btn-primary btn-block" %>
-						</div>
-						<% end %>
-					</div>
-				</div>
-			</div>
-<<<<<<< HEAD
-    <% end %>
-=======
-		</div>
-	</div>
->>>>>>> development
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to "My Profile", edit_user_path(current_user.id) %>
+    </li>
+    <li class="breadcrumb-item active">Create Artwork</li>
+  </ol>
+<div class="box_general padding_bottom">
+  <div class="header_box version_2">
+    <h2>Artwork details</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-12 add_top_30">
+      <div class="row">
+        <div class="col-md-6">
+          <%= form_tag url_for(user_artworks_path(current_user.id)), method: "post" do %>
+          <div class="form-group">
+            <label>Name</label>
+            <%= text_field_tag 'name', @artwork.name, class: "form-control", placeholder: "Artwork name", type: "text" %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Price</label>
+            <%= number_field_tag 'price', @artwork.price, min: 0, class: "form-control", placeholder: "Artwork Price" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 add_top_30">
+        <%= form_tag user_artworks_path(current_user.id), method: "post" do %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Name</label>
+              <%= text_field_tag 'name', @artwork.name, class: "form-control", placeholder: "Artwork name", type: "text" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Price</label>
+              <%= number_field_tag 'price', @artwork.price, min: 0, class: "form-control", placeholder: "Artwork Price" %>
+            </div>
+          </div>
+        </div>
+        <!-- /row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Artwork Stock</label>
+              <%= number_field_tag 'stock', @artwork.stock, min: 0, class: "form-control", placeholder: "Artwork Stock" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Artwork Category</label>
+              <%= select_tag "category_id", options_from_collection_for_select(@categories, 'id', 'name', @artwork.category.id), class: "nice-select wide" %>
+            </div>
+          </div>
+        </div>
+        <!-- /row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>I have created this artwork</label>
+              <%= check_box_tag 'creator', 1, @artwork.creator, label: "I am the creator" %>
+            </div>
+          </div>
+        </div>
+        <!-- /row-->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Artwork description</label>
+              <%= text_area_tag 'description', @artwork.description, class: "form-control", placeholder: "Artwork description", type: "text" %>
+            </div>
+          </div>
+        </div>
+        <!-- /row-->
+        <div class="actions mt-3 mb-5">
+          <%= submit_tag "Create Artwork", class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

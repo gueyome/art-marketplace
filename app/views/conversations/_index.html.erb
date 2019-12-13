@@ -16,7 +16,7 @@
           <%if message.sender.avatar.attached?%>
             <%= image_tag message.sender.avatar, alt: 'avatar' %>
           <%else%>
-            <p>INVISIBLE MAN</p>
+            <%= image_tag "https://www.babelio.com/users/AVT_inconnu_5345.jpg", alt: 'avatar' %>
           <%end%>
         </figure>
         <div>

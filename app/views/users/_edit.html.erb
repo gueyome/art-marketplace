@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="container-fluid">
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
@@ -18,10 +17,10 @@
           <div class="dropzone">
             <%if @user.avatar.attached?%>
             <figure>
-              <%= image_tag @user.avatar, style: "width: 340px;" %>
+              <%= image_tag @user.avatar, style: "width: 100px;", class: "img-fluid rounded lazy loaded mb-2 mt-2" %>
             </figure>
             <%else%>
-            <%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded"%>
+            <%= image_tag "https://www.babelio.com/users/AVT_inconnu_5345.jpg", style: "width: 100px;", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded mb-2 mt-2"%>
             <%end%>
           </div>
           <%= form_tag user_avatars_path(@user), multipart: true do %>
