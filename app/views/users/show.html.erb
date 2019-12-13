@@ -78,11 +78,15 @@
                                   <tbody>
                                   <% @user.artworks.each do |artwork|%>
                                   <tr>
+							  
+							  <% if artwork.avatar.attached? %>
                                     <td class="d-md-flex align-items-center">
-                                                  <figure><%= image_tag artwork.avatar, data: {src: "#{artwork.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
+                                    <figure><%= image_tag artwork.avatar, data: {src: "#{artwork.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %></figure>
+								<% else %>
+									<figure><%= image_tag "artwork_generique.png", alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%></figure>
 
-										<% else %></figure>
-                                                  <div class="flex-md-column">
+								<% end %>									
+                                            <div class="flex-md-column">
                                         <h4> <%= artwork.name %> </h4>
                                         <p>
                                           <%= artwork.description %>
@@ -214,10 +218,14 @@
 		            <div class="box_booking">
 		                <div class="head">
 		                    <div class="col-md-2 user_info">
-                            <figure> <%= image_tag @user.avatar, size: "120x120"%></figure>
-                            <h5>Lukas</h5>
-							
-                        </div>
+								<% if @user.avatar.attached?%>
+                           			<figure> <%= image_tag @user.avatar, size: "120x120"%></figure>
+								<% else %>
+									<%= image_tag "artist.jpg", data: {src: "artist.jpg"}, alt: "" ,width: 150.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
+								<% end %>
+								<h5><%= @user.username%></h5>
+
+                        	</div>
 		                </div>
 		                <!-- /head -->
 		                
