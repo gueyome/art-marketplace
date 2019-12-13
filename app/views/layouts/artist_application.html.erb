@@ -11,11 +11,7 @@
 
   <body>
     <%= render "layouts/navbar_artist"%>
-    <body class="fixed-nav sticky-footer" id="page-top">
-      <div class="content-wrapper">
-        <%= render "layouts/flash" %>
-        <%= yield %>
-      </div>
-    </body>
+    <%= render "layouts/flash" %>
+    <%= yield %>
   </body>
 </html>
