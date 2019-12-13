@@ -17,7 +17,6 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  validates :username, uniqueness: true
   validates :email, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
 
