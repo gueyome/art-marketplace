@@ -8,7 +8,6 @@
 			</div>
 			<!-- /main_title -->
 			<div class="owl-carousel owl-theme categories_carousel owl-loaded owl-drag">
-
 				<div class="owl-stage-outer">
 					<div class="owl-stage"
 						style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1778px;">
@@ -19,7 +18,6 @@
 								<%= link_to category_path(category.id) do%>
 								<figure>
 									<span><%= category.artworks.size %></span>
-									<%= image_tag category.url_image, alt: "" ,width: 350, height: 450,class: "owl-lazy", style: "opacity: 1;"%>
 									<div class="info">
 										<h3 class="text-white"><%= category.name %></h3>
 									</div>
