@@ -3,6 +3,7 @@ class ArtworksController < ApplicationController
   before_action :create_cart_for_current_user
   layout "artist_application", :only => [:new, :index, :edit]
   before_action :create_contact_for_current_user
+  before_action :is_user, only: [:edit, :update, :destroy]
 
   def index
     @my_artworks = Artwork.where(user_id: current_user.id)
@@ -38,4 +39,14 @@ class ArtworksController < ApplicationController
   def destroy
     flash[:success] = "Artwork successfully deleted"
   end
+
+  private
+
+  def is_user
+    @artwork = Artwork.find(params[:id])
+    if current_user.id == @artwork.user_id
+      return true
+    end
+  end
+
 end
