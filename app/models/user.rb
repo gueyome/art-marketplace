@@ -18,10 +18,6 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  validates :username, uniqueness: true
-  validates :email, uniqueness: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
-
   devise :omniauthable, :omniauth_providers => [:google_oauth2]
   def self.from_omniauth(auth)
     # Either create a User record or update it based on the provider (Google) and the UID   
