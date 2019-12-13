@@ -1,13 +1,12 @@
-<body class="fixed-nav sticky-footer" id="page-top">
-  <div class="content-wrapper">
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <%= link_to "My Profile", edit_user_path(current_user.id) %>
-        </li>
-        <li class="breadcrumb-item active">Edit Artwork</li>
-      </ol>
+<div class="content-wrapper">
+	<div class="container-fluid">
+		<!-- Breadcrumbs-->
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<%= link_to "My Profile", edit_user_path(current_user.id) %>
+			</li>
+			<li class="breadcrumb-item active">Edit Artwork</li>
+		</ol>
 		<div class="box_general padding_bottom">
 			<div class="header_box version_2">
 				<h2>Artwork details</h2>
@@ -15,35 +14,35 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="form-group">
-            <label>Artwork photo</label>
-            <div class="dropzone">
-              <%if @artwork.avatar.attached?%>
-              <figure>
-              <%= image_tag @artwork.avatar, style: "width: 240px;" %>
-              </figure>
-              <%else%>
-              <<%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded"%>>
-              <%end%>
-            </div> 
-            <%= form_tag artwork_avatar_artworks_path(@artwork), multipart: true do %>
-              <%= file_field_tag :avatar %>
-              <%= submit_tag "mettre à jour" %>
-            <% end %>
-				  </div>
+						<label>Artwork photo</label>
+						<div class="dropzone">
+							<%if @artwork.avatar.attached?%>
+							<figure>
+								<%= image_tag @artwork.avatar, style: "width: 240px;" %>
+							</figure>
+							<%else%>
+							<<%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded"%>>
+								<%end%>
+						</div>
+						<%= form_tag artwork_avatar_artworks_path(@artwork), multipart: true do %>
+						<%= file_field_tag :avatar %>
+						<%= submit_tag "mettre à jour" %>
+						<% end %>
+					</div>
 				</div>
 				<div class="col-md-8 add_top_30">
 					<div class="row">
 						<div class="col-md-6">
-              <%= form_tag url_for(user_artwork_path(current_user.id, @artwork.id)), method: "put" do %>
+							<%= form_tag user_artwork_path(current_user.id, @artwork.id), method: "patch" do %>
 							<div class="form-group">
 								<label>Name</label>
-                <%= text_field_tag 'name', @artwork.name, class: "form-control", placeholder: "Artwork name", type: "text" %>
+								<%= text_field_tag 'name', @artwork.name, class: "form-control", placeholder: "Artwork name", type: "text" %>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Price</label>
-                <%= number_field_tag 'price', @artwork.price, min: 0, class: "form-control", placeholder: "Artwork Price" %>
+								<%= number_field_tag 'price', @artwork.price, min: 0, class: "form-control", placeholder: "Artwork Price" %>
 							</div>
 						</div>
 					</div>
@@ -52,22 +51,22 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Artwork Stock</label>
-                <%= number_field_tag 'stock', @artwork.stock, min: 0, class: "form-control", placeholder: "Artwork Stock" %>
+								<%= number_field_tag 'stock', @artwork.stock, min: 0, class: "form-control", placeholder: "Artwork Stock" %>
 							</div>
 						</div>
-            <div class="col-md-6">
+						<div class="col-md-6">
 							<div class="form-group">
 								<label>Artwork Category</label>
-                <%= select_tag "category_id", options_from_collection_for_select(@categories, 'id', 'name', @artwork.category.id), class: "nice-select wide" %>
+								<%= select_tag "category_id", options_from_collection_for_select(@categories, 'id', 'name', @artwork.category.id), class: "nice-select wide" %>
 							</div>
 						</div>
-          </div>
-          <!-- /row-->
-          <div class="row">
+					</div>
+					<!-- /row-->
+					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>I have created this artwork</label>
-                <%= check_box_tag 'creator', 1, @artwork.creator, label: "I am the creator" %>
+								<%= check_box_tag 'creator', 1, @artwork.creator, label: "I am the creator" %>
 							</div>
 						</div>
 					</div>
@@ -76,18 +75,16 @@
 						<div class="col-md-12">
 							<div class="form-group">
 								<label>Artwork description</label>
-                <%= text_area_tag 'description', @artwork.description, class: "form-control", placeholder: "Artwork description", type: "text" %>
+								<%= text_area_tag 'description', @artwork.description, class: "form-control", placeholder: "Artwork description", type: "text" %>
 							</div>
 						</div>
 					</div>
 					<!-- /row-->
-          <div class="actions mt-3 mb-5">
-          <%= submit_tag "Update Artwork", class: "btn btn-lg btn-primary btn-block" %>
-        </div>
+					<div class="actions mt-3 mb-5">
+						<%= submit_tag "Update Artwork", class: "btn btn-lg btn-primary btn-block" %>
+					</div>
+					<% end %>
 				</div>
 			</div>
 		</div>
-    <% end %>
-
-
-    </body>
+		
