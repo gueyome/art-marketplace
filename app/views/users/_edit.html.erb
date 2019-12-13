@@ -14,7 +14,7 @@
 								<%= image_tag @user.avatar, style: "width: 340px;" %>
 							</figure>
 							<%else%>
-							<%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded"%>
+							<%= image_tag @user.url_image,width: 340, height: 170, data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded"%>
 							<%end%>
 						</div>
 						<%= form_tag user_avatars_path(@user), multipart: true do %>

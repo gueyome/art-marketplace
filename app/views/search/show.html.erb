@@ -3,7 +3,7 @@
     <%if @artwork.avatar.attached?%>
     <%= image_tag @artwork.avatar, alt: 'avatar', size: "440x440" %>
     <%else%>
-    <<%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded", style: "width: 440px" %>>
+    <<%= image_tag @artwork.url_image, data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded", style: "width: 440px" %>>
       <%end%>
   </div>
   <div class="container margin_detail" style="transform: none;">

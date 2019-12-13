@@ -5,6 +5,7 @@
 				<span><em></em></span>
 				<h2>Our Categories</h2>
 				<p>Make your own choice, they only wait for you</p>
+
 			</div>
 			<!-- /main_title -->
 			<div class="owl-carousel owl-theme categories_carousel owl-loaded owl-drag">
@@ -16,7 +17,8 @@
 						<div class="owl-item active" style="width: 234px; margin-right: 20px;">
 							<div class="item_version_2">
 								<%= link_to category_path(category.id) do%>
-								<figure>
+									<figure>
+									<%= image_tag category.url_image, alt: "", width: 234, height: 190, class: "owl-lazy", style: "opacity: 1;" %>
 									<span><%= category.artworks.size %></span>
 									<div class="info">
 										<h3 class="text-white"><%= category.name %></h3>
@@ -55,7 +57,7 @@
 										<% if user.avatar.attached? %>
 											<%= image_tag user.avatar, data: {src: "#{user.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
 										<% else %>
-											<%= image_tag "artist.jpg", data: {src: "artist.jpg"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
+											<%= image_tag user.url_image, alt: "", width: 297.5, height: 190, class: "owl-lazy", style: "opacity: 1;" %>
 										<% end %>
 									<%= link_to user_path(user.id), class: "strip_info" do%>
 									<div class="item_title">
@@ -112,7 +114,7 @@
 								<% if artwork.avatar.attached? %>
 									<%= image_tag artwork.avatar, data: {src: "#{artwork.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
 								<% else %>
-							<%= image_tag "artwork_generique.png", data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
+							<%= image_tag artwork.url_image, alt: "", class: "lazy loaded", width: 297.5, height: 190, style: "opacity: 1;"%>
 								<% end %>
 							</figure>
 							<div class="score"><strong><%= artwork.category.name %></strong></div>

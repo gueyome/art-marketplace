@@ -89,7 +89,7 @@
 													</figure>
 													<% else %>
 													<figure>
-														<%= image_tag "artwork_generique.png", alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
+														<%= image_tag artwork.url_image, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
 													</figure>
 
 													<% end %>
@@ -249,7 +249,7 @@
 						<% if @user.avatar.attached?%>
 						<figure> <%= image_tag @user.avatar, size: "120x120"%></figure>
 						<% else %>
-						<%= image_tag "artist.jpg", data: {src: "artist.jpg"}, alt: "" ,width: 150.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
+						<%= image_tag @user.url_image, alt: "" ,width: 200.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
 						<% end %>
 						<h5><%= @user.username%></h5>
 
