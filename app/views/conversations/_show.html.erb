@@ -1,33 +1,34 @@
-<div class="container-fluid">
-  <!-- Breadcrumbs-->
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <%= link_to "My Messages", user_conversations_path(current_user.id) %>
-    </li>
-    <li class="breadcrumb-item active">Conversation</li>
-  </ol>
-<div class="box_general">
-  <h4>Conversation with <%= @user2.first_name%></h4>
-  <div class="list_general">
-    <ul><% @conversation.each do |message| %>
-      <li>
-        <span>Sent/Received <%= message.created_at %></span>
-        <figure>
-          <%if message.sender.avatar.attached?%>
-            <%= image_tag message.sender.avatar, alt: 'avatar' %>
-          <%else%>
-            <%= image_tag "https://www.babelio.com/users/AVT_inconnu_5345.jpg", alt: 'avatar' %>
-          <%end%>
-        </figure>
-        <div>
-        <h6><%= message.sender.first_name %></h6>
-          <p><%= message.content %></p>
-        </div>
-      </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-<!-- /box_general-->
-</div>
-<!-- /container-fluid-->
+<div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Messages</li>
+      </ol>
+		<div class="box_general">
+			<h4>Conversation with <%= @user2.first_name%></h4>
+			<div class="list_general">
+				<ul><% @conversation.each do |message| %>
+					<li>
+						<span>Sent <%= message.created_at %></span>
+						<figure>
+              <%if message.sender.avatar.attached?%>
+                <%= image_tag message.sender.avatar, alt: 'avatar' %>
+              <%else%>
+                <p>INVISIBLE MAN</p>
+              <%end%>
+            </figure>
+            <div>
+						  <p><%= message.content %></p>
+            </div>
+					</li>
+          <% end %>
+				</ul>
+			</div>
+		</div>
+		<!-- /box_general-->
+	  </div>
+	  <!-- /container-fluid-->
+   	</div>
