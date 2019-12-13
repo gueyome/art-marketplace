@@ -18,9 +18,14 @@ class ArtworksController < ApplicationController
   end
 
   def create
-    Artwork.create(user_id: current_user.id, name: params[:name], price: params[:price], stock: params[:stock], category_id: params[:category_id], creator: params[:creator], description: params[:description])
-    flash[:success] = "Artwork successfully created"
-    redirect_to user_artworks_path(current_user.id)
+    @artwork = Artwork.new(user_id: current_user.id, name: params[:name], price: params[:price], stock: params[:stock], category_id: params[:category_id], creator: params[:creator], description: params[:description])
+    if @artwork.save
+      flash[:success] = "Artwork successfully created"
+      redirect_to user_artworks_path(current_user.id)
+    else
+      flash[:error] = "Artwork has not been created"
+      redirect_to new_user_artwork_path(current_user.id)
+    end
   end
 
   def edit
