@@ -2326,8 +2326,8 @@ ul#top_menu li a.login:before {
   }
 }
 .hero_single.version_2 {
-  height: 580px;
-  background: #ededed url(https://cdn.pixabay.com/photo/2015/11/06/21/22/art-1030132_1280.jpg) center center no-repeat;
+  min-height:100vh;
+  background: #ededed url(https://cdn.pixabay.com/photo/2017/08/30/12/45/girl-2696947_960_720.jpg) top center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

@@ -1,5 +1,5 @@
 <main>
-	<div class="bg_gray">
+	<div class="bg-white">
 		<div class="container margin_60_40">
 			<div class="main_title center">
 				<span><em></em></span>
@@ -7,6 +7,29 @@
 				<p>Make your own choice, they only wait for you</p>
 			</div>
 			<!-- /main_title -->
+			<div class="row">
+			<!-- boucle -->
+			<% @categories.each do |category| %>
+				<div class="col-md-6">
+					<article class="blog">
+						<figure>
+							<%= link_to category_path(category.id) do%>
+								<%= image_tag category.url_image, alt: ""%>
+								<div class="preview"><span>Discover</span></div>
+							<%end%>
+						</figure>
+						<div class="post_info">
+							<small class="text-dark"><%= category.artworks.size %> artworks</small>
+							<h2><%= link_to "#{category.name}", category_path(category.id) %></h2>
+							<p>“Art and love are the same thing: It's the process of seeing yourself in things that are not you.” “Art enables us to find ourselves and lose ourselves at the same time.”</p>
+						
+						</div>
+					</article>
+					<!-- /article -->
+				</div>
+				<% end %>
+				<!-- /col -->
+			</div>
 			<div class="owl-carousel owl-theme categories_carousel owl-loaded owl-drag">
 				<div class="owl-stage-outer">
 					<div class="owl-stage"
@@ -19,9 +42,9 @@
 								<figure>
 									<span><%= category.artworks.size %></span>
 									<% if category.url_image%>
-										<%= image_tag category.url_image, data: {src: "#{category.url_image}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
+									<%= image_tag category.url_image, data: {src: "#{category.url_image}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
 									<% else %>
-										<%= image_tag "category_generique.jpg", data: {src: "category_generique.jpg"}, alt: "", width: 297.5, height: 190, class: "owl-lazy", style: "opacity: 1;" %>
+									<%= image_tag "category_generique.jpg", data: {src: "category_generique.jpg"}, alt: "", width: 297.5, height: 190, class: "owl-lazy", style: "opacity: 1;" %>
 									<% end %>
 									<div class="info">
 										<h3 class="text-white"><%= category.name %></h3>
@@ -56,18 +79,18 @@
 						<div class="item">
 							<div class="strip">
 								<figure>
-										<span class="ribbon off">hot</span>
-											<% if user.avatar.attached? %>
-												<%= image_tag user.avatar, data: {src: "#{user.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
-											<% else %>
-												<%= image_tag "artist.jpg", data: {src: "artist.jpg"}, alt: "", width: 297.5, height: 190, class: "owl-lazy", style: "opacity: 1;" %>
-											<% end %>
-										<%= link_to user_path(user.id), class: "strip_info" do%>
-											<div class="item_title">
-												<h3 class="text-white"><%= user.username%></h3>
-											</div>
-											<% end %>
-									</figure>
+									<span class="ribbon off">hot</span>
+									<% if user.avatar.attached? %>
+									<%= image_tag user.avatar, data: {src: "#{user.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
+									<% else %>
+									<%= image_tag "artist.jpg", data: {src: "artist.jpg"}, alt: "", width: 297.5, height: 190, class: "owl-lazy", style: "opacity: 1;" %>
+									<% end %>
+									<%= link_to user_path(user.id), class: "strip_info" do%>
+									<div class="item_title">
+										<h3 class="text-white"><%= user.username%></h3>
+									</div>
+									<% end %>
+								</figure>
 								<ul>
 									<li><span class="loc_open">contact</span></li>
 									<li>
@@ -115,13 +138,13 @@
 							<%= link_to search_path(artwork.id) do%>
 							<figure>
 								<% if artwork.avatar.attached? %>
-									<%= image_tag artwork.avatar, data: {src: "#{artwork.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
+								<%= image_tag artwork.avatar, data: {src: "#{artwork.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
 								<% else %>
-									<% if artwork.url_image %>
-										<%= image_tag artwork.url_image, data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
-									<% else %>
-										<%= image_tag "artwork_generique.png", data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
-									<% end %>	
+								<% if artwork.url_image %>
+								<%= image_tag artwork.url_image, data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
+								<% else %>
+								<%= image_tag "artwork_generique.png", data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
+								<% end %>
 								<% end %>
 							</figure>
 							<div class="score"><strong><%= artwork.category.name %></strong></div>
@@ -171,8 +194,8 @@
 					</div>
 				</div>
 			</div>
-			
-		<!-- /carousel testimonials-->
-	</div>
+
+			<!-- /carousel testimonials-->
+		</div>
 
 </main>
