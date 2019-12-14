@@ -26,8 +26,8 @@ Category.destroy_all
 
 5.times do |index|  
     c = Category.create(name: Faker::Artist.name, url_image: vv)
-    u = User.create(username: "user#{index}", first_name: "firstname#{index}", last_name: "Lastname#{index}", email: "email#{index}@yopmail.com", password: "xaxaxa", url_image: kk)
-    a = Artwork.create(name: "Artwork#{index}", description: "lorem"*100, price: rand(100..1000), stock: 10, category_id: rand(c.id-count..c.id), user_id: u.id, url_image: dd )
+    u = User.create(username: "user#{index}", first_name: "firstname#{index}", last_name: "Lastname#{index}", email: "email#{index}@yopmail.com", password: "xaxaxa")
+    a = Artwork.create(name: "Artwork#{index}", description: "lorem "*100, price: rand(100..1000), stock: 10, category_id: rand(c.id-count..c.id), user_id: u.id, url_image: dd )
     ctc = Contact.create(address: "#{index}rue de Paris", latitude: index, description: "description#{index}", longitude: index, phone: "123#{index}", user_id: u.id)
     cr = Cart.create(user_id: u.id)
     o = Order.create(user_id: u.id, date: Time.now)
@@ -56,4 +56,3 @@ Category.destroy_all
         kk = "https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_1280.jpg"
     end 
 end 
-
