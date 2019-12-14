@@ -18,6 +18,11 @@
 								<%= link_to category_path(category.id) do%>
 								<figure>
 									<span><%= category.artworks.size %></span>
+									<% if category.url_image%>
+										<%= image_tag category.url_image, data: {src: "#{category.url_image}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
+									<% else %>
+										<%= image_tag "category_generique.jpg", data: {src: "category_generique.jpg"}, alt: "", width: 297.5, height: 190, class: "owl-lazy", style: "opacity: 1;" %>
+									<% end %>
 									<div class="info">
 										<h3 class="text-white"><%= category.name %></h3>
 									</div>
@@ -51,18 +56,18 @@
 						<div class="item">
 							<div class="strip">
 								<figure>
-									<span class="ribbon off">hot</span>
-										<% if user.avatar.attached? %>
-											<%= image_tag user.avatar, data: {src: "#{user.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
-										<% else %>
-											<%= image_tag "artist.jpg", data: {src: "artist.jpg"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
-										<% end %>
-									<%= link_to user_path(user.id), class: "strip_info" do%>
-									<div class="item_title">
-										<h3 class="text-white"><%= user.username%></h3>
-									</div>
-									<% end %>
-								</figure>
+										<span class="ribbon off">hot</span>
+											<% if user.avatar.attached? %>
+												<%= image_tag user.avatar, data: {src: "#{user.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
+											<% else %>
+												<%= image_tag "artist.jpg", data: {src: "artist.jpg"}, alt: "", width: 297.5, height: 190, class: "owl-lazy", style: "opacity: 1;" %>
+											<% end %>
+										<%= link_to user_path(user.id), class: "strip_info" do%>
+											<div class="item_title">
+												<h3 class="text-white"><%= user.username%></h3>
+											</div>
+											<% end %>
+									</figure>
 								<ul>
 									<li><span class="loc_open">contact</span></li>
 									<li>
@@ -112,7 +117,11 @@
 								<% if artwork.avatar.attached? %>
 									<%= image_tag artwork.avatar, data: {src: "#{artwork.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
 								<% else %>
-							<%= image_tag artwork.url_image, data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
+									<% if artwork.url_image %>
+										<%= image_tag artwork.url_image, data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
+									<% else %>
+										<%= image_tag "artwork_generique.png", data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
+									<% end %>	
 								<% end %>
 							</figure>
 							<div class="score"><strong><%= artwork.category.name %></strong></div>
