@@ -16,11 +16,6 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
           <%= link_to "My Artworks", user_artworks_path(current_user.id), class: "nav-link" %>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
-          <a class="nav-link" href="reviews.html">
-            <span class="nav-link-text">Reviews</span>
-          </a>
-        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
             <%= link_to "Add Artwork", new_user_artwork_path(current_user.id), class: "nav-link" %>
         </li>

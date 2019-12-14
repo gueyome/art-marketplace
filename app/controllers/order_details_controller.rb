@@ -39,7 +39,6 @@ class OrderDetailsController < ApplicationController
       @order_detail.save
     end
     @cart.cart_details.clear
-      # verifier l'etat du stock
     flash[:success] = "Order successfully paid"
     redirect_to root_path
 

@@ -46,7 +46,7 @@ class CartDetailsController < ApplicationController
     @variation = @line.quantity - @new_quantity
     @line.artwork.update(stock: @line.artwork.stock + @variation)
     puts @line.update(quantity: @new_quantity)
-    flash[:success] = "Quantity successfully modified"
+    flash[:success] = "Quantity successfully updated"
     redirect_to user_cart_path(@current_user.id, current_user.cart.id)
   end
 

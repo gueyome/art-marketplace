@@ -10,15 +10,18 @@ class Artwork < ApplicationRecord
 
   validates :name, 
     presence: true,
-    length: { minimum: 3 }
+    length: { minimum: 3, message: ": must have more than 3 characters" }
+
   validates :description,
     presence: true,
-    length: { minimum: 30 }
+    length: { minimum: 30, message: ": must have more than 30 characters" }
+
   validates :price, 
     presence: true,
-    numericality: { minimum: 1 }
+    numericality: { minimum: 1, message: ": must cost minimum 1 dollar" }
+
   validates :category,
-    presence: true
+    presence: { message: ": please choose a category" }
 
   def self.search(search)
     if search

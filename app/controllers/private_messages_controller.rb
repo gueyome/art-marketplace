@@ -12,7 +12,6 @@ class PrivateMessagesController < ApplicationController
   end
 
   def create
-    flash[:success] = "Message successfully sent"
   end
 
   def edit
