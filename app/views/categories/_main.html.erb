@@ -44,6 +44,7 @@
                 <%end%>
               </div>
               <h3><%= link_to "#{category.name}",category_path(category.id)%></h3>
+              <p><%= category.artworks.size %> artworks in this category</p>
             </li>
             <% end %>
           </ul>
