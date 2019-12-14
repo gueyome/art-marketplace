@@ -1,6 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
-    <%= link_to image_tag("/Users/dimitriyoula/Desktop/Capture d’écran 2019-12-06 à 21.47.00.png"), root_path %>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-white bg-default fixed-top" id="mainNav" style="background-color: white;">
+<%= link_to image_tag("https://cdn.pixabay.com/photo/2014/04/03/11/50/palette-312289_960_720.png", size: "50x50"), root_path %>    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -16,11 +15,6 @@
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
           <%= link_to "My Artworks", user_artworks_path(current_user.id), class: "nav-link" %>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
-          <a class="nav-link" href="reviews.html">
-            <span class="nav-link-text">Reviews</span>
-          </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
             <%= link_to "Add Artwork", new_user_artwork_path(current_user.id), class: "nav-link" %>
@@ -40,3 +34,4 @@
       </ul>
     </div>
   </nav>
+  

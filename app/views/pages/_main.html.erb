@@ -3,12 +3,11 @@
 		<div class="container margin_60_40">
 			<div class="main_title center">
 				<span><em></em></span>
-				<h2>Popular Categories</h2>
+				<h2>Our Categories</h2>
 				<p>Make your own choice, they only wait for you</p>
 			</div>
 			<!-- /main_title -->
 			<div class="owl-carousel owl-theme categories_carousel owl-loaded owl-drag">
-
 				<div class="owl-stage-outer">
 					<div class="owl-stage"
 						style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1778px;">
@@ -19,7 +18,6 @@
 								<%= link_to category_path(category.id) do%>
 								<figure>
 									<span><%= category.artworks.size %></span>
-									<%= image_tag category.url_image, alt: "" ,width: 350, height: 450,class: "owl-lazy", style: "opacity: 1;"%>
 									<div class="info">
 										<h3 class="text-white"><%= category.name %></h3>
 									</div>
@@ -36,18 +34,15 @@
 		</div>
 		<!-- /container -->
 	</div>
-	<!-- /bg_gray -->
 
 	<div class="container margin_60_40">
 		<div class="main_title">
 			<span><em></em></span>
 			<h2>Popular Artists</h2>
 			<p>Awesome Artists, for Awesome People</p>
-			<%= link_to "View all", nil%>
 		</div>
 		<!-- /main_title -->
 		<div class="owl-carousel owl-theme carousel_4 owl-loaded owl-drag">
-
 			<div class="owl-stage-outer">
 				<div class="owl-stage"
 					style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 2223px;">
@@ -117,7 +112,7 @@
 								<% if artwork.avatar.attached? %>
 									<%= image_tag artwork.avatar, data: {src: "#{artwork.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
 								<% else %>
-							<%= image_tag "artwork_generique.png", data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
+							<%= image_tag artwork.url_image, data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
 								<% end %>
 							</figure>
 							<div class="score"><strong><%= artwork.category.name %></strong></div>

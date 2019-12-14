@@ -20,12 +20,13 @@ Category.destroy_all
 
 
     vv = "https://cdn.pixabay.com/photo/2016/01/19/15/01/paints-1149122_1280.jpg"
+    dd = "https://cdn.pixabay.com/photo/2014/06/10/19/10/boy-366311_1280.jpg"
     count = 0 
 
 5.times do |index|  
     c = Category.create(name: Faker::Artist.name, url_image: vv)
     u = User.create(username: "user#{index}", first_name: "firstname#{index}", last_name: "Lastname#{index}", email: "email#{index}@yopmail.com", password: "xaxaxa")
-    a = Artwork.create(name: "Artwork#{index}", description: "description#{index}", price: rand(100..1000), stock: 10, category_id: rand(c.id-count..c.id), user_id: u.id )
+    a = Artwork.create(name: "Artwork#{index}", description: "lorem "*100, price: rand(100..1000), stock: 10, category_id: rand(c.id-count..c.id), user_id: u.id, url_image: dd )
     ctc = Contact.create(address: "#{index}rue de Paris", latitude: index, description: "description#{index}", longitude: index, phone: "123#{index}", user_id: u.id)
     cr = Cart.create(user_id: u.id)
     o = Order.create(user_id: u.id, date: Time.now)
@@ -38,19 +39,15 @@ Category.destroy_all
 
     if count == 1 
         vv = "https://cdn.pixabay.com/photo/2013/07/07/01/21/blue-143734_1280.jpg"
-
+        dd = "https://cdn.pixabay.com/photo/2015/12/15/05/43/starry-night-1093721_1280.jpg"
     elsif count == 2
         vv = "https://cdn.pixabay.com/photo/2017/09/12/22/06/background-2743840_1280.jpg"
-
+        dd = "https://cdn.pixabay.com/photo/2013/02/13/16/12/gustave-courbet-81309_1280.jpg"
     elsif count == 3
         vv = "https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_1280.png"
-
+        dd = "https://cdn.pixabay.com/photo/2016/01/20/21/41/drunkards-1152424_1280.jpg"
     elsif count == 4
         vv = "https://cdn.pixabay.com/photo/2017/07/23/11/46/statue-of-hercules-2531191_1280.jpg"
+        dd = "https://cdn.pixabay.com/photo/2018/08/21/20/53/magritte-3622130_1280.jpg"
     end 
 end 
-
-User.create!(username: "Real", first_name: "Last", last_name: "King", email: "admin@example.com", password: "password", is_admin: true)
-
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-

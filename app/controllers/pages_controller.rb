@@ -6,11 +6,7 @@ class PagesController < ApplicationController
   def index
     @artworks = Artwork.limit(8).order("updated_at DESC")
     @categories = Category.limit(5)
-    # where creator is true
     @users = User.limit(4).order("updated_at DESC")
-
-
-
   end
 
   def show

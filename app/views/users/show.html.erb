@@ -1,279 +1,314 @@
-<body>
-	<main>
+<main>
+	<div class="hero_in detail_page titi" style="background-color:" data-background="url(img/artist.jpg)">
+		<div class="wrapper opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 
-		<div class="hero_in detail_page titi" style="background-color:" data-background="url(img/artist.jpg)">
-			<div class="wrapper opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-				
-				<div class="container">
-					<div class="main_info">
-						<div class="row">
-							<div class="col-xl-4 col-lg-5 col-md-6">
-								<div class="head"><div class="score"><span>Superb<em><%= @user.received_testimonials.length%> Reviews</em></span><strong>8.9</strong></div></div>
-								<h1 class="text-white"><%= @user.username%></h1>
-								REMPLIR ADDRESS VIA SEED <%= @user.contact.address if @user.contact != nil %>
+			<div class="container">
+				<div class="main_info">
+					<div class="row">
+						<div class="col-xl-4 col-lg-5 col-md-6">
+							<div class="head">
+								<div class="score"><span>Superb<em><%= @user.received_testimonials.length%>
+											Reviews</em></span><strong>8.9</strong></div>
 							</div>
-							<div class="col-xl-8 col-lg-7 col-md-6">
-								<div class="buttons clearfix">
-									<span class="magnific-gallery">
-										<a href="img/detail_1.jpg" class="btn_hero" title="Photo title" data-effect="mfp-zoom-in"><i class="icon_image"></i>View photos</a>
-										<a href="img/detail_2.jpg" title="Photo title" data-effect="mfp-zoom-in"></a>
-										<a href="img/detail_3.jpg" title="Photo title" data-effect="mfp-zoom-in"></a>
-									</span>
+							<h1 class="text-white"><%= @user.username%></h1>
+							REMPLIR ADDRESS VIA SEED <%= @user.contact.address if @user.contact != nil %>
+						</div>
+						<div class="col-xl-8 col-lg-7 col-md-6">
+							<div class="buttons clearfix">
+								<span class="magnific-gallery">
+									<a href="img/detail_1.jpg" class="btn_hero" title="Photo title" data-effect="mfp-zoom-in"><i
+											class="icon_image"></i>View photos</a>
+									<a href="img/detail_2.jpg" title="Photo title" data-effect="mfp-zoom-in"></a>
+									<a href="img/detail_3.jpg" title="Photo title" data-effect="mfp-zoom-in"></a>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /main_info -->
+			</div>
+		</div>
+	</div>
+	<!--/hero_in-->
+
+	<div class="container margin_detail">
+		<div class="row">
+			<div class="col-lg-8">
+
+				<div class="tabs_detail">
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item">
+							<a id="tab-A" href="#pane-A" class="nav-link active" data-toggle="tab" role="tab">Artworks</a>
+						</li>
+						<li class="nav-item">
+							<a id="tab-A" href="#pane-B" class="nav-link" data-toggle="tab" role="tab">Information</a>
+						</li>
+						<li class="nav-item">
+							<a id="tab-B" href="#pane-C" class="nav-link" data-toggle="tab" role="tab">Reviews</a>
+						</li>
+					</ul>
+
+					<div class="tab-content" role="tablist">
+						<div id="pane-A" class="card tab-pane fade show active" role="tabpanel" aria-labelledby="tab-A">
+							<div class="card-header" role="tab" id="heading-A">
+								<h5>
+									<a class="collapsed" data-toggle="collapse" href="#collapse-A" aria-expanded="true"
+										aria-controls="collapse-A">
+										Artworks
+									</a>
+								</h5>
+							</div>
+							<div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
+								<div class="card-body info_content">
+									<p> <%= @user.contact.description if @user.contact != nil %> REMPLIR DESCRIPTION VIA SEED </p>
+									<div class="add_bottom_25"></div>
+									<h2>Artworks of this artist</h2>
+									<table class="table table-striped cart-list">
+										<thead>
+											<tr>
+												<th>
+													Item
+												</th>
+												<th>
+													Price
+												</th>
+												<th>
+													Add to cart
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<% @user.artworks.each do |artwork|%>
+											<tr>
+
+												<% if artwork.avatar.attached? %>
+												<td class="d-md-flex align-items-center">
+													<figure>
+														<%= image_tag artwork.avatar, data: {src: "#{artwork.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
+													</figure>
+													<% else %>
+													<figure>
+														<%= image_tag "artwork_generique.png", alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
+													</figure>
+
+													<% end %>
+													<div class="flex-md-column">
+														<h4> <%= artwork.name %> </h4>
+														<p>
+															<%= artwork.description %>
+														</p>
+													</div>
+												</td>
+												<td>
+													<strong> $ <%= artwork.price %> </strong>
+												</td>
+												<td>
+													<i class="icon_plus_alt2"></i>
+												</td>
+											</tr>
+											<% end %>
+										</tbody>
+									</table>
 								</div>
 							</div>
 						</div>
-						<!-- /row -->
+						<!-- /tab -->
+						<div id="pane-B" class="card tab-pane" role="tabpanel" aria-labelledby="tab-B">
+							<div class="card-header" role="tab" id="heading-B">
+								<h5>
+									<a class="collapsed" data-toggle="collapse" href="#collapse-B" aria-expanded="true"
+										aria-controls="collapse-B">
+										Information
+									</a>
+								</h5>
+							</div>
+							<div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
+								<div class="card-body info_content">
+									<p>Mei at intellegat reprehendunt, te facilisis definiebas dissentiunt usu. Choro delicata
+										voluptatum cu vix. Sea error splendide at. Te sed facilisi persequeris definitiones, ad per
+										scriptorem instructior, vim latine adipiscing no. Cu tacimates salutandi his, mel te dicant quodsi
+										aperiri. Unum timeam his eu.</p>
+									<p>An malorum ornatus nostrum vel, graece iracundia laboramus cu ius. No pro mazim blandit
+										instructior, sumo voluptaria has et, vide persecuti abhorreant ne est.</p>
+									<div class="add_bottom_25"></div>
+									<h2>Pictures from our users</h2>
+									<div class="pictures magnific-gallery clearfix">
+										<><a href="img/detail_gallery/detail_1.jpg" title="Photo title" data-effect="mfp-zoom-in"><img
+													src="img/thumb_detail_placeholder.jpg" data-src="img/thumb_detail_1.jpg" class="lazy"
+													alt=""></a></figure>
+											<figure><a href="img/detail_gallery/detail_2.jpg" title="Photo title"
+													data-effect="mfp-zoom-in"><img src="img/thumb_detail_placeholder.jpg"
+														data-src="img/thumb_detail_2.jpg" class="lazy" alt=""></a></figure>
+											<figure><a href="img/detail_gallery/detail_3.jpg" title="Photo title"
+													data-effect="mfp-zoom-in"><img src="img/thumb_detail_placeholder.jpg"
+														data-src="img/thumb_detail_3.jpg" class="lazy" alt=""></a></figure>
+											<figure><a href="img/detail_gallery/detail_4.jpg" title="Photo title"
+													data-effect="mfp-zoom-in"><img src="img/thumb_detail_placeholder.jpg"
+														data-src="img/thumb_detail_4.jpg" class="lazy" alt=""></a></figure>
+											<figure><a href="img/detail_gallery/detail_5.jpg" title="Photo title"
+													data-effect="mfp-zoom-in"><span
+														class="d-flex align-items-center justify-content-center">+10</span><img
+														src="img/thumb_detail_placeholder.jpg" data-src="img/thumb_detail_5.jpg" class="lazy"
+														alt=""></a></figure>
+									</div>
+									<!-- /pictures -->
+
+
+									<div class="other_info">
+										<h2>Other information</h2>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /tab -->
+
+						<div id="pane-C" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-C">
+							<div class="card-header" role="tab" id="heading-C">
+								<h5>
+									<a class="collapsed" data-toggle="collapse" href="#collapse-C" aria-expanded="false"
+										aria-controls="collapse-C">
+										Reviews
+									</a>
+								</h5>
+							</div>
+							<div id="collapse-C" class="collapse" role="tabpanel" aria-labelledby="heading-C">
+								<div class="card-body reviews">
+									<div class="row add_bottom_45 d-flex align-items-center">
+										<div class="col-md-3">
+											<div id="review_summary">
+												<strong>8.5</strong>
+												<em>Superb</em>
+												<small>Based on 4 reviews</small>
+											</div>
+										</div>
+									</div>
+
+									<div id="reviews">
+										<%  @testimonial.each do | testimonial |%>
+										<% if testimonial.artist_id == @user.id%>
+										<div class="review_card">
+											<div class="row">
+												<div class="col-md-2 user_info">
+													<figure><img src="img/avatar4.jpg" alt=""></figure>
+													<h5> Username </h5>
+												</div>
+												<div class="col-md-10 review_content">
+													<div class="clearfix add_bottom_15">
+														<span class="rating">8.5<small>/10</small> <strong>Rating average</strong></span>
+														<em>Created at <%= testimonial.created_at %></em>
+													</div>
+													<h4><%= testimonial.content%></h4>
+													<ul>
+														<li><a href="#0"><i class="icon_like"></i><span>Useful</span></a></li>
+														<li><a href="#0"><i class="icon_dislike"></i><span>Not useful</span></a></li>
+														<li><a href="#0"><i class="arrow_back"></i> <span>Reply</span></a></li>
+													</ul>
+												</div>
+											</div>
+											<% end%>
+											<% end %>
+											<!-- /row -->
+										</div>
+
+										<div class="row reply">
+											<div class="col-md-2 user_info">
+												<figure><img src="img/avatar.jpg" alt=""></figure>
+											</div>
+											<div class="col-md-10">
+												<div class="review_content">
+													<strong>Reply from Foogra</strong>
+													<em>Published 3 minutes ago</em>
+													<p><br>Hi Monika,<br><br>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod
+														scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere
+														fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his.
+														Tollit molestie suscipiantur his et.<br><br>Thanks</p>
+												</div>
+											</div>
+										</div>
+										<!-- /reply -->
+									</div>
+									<!-- /review_card -->
+								</div>
+								<!-- /reviews -->
+								<div class="text-right"><a href="leave-review.html" class="btn_1">Leave a review</a></div>
+							</div>
+						</div>
 					</div>
-					<!-- /main_info -->
 				</div>
+				<!-- /tab-content -->
 			</div>
+			<!-- /tabs_detail -->
 		</div>
-		<!--/hero_in-->
-		
-		<div class="container margin_detail">
-		    <div class="row">
-		        <div class="col-lg-8">
+		<!-- /col -->
 
-		            <div class="tabs_detail">
-		                <ul class="nav nav-tabs" role="tablist">
-		                	<li class="nav-item">
-		                        <a id="tab-A" href="#pane-A" class="nav-link active" data-toggle="tab" role="tab">Artworks</a>
-		                    </li>
-		                    <li class="nav-item">
-		                        <a id="tab-A" href="#pane-B" class="nav-link" data-toggle="tab" role="tab">Information</a>
-		                    </li>
-		                    <li class="nav-item">
-		                        <a id="tab-B" href="#pane-C" class="nav-link" data-toggle="tab" role="tab">Reviews</a>
-		                    </li>
-		                </ul>
+		<div class="col-lg-4" id="sidebar_fixed">
+			<div class="box_booking">
+				<div class="head">
+					<div class="col-md-2 user_info">
+						<% if @user.avatar.attached?%>
+						<figure> <%= image_tag @user.avatar, size: "120x120"%></figure>
+						<% else %>
+						<%= image_tag "artist.jpg", data: {src: "artist.jpg"}, alt: "" ,width: 150.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
+						<% end %>
+						<h5><%= @user.username%></h5>
 
-		                <div class="tab-content" role="tablist">
-		                	<div id="pane-A" class="card tab-pane fade show active" role="tabpanel" aria-labelledby="tab-A">
-                        <div class="card-header" role="tab" id="heading-A">
-                            <h5>
-                                <a class="collapsed" data-toggle="collapse" href="#collapse-A" aria-expanded="true" aria-controls="collapse-A">
-                                    Artworks
-                                </a>
-                            </h5>
-                        </div>
-                        <div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
-                            <div class="card-body info_content">
-                              <p> <%= @user.contact.description if @user.contact != nil %> REMPLIR DESCRIPTION VIA SEED </p>
-                              <div class="add_bottom_25"></div>
-                                <h2>Artworks of this artist</h2>
-                                <table class="table table-striped cart-list">
-                                  <thead>
-                                    <tr>
-                                      <th>
-                                        Item
-                                      </th>
-                                      <th>
-                                        Price
-                                      </th>
-                                      <th>
-                                        Add to cart
-                                      </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                  <% @user.artworks.each do |artwork|%>
-                                  <tr>
-                                    <td class="d-md-flex align-items-center">
-                                                  <figure><%= image_tag artwork.avatar, data: {src: "#{artwork.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
+					</div>
+				</div>
+				<!-- /head -->
 
-										<% else %></figure>
-                                                  <div class="flex-md-column">
-                                        <h4> <%= artwork.name %> </h4>
-                                        <p>
-                                          <%= artwork.description %>
-                                        </p>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <strong> 	$ <%= artwork.price %> </strong>
-                                    </td>
-                                    <td>
-                                        <i class = "icon_plus_alt2"></i>
-                                    </td>
-                                  </tr>
-                                  <% end %>
-                                  </tbody>
-                                </table>
-                              </div>
-		                        </div>
-		                    </div>
-		                    <!-- /tab -->
-		                    <div id="pane-B" class="card tab-pane" role="tabpanel" aria-labelledby="tab-B">
-		                        <div class="card-header" role="tab" id="heading-B">
-		                            <h5>
-		                                <a class="collapsed" data-toggle="collapse" href="#collapse-B" aria-expanded="true" aria-controls="collapse-B">
-		                                    Information
-		                                </a>
-		                            </h5>
-		                        </div>
-		                        <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
-		                            <div class="card-body info_content">
-		                            	<p>Mei at intellegat reprehendunt, te facilisis definiebas dissentiunt usu. Choro delicata voluptatum cu vix. Sea error splendide at. Te sed facilisi persequeris definitiones, ad per scriptorem instructior, vim latine adipiscing no. Cu tacimates salutandi his, mel te dicant quodsi aperiri. Unum timeam his eu.</p>
-		                            	<p>An malorum ornatus nostrum vel, graece iracundia laboramus cu ius. No pro mazim blandit instructior, sumo voluptaria has et, vide persecuti abhorreant ne est.</p>
-		                            	<div class="add_bottom_25"></div>
-		                                <h2>Pictures from our users</h2>
-		                                <div class="pictures magnific-gallery clearfix">
-		                                    <><a href="img/detail_gallery/detail_1.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="img/thumb_detail_placeholder.jpg" data-src="img/thumb_detail_1.jpg" class="lazy" alt=""></a></figure>
-		                                    <figure><a href="img/detail_gallery/detail_2.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="img/thumb_detail_placeholder.jpg" data-src="img/thumb_detail_2.jpg" class="lazy" alt=""></a></figure>
-		                                    <figure><a href="img/detail_gallery/detail_3.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="img/thumb_detail_placeholder.jpg" data-src="img/thumb_detail_3.jpg" class="lazy" alt=""></a></figure>
-		                                    <figure><a href="img/detail_gallery/detail_4.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="img/thumb_detail_placeholder.jpg" data-src="img/thumb_detail_4.jpg" class="lazy" alt=""></a></figure>
-		                                    <figure><a href="img/detail_gallery/detail_5.jpg" title="Photo title" data-effect="mfp-zoom-in"><span class="d-flex align-items-center justify-content-center">+10</span><img src="img/thumb_detail_placeholder.jpg" data-src="img/thumb_detail_5.jpg" class="lazy" alt=""></a></figure>
-		                                </div>
-		                                <!-- /pictures -->
-		                               
+				<ul class="share-buttons mt-3">
+					<li><a class="fb-share" href="#0"><i class="social_facebook"></i> Share</a></li>
+					<li><a class="twitter-share" href="#0"><i class="social_twitter"></i> Share</a></li>
+					<li><a class="gplus-share" href="#0"><i class="social_googleplus"></i> Share</a></li>
+				</ul>
+			</div>
 
-		                                <div class="other_info">
-		                                <h2>Other information</h2>
-		                            	</div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <!-- /tab -->
-
-		                    <div id="pane-C" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-C">
-		                        <div class="card-header" role="tab" id="heading-C">
-		                            <h5>
-		                                <a class="collapsed" data-toggle="collapse" href="#collapse-C" aria-expanded="false" aria-controls="collapse-C">
-		                                    Reviews
-		                                </a>
-		                            </h5>
-		                        </div>
-		                        <div id="collapse-C" class="collapse" role="tabpanel" aria-labelledby="heading-C">
-		                            <div class="card-body reviews">
-		                                <div class="row add_bottom_45 d-flex align-items-center">
-		                                    <div class="col-md-3">
-		                                        <div id="review_summary">
-		                                            <strong>8.5</strong>
-		                                            <em>Superb</em>
-		                                            <small>Based on 4 reviews</small>
-		                                        </div>
-		                                    </div>
-		                                </div>
-
-		                                <div id="reviews">
-                                    <%  @testimonial.each do | testimonial |%> 
-                                      <% if testimonial.artist_id == @user.id%>   
-		                                    <div class="review_card">
-		                                        <div class="row">
-		                                            <div class="col-md-2 user_info">
-		                                                <figure><img src="img/avatar4.jpg" alt=""></figure>
-		                                                <h5> Username </h5>
-		                                            </div>
-		                                            <div class="col-md-10 review_content">
-		                                                <div class="clearfix add_bottom_15">
-		                                                    <span class="rating">8.5<small>/10</small> <strong>Rating average</strong></span>
-		                                                    <em>Created at <%= testimonial.created_at %></em>
-		                                                </div>
-		                                                <h4><%= testimonial.content%></h4>
-		                                                <ul>
-		                                                    <li><a href="#0"><i class="icon_like"></i><span>Useful</span></a></li>
-		                                                    <li><a href="#0"><i class="icon_dislike"></i><span>Not useful</span></a></li>
-		                                                    <li><a href="#0"><i class="arrow_back"></i> <span>Reply</span></a></li>
-		                                                </ul>
-		                                            </div>
-		                                        </div>
-                                        <% end%>
-                                      <% end %>
-		                                        <!-- /row -->
-		                                    </div>
-		                              
-		                                        <div class="row reply">
-		                                            <div class="col-md-2 user_info">
-		                                                <figure><img src="img/avatar.jpg" alt=""></figure>
-		                                            </div>
-		                                            <div class="col-md-10">
-		                                                <div class="review_content">
-		                                                    <strong>Reply from Foogra</strong>
-		                                                    <em>Published 3 minutes ago</em>
-		                                                    <p><br>Hi Monika,<br><br>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his. Tollit molestie suscipiantur his et.<br><br>Thanks</p>
-		                                                </div>
-		                                            </div>
-		                                        </div>
-		                                        <!-- /reply -->
-		                                    </div>
-		                                    <!-- /review_card -->
-		                                </div>
-		                                <!-- /reviews -->
-		                                <div class="text-right"><a href="leave-review.html" class="btn_1">Leave a review</a></div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                </div>
-		                <!-- /tab-content -->
-		            </div>
-		            <!-- /tabs_detail -->
-		        </div>
-		        <!-- /col -->
-
-		        <div class="col-lg-4" id="sidebar_fixed">
-		            <div class="box_booking">
-		                <div class="head">
-		                    <div class="col-md-2 user_info">
-                            <figure> <%= image_tag @user.avatar, size: "120x120"%></figure>
-                            <h5>Lukas</h5>
-							
-                        </div>
-		                </div>
-		                <!-- /head -->
-		                
-		            <ul class="share-buttons mt-3">
-		                <li><a class="fb-share" href="#0"><i class="social_facebook"></i> Share</a></li>
-		                <li><a class="twitter-share" href="#0"><i class="social_twitter"></i> Share</a></li>
-		                <li><a class="gplus-share" href="#0"><i class="social_googleplus"></i> Share</a></li>
-		            </ul>
-		        </div>
-
-		    </div>
-		    <!-- /row -->
 		</div>
-		<!-- /container -->
+		<!-- /row -->
+	</div>
+	<!-- /container -->
 
-	</main>
-	<!-- /main -->
+</main>
+<!-- /main -->
 
-	<div id="toTop"></div><!-- Back to top button -->
-	
-	<div class="layer"></div><!-- Opacity Mask Menu Mobile -->
+<div id="toTop"></div><!-- Back to top button -->
 
-	<div id="message">Item added to cart</div><!-- Add to cart message -->
+<div class="layer"></div><!-- Opacity Mask Menu Mobile -->
 
-    <!-- SPECIFIC SCRIPTS -->
-	<script>
-		/* drodown options prevent close */
-		$('.dropdown-options .dropdown-menu').on("click",function(e) {e.stopPropagation();});
-		/* remove items order sum */
-		$('.main ul li a').on('click', function (c) {
-			$(this).parent().fadeOut('slow', function (c) {});
+<div id="message">Item added to cart</div><!-- Add to cart message -->
+
+<!-- SPECIFIC SCRIPTS -->
+<script>
+	/* drodown options prevent close */
+	$('.dropdown-options .dropdown-menu').on("click", function (e) { e.stopPropagation(); });
+	/* remove items order sum */
+	$('.main ul li a').on('click', function (c) {
+		$(this).parent().fadeOut('slow', function (c) { });
+	});
+	/* Close Dropdown options on add cart button click + add to cart message */
+	$(".dropdown-menu a.btn_1").on('click', function () {
+		$(this).closest(".dropdown-menu").prev().dropdown("toggle");
+		$('#message').fadeIn('slow', function () {
+			$('#message').delay(1000).fadeOut();
 		});
-		/* Close Dropdown options on add cart button click + add to cart message */
-		$(".dropdown-menu a.btn_1").on('click',function() {
-		    $(this).closest(".dropdown-menu").prev().dropdown("toggle");
-		    $('#message').fadeIn('slow', function(){
-               $('#message').delay(1000).fadeOut(); 
-            });
+	});
+	$(".options > a").on('click', function () {
+		$('#message').fadeIn('slow', function () {
+			$('#message').delay(1000).fadeOut();
 		});
-		$(".options > a").on('click',function() {
-		    $('#message').fadeIn('slow', function(){
-               $('#message').delay(1000).fadeOut(); 
-            });
-		});
-	</script>
+	});
+</script>
 
-<% current_user.orders.each do | order |%>
-	<% order.order_details.each do | details | %>
-	  <% if details.artwork.user_id == @user.id%>
-      <%= form_tag user_testimonials_path(params[:id]), method: "post" do %>
-        <input type="text" name="content" />
-        <input type="submit" value="Post a testimonial" />
-      <% end %>
-    <% end %>
-  <% end %>
+<% if current_user%>
+	<% current_user.orders.each do | order |%>
+		<% order.order_details.each do | details | %>
+			<% if details.artwork.user_id == @user.id%>
+				<%= form_tag user_testimonials_path(params[:id]), method: "post" do %>
+				<input type="text" name="content" />
+				<input type="submit" value="Post a testimonial" />
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
 <% end %>
-
-</body>
-</html>

@@ -2,6 +2,7 @@ class CartDetailsController < ApplicationController
   before_action :authenticate_user!
   before_action :create_cart_for_current_user
   before_action :create_contact_for_current_user
+  before_action :is_user, only: [:update, :destroy]
   def index
   end
 
@@ -45,7 +46,7 @@ class CartDetailsController < ApplicationController
     @variation = @line.quantity - @new_quantity
     @line.artwork.update(stock: @line.artwork.stock + @variation)
     puts @line.update(quantity: @new_quantity)
-    flash[:success] = "Quantity successfully modified"
+    flash[:success] = "Quantity successfully updated"
     redirect_to user_cart_path(@current_user.id, current_user.cart.id)
   end
 
@@ -59,7 +60,13 @@ class CartDetailsController < ApplicationController
     end
   end
 
-  def okok
-    
+  private
+
+  def is_user
+    @artwork = Artwork.find(params[:id])
+    if current_user.id == @artwork.user_id
+      return true
+    end
   end
+
 end
