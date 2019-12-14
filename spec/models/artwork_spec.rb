@@ -38,4 +38,19 @@ RSpec.describe Artwork, type: :model do
 
   end
 
+  context "public instance methods" do
+
+    describe "#name" do
+      it "should return a string" do
+      expect(@artwork.name).to be_a(String)
+      end
+
+      it "should return the name" do
+        expect(@artwork.name).to eq("Artworktest")
+      end
+
+    end
+
+  end
+
 end
