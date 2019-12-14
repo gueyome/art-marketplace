@@ -51,4 +51,3 @@ Category.destroy_all
         dd = "https://cdn.pixabay.com/photo/2018/08/21/20/53/magritte-3622130_1280.jpg"
     end 
 end 
-

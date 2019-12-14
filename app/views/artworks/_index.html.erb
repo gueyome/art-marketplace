@@ -14,7 +14,13 @@
     <ul>
       <% @my_artworks.each do |artwork|%>
       <li>
-        <figure><img src="img/item_1.jpg" alt=""></figure>
+       <figure>
+        <%if artwork.avatar.attached?%>
+            <%= image_tag artwork.avatar, style: "width: 240px;", class: "img-fluid rounded lazy loaded mb-2 mt-2" %>
+        <%else%>
+          <%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded mb-2 mt-2"%>
+        <%end%>
+        </figure>
         <small><%=artwork.category.name%></small>
         <small> - $ <%=artwork.price%></small>
         <h4><%=artwork.name%></h4>
