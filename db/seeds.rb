@@ -23,7 +23,7 @@ Category.destroy_all
     dd = "https://cdn.pixabay.com/photo/2014/06/10/19/10/boy-366311_1280.jpg"
     count = 0 
 
-5.times do |index|  
+4.times do |index|  
     c = Category.create(name: Faker::Artist.name, url_image: vv)
     u = User.create(username: "user#{index}", first_name: "firstname#{index}", last_name: "Lastname#{index}", email: "email#{index}@yopmail.com", password: "xaxaxa")
     a = Artwork.create(name: "Artwork#{index}", description: "lorem "*100, price: rand(100..1000), stock: 10, category_id: rand(c.id-count..c.id), user_id: u.id, url_image: dd )

@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   def show
     @artworks = Artwork.where(category_id: params[:id])
     @category = Category.find(params[:id])
+    @categories = Category.all
   end
 
   def new

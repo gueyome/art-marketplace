@@ -1,0 +1,25 @@
+<div class="container">
+	<!-- boucle -->
+	<div class="row">
+		<% @artworks.each do |artwork| %>
+		<div class="col-md-4">
+			<div class="card rounded shadow-lg p-3 mb-5">
+				<% if artwork.avatar.attached? %>
+				<%= image_tag artwork.avatar, class: "card-img-top", height: "300"%>
+				<% else %>
+				<% if artwork.url_image %>
+				<%= image_tag artwork.url_image, class: "card-img-top", height: "300" %>
+				<% else %>
+				<%= image_tag "artwork_generique.png", class: "card-img-top", height: "300"%>
+				<% end %>
+				<% end %>
+				<div class="card-body">
+					<h4 class="card-title"><%= artwork.name %> - $<%= artwork.price %></h4>
+					<p class="card-text">One of the last artwork published on the website, discover it</p>
+					<%= link_to "discover this masterpiece",search_path(artwork.id), class: "btn btn-success stretched-link"%>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
