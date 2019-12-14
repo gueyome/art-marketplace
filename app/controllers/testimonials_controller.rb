@@ -20,9 +20,10 @@ class TestimonialsController < ApplicationController
 
     if @testimonial.save 
       flash[:success] = "Testimonial successfully created"
-      #Faire redirection 
+      redirect_to root_path
     else 
-      flash[:error] = "Fail total"
+      flash[:error] = "Testimonial can't be created"
+      redirect_to root_path
     end 
 
   end
@@ -31,11 +32,9 @@ class TestimonialsController < ApplicationController
   end
 
   def update
-    flash[:success] = "Testimonial successfully updated"
   end
 
   def destroy
-    flash[:success] = "Testimonial successfully deleted"
   end
 
   
