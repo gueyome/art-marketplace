@@ -15,7 +15,13 @@
           <li>
             <%= link_to nil do%>
             <figure>
-              <%= image_tag artwork.url_name, alt: "",class: "lazy loaded"%>
+            <% if artwork.avatar.attached %>
+            <%= image_tag artwork.avatar%>
+              <% if artwork.image_url %>
+                <%= image_tag artwork.url_image, alt: "",class: "lazy loaded"%>
+              <% else %>
+                <%= image_tag artwork_generique.png, alt:"", class: "lazy loaded" %>
+              <% end %>
             </figure>
             <div class="score"><strong><%= artwork.category.name %></strong></div>
             <h3><%= artwork.name %></h3>
