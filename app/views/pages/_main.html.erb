@@ -10,7 +10,7 @@
 			<div class="row">
 				<!-- boucle -->
 				<% @categories.each do |category| %>
-				<div class="col-md-3">
+				<div class="col-md-3 xs-6">
 					<article class="blog">
 						<figure>
 							<%= link_to category_path(category.id) do%>
@@ -118,7 +118,7 @@
 						<% end %>
 					<% end %>
 					<div class="card-body">
-						<h4 class="card-title"><%= artwork.name %></h4>
+						<h4 class="card-title"><%= artwork.name %> - $<%= artwork.price %></h4>
 						<p class="card-text">One of the last artwork published on the website, discover it</p>
 						<%= link_to "discover this masterpiece",search_path(artwork.id), class: "btn btn-success stretched-link"%>
 					</div>
@@ -129,6 +129,6 @@
 		</div>
 	</div>
 	<!-- /row -->
-	<p class="text-center d-block d-md-block d-lg-none"><%= link_to "View all", nil, class: "btn_1"%></p>
+	<p class="text-center d-block d-md-block d-lg-none"><%= link_to "View all", search_index_path, class: "btn_1"%></p>
 	<!-- /button visibile on tablet/mobile only -->
 </main>
