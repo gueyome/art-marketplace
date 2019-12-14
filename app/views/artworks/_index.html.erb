@@ -1,33 +1,37 @@
-<div class="content-wrapper">
-  <div class="container-fluid">
-    <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="#">Dashboard</a>
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to "My Profile", edit_user_path(current_user.id) %>
+    </li>
+    <li class="breadcrumb-item active">Listings</li>
+  </ol>
+<div class="box_general">
+  <div class="header_box">
+    <h2 class="d-inline-block">My artworks</h2>
+  </div>
+  <div class="list_general">
+    <ul>
+      <% @my_artworks.each do |artwork|%>
+      <li>
+       <figure>
+        <%if artwork.avatar.attached?%>
+            <%= image_tag artwork.avatar, style: "width: 240px;", class: "img-fluid rounded lazy loaded mb-2 mt-2" %>
+        <%else%>
+          <%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded mb-2 mt-2"%>
+        <%end%>
+        </figure>
+        <small><%=artwork.category.name%></small>
+        <small> - $ <%=artwork.price%></small>
+        <h4><%=artwork.name%></h4>
+        <p><%=artwork.description%></p>
+        <%= link_to "View Artwork", search_path(artwork.id), class: "btn_1 green wishlist_close" %>
+        <ul class="buttons">
+          <li><%= link_to "Delete Artwork", user_artwork_path(current_user.id, artwork.id), method: "delete", data:{confirm: 'Are you sure you want to delete this Artwork?'}, class: "btn_1 gray delete" %></li>
+          <%= link_to "Edit Artwork", edit_user_artwork_path(current_user.id, artwork.id), class: "btn_1 gray edit wishlist_close" %>
+        </ul>
       </li>
-      <li class="breadcrumb-item active">Listings</li>
-    </ol>
-  <div class="box_general">
-    <div class="header_box">
-      <h2 class="d-inline-block">My artworks</h2>
-    </div>
-    <div class="list_general">
-      <ul>
-        <% @my_artworks.each do |artwork|%>
-        <li>
-          <figure><img src="img/item_1.jpg" alt=""></figure>
-          <small><%=artwork.category.name%></small>
-          <small> - $ <%=artwork.price%></small>
-          <h4><%=artwork.name%></h4>
-          <p><%=artwork.description%></p>
-          <%= link_to "View Artwork", user_artwork_path(current_user.id, artwork.id), class: "btn_1 gray" %>
-          <ul class="buttons">
-            <li><a href="#0" class="btn_1 gray delete wishlist_close">Delete Artwork</a></li>
-            <%= link_to "Edit Artwork", edit_user_artwork_path(current_user.id, artwork.id), class: "btn_1 gray edit wishlist_close" %>
-          </ul>
-        </li>
-        <% end %>
-      </ul>
-    </div>
+      <% end %>
+    </ul>
   </div>
 </div>

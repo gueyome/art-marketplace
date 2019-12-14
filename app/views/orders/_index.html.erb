@@ -1,40 +1,39 @@
-<body class="fixed-nav sticky-footer" id="page-top">
-  
-  <div class="content-wrapper">
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <%= link_to "My Profile", edit_user_path(current_user.id) %>
-        </li>
-        <li class="breadcrumb-item active">Placed Orders</li>
-      </ol>
-      <div class="box_general">
-			<div class="list_general">
-				<% @orders.each do |order| %>
-        <ul>
-          <div class="header_box">
-            <h2 class="d-inline-block"> Order passed on <%= order.date %></h2>
-          </div>
-          <% order.order_details.each do |order_detail| %>
-					<li>
-						<figure><img src="img/item_1.jpg" alt=""></figure>
-						<h4> <%= order_detail.artwork.name %> </h4>
-						<ul class="booking_list">
-							<li><strong>Number of products </strong> <%=order_detail.quantity %> </li>
-              <li><strong>Unitary price </strong> $ <%= order_detail.artwork.price %> </li>
-							<li><strong>Description</strong> <%= order_detail.artwork.description %> </li>
-						</ul>
-						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray approve"> Download Bill </a></li>
-							<li><a href="#0" class="btn_1 gray delete"> Contact Seller </a></li>
-						</ul>
-					</li>
-          <% end %>
-				</ul>
-        <% end %>
-			</div>
-		</div>
-
-
-    </body>
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to "My Profile", edit_user_path(current_user.id) %>
+    </li>
+    <li class="breadcrumb-item active">Placed Orders</li>
+  </ol>
+  <div class="box_general">
+  <div class="list_general">
+    <% @orders.each do |order| %>
+    <ul>
+      <div class="header_box">
+        <h2 class="d-inline-block"> Order passed on <%= order.date %></h2>
+      </div>
+      <% order.order_details.each do |order_detail| %>
+      <li>
+        <figure>
+        <%if order_detail.artwork.avatar.attached?%>
+            <%= image_tag order_detail.artwork.avatar, style: "width: 240px;", class: "img-fluid rounded lazy loaded mb-2 mt-2" %>
+        <%else%>
+          <%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded mb-2 mt-2"%>
+        <%end%>
+        </figure>
+        <h4> <%= order_detail.artwork.name %> </h4>
+        <ul class="booking_list">
+          <li><strong>Number of products </strong> <%=order_detail.quantity %> </li>
+          <li><strong>Unitary price </strong> $ <%= order_detail.artwork.price %> </li>
+          <li><strong>Description</strong> <%= order_detail.artwork.description %> </li>
+        </ul>
+        <ul class="buttons">
+          <li><a href="#0" class="btn_1 gray approve"> Download Bill </a></li>
+          <li><a href="#0" class="btn_1 gray delete"> Contact Seller </a></li>
+        </ul>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>

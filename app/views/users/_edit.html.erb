@@ -1,92 +1,136 @@
-<div class="content-wrapper">
-	<div class="container-fluid">
-		<div class="box_general padding_bottom">
-			<div class="header_box version_2">
-				<h2></i>Profile details</h2>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<div class="form-group">
-						<label>Your picture</label>
-						<div class="dropzone">
-							<%if @user.avatar.attached?%>
-							<figure>
-								<%= image_tag @user.avatar, style: "width: 340px;" %>
-							</figure>
-							<%else%>
-							<%= image_tag "category_generique.jpg", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded"%>
-							<%end%>
-						</div>
-						<%= form_tag user_avatars_path(@user), multipart: true do %>
-						<%= file_field_tag :avatar %>
-						<%= submit_tag "mettre à jour" %>
-						<% end %>
-					</div>
-				</div>
-				<!-- FORM PROFIL INFO -->
-				<div class="col-md-8 add_top_30">
-					<div class="row">
-						<div class="col-md-6">
-							<%= form_tag user_path(current_user.id), method: "patch" do %>
-							<div class="form-group">
-								<label>First Name</label>
-								<%= text_field_tag 'first_name', @user.first_name, class: "form-control", placeholder: "Your first name", type: "text" %>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Last name</label>
-								<%= text_field_tag 'last_name', @user.last_name, class: "form-control", placeholder: "Your last name", type: "text" %>
-							</div>
-						</div>
-					</div>
-					<!-- /row-->
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Telephone</label>
-								<%= text_field_tag 'phone', @user.contact.phone, class: "form-control", placeholder: "Your phone number", type: "text" %>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Username</label>
-								<%= text_field_tag 'username', @user.username, class: "form-control", placeholder: "Your username", type: "text" %>
-							</div>
-						</div>
-					</div>
-					<!-- /row-->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<label>Address</label>
-								<%= text_field_tag 'address', @user.contact.address, class: "form-control", placeholder: "Your address", type: "text" %>
-							</div>
-						</div>
-					</div>
-					<!-- /row-->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<label>Personal info</label>
-								<%= text_area_tag 'description', @user.contact.description, class: "form-control", placeholder: "Personal info", type: "text" %>
-							</div>
-						</div>
-					</div>
-					<!-- /row-->
-					<div class="actions mt-3 mb-5">
-						<%= submit_tag "Modify Profile Details", class: "btn btn-lg btn-primary btn-block" %>
-					</div>
-					<% end %>
-				</div>
-			</div>
-					<div class="text-center">
-						<%= button_to "Modify email/password", edit_user_registration_path, :method => "get", class: "btn btn-secondary mb-3 mt-3 text-center" %>
-					</div>
-			<!-- /row-->
-		</div>
-		</div>
-		<!-- /box_general-->
-		
-	</div>
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to "My Profile", edit_user_path(current_user.id) %>
+    </li>
+    <li class="breadcrumb-item active">Edit Profile</li>
+  </ol>
+  <div class="box_general padding_bottom">
+    <div class="header_box version_2">
+      <h2></i>Profile details</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Your photo</label>
+          <div class="dropzone">
+            <%if @user.avatar.attached?%>
+            <figure>
+              <%= image_tag @user.avatar, style: "width: 100px;", class: "img-fluid rounded lazy loaded mb-2 mt-2" %>
+            </figure>
+            <%else%>
+            <%= image_tag "https://www.babelio.com/users/AVT_inconnu_5345.jpg", style: "width: 100px;", data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded lazy loaded mb-2 mt-2"%>
+            <%end%>
+          </div>
+          <%= form_tag user_avatars_path(@user), multipart: true do %>
+          <%= file_field_tag :avatar %>
+          <%= submit_tag "mettre à jour" %>
+          <% end %>
+        </div>
+      </div>
+      <!-- FORM PROFIL INFO -->
+      <div class="col-md-8 add_top_30">
+        <div class="row">
+          <div class="col-md-6">
+            <%= form_tag url_for(action: 'update'), method: "put" do %>
+            <div class="form-group">
+              <label>First Name</label>
+              <%= text_field_tag 'first_name', @user.first_name, class: "form-control", placeholder: "Your first name", type: "text" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Last name</label>
+              <%= text_field_tag 'last_name', @user.last_name, class: "form-control", placeholder: "Your last name", type: "text" %>
+            </div>
+          </div>
+        </div>
+        <!-- /row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Telephone</label>
+              <%= text_field_tag 'phone', @user.contact.phone, class: "form-control", placeholder: "Your phone number", type: "text" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Username</label>
+              <%= text_field_tag 'username', @user.username, class: "form-control", placeholder: "Your username", type: "text" %>
+            </div>
+          </div>
+        </div>
+        <!-- /row-->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Address</label>
+              <%= text_field_tag 'address', @user.contact.address, class: "form-control", placeholder: "Your address", type: "text" %>
+            </div>
+          </div>
+        </div>
+        <!-- /row-->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Personal info</label>
+              <%= text_area_tag 'description', @user.contact.description, class: "form-control", placeholder: "Personal info", type: "text" %>
+            </div>
+          </div>
+        </div>
+        <!-- /row-->
+        <div class="actions mt-3 mb-5">
+          <%= submit_tag "Modify Profile Details", class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form for address-->
+
+  <div class="col-md-12 add_top_30">
+    <%= form_tag user_contact_path(current_user.id,current_user.cart.id), method: "patch" do %>
+    <!-- /row-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Address</label>
+          <%= text_field_tag :address %>
+        </div>
+      </div>
+    </div>
+    <!-- /row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= hidden_field_tag :latitude %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= hidden_field_tag :longitude %>
+        </div>
+      </div>
+    </div>
+    <!-- /row-->
+    <div class="actions mt-3 mb-5">
+      <%= submit_tag "Update contact", class: "btn btn-lg btn-primary btn-block" %>
+    </div>
+    <% end %>
+  </div>
+  <!-- /box_general-->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box_general padding_bottom">
+        <div class="header_box version_2">
+          <h2>Change email and password</h2>
+        </div>
+        <div class="text-center">
+          <%= button_to "Modify email/password", edit_user_registration_path, :method => "get", class: "btn btn-secondary mb-3 mt-3 text-center" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
