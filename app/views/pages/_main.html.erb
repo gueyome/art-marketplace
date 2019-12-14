@@ -112,7 +112,11 @@
 								<% if artwork.avatar.attached? %>
 									<%= image_tag artwork.avatar, data: {src: "#{artwork.avatar}"}, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;" %>
 								<% else %>
-							<%= image_tag artwork.url_image, data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
+									<% if artwork.url_image %>
+										<%= image_tag artwork.url_image, data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
+									<% else %>
+										<%= image_tag "artwork_generique.png", data: {src: "artwork_generique.png"}, alt: "",class: "lazy loaded"%>
+									<% end %>
 								<% end %>
 							</figure>
 							<div class="score"><strong><%= artwork.category.name %></strong></div>
