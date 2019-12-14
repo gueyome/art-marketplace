@@ -1,0 +1,58 @@
+<main>
+  <!-- /page_header -->
+  <div class="container margin_30_40">
+    <div class="row">
+      <div class="col-lg-9">
+
+        <div class="row">
+          <% @artworks.each do |artwork| %>
+          <div class="col-md-6">
+            <div class="card rounded shadow-lg p-3 mb-5">
+              <% if artwork.avatar.attached? %>
+              <%= image_tag artwork.avatar, class: "card-img-top", height: "300"%>
+              <% else %>
+              <% if artwork.url_image %>
+              <%= image_tag artwork.url_image, class: "card-img-top", height: "300" %>
+              <% else %>
+              <%= image_tag "artwork_generique.png", class: "card-img-top", height: "300"%>
+              <% end %>
+              <% end %>
+              <div class="card-body">
+                <h4 class="card-title"><%= artwork.name %> - $<%= artwork.price %></h4>
+                <p class="card-text">One of the last artwork published on the website, discover it</p>
+                <%= link_to "discover this masterpiece",search_path(artwork.id), class: "btn btn-success stretched-link"%>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+        <!-- /row -->
+
+      </div>
+      <!-- /col -->
+      <aside class="col-lg-3">
+        <div class="widget">
+          <div class="widget-title first">
+            <h4>Categories</h4>
+          </div>
+          <ul class="comments-list">
+            <% @categories.each do |category| %>
+            <li>
+              <div class="alignleft">
+                <%= link_to category_path(category.id) do%>
+                <%= image_tag category.url_image, alt: ""%>
+                <%end%>
+              </div>
+              <h3><%= link_to "#{category.name}",category_path(category.id)%></h3>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+        <!-- /widget -->
+      </aside>
+      <!-- /aside -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</main>

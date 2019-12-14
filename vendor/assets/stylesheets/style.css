@@ -2342,6 +2342,15 @@ ul#top_menu li a.login:before {
   background-size: cover;
 }
 
+.hero_single.category_show {
+  height: 400px;
+  background: #ededed url(https://cdn.pixabay.com/photo/2016/03/27/16/23/woman-1283009_960_720.jpg) center center no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .hero_single.result_index {
   min-height:400px;
   background: #ededed url(https://cdn.pixabay.com/photo/2016/02/19/10/00/binoculars-1209011_960_720.jpg) center center no-repeat;
