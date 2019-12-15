@@ -3,9 +3,8 @@ class ArtworksController < ApplicationController
   before_action :create_cart_for_current_user
   layout "artist_application", :only => [:new, :index, :edit]
   before_action :create_contact_for_current_user
-  before_action :current_artwork, except: [:index, :new, :create]
-  before_action :is_user, only: [:edit, :update, :destroy]
-
+  before_action :current_artwork, only: :show
+  
   def index
     @my_artworks = Artwork.where(user_id: current_user.id)
   end
@@ -30,12 +29,11 @@ class ArtworksController < ApplicationController
   end
 
   def edit
-    @artwork=Artwork.find(params[:id])
     @categories = Category.all
   end
 
   def update
-    @artwork.update(artwork_params.merge(user_id: current_user.id))
+    @artwork.update(user_id: current_user.id, name: params[:name], price: params[:price], stock: params[:stock], category_id: params[:category_id], creator: params[:creator], description: params[:description])
     flash[:success] = "Artwork successfully updated"
     redirect_to user_artworks_path(current_user.id)
   end
@@ -46,20 +44,10 @@ class ArtworksController < ApplicationController
     flash[:success] = "Artwork successfully deleted"
   end
 
+
   private
-
-  def is_user
-    if current_user.id == @artwork.user_id
-      return true
-    end
-  end
-
+  
   def artwork_params
     params.require(:artwork).permit(:name, :price, :stock, :category_id, :creator, :description)
   end
-
-  def current_artwork
-    @artwork = Artwork.find(params[:id])
-  end
-
 end

@@ -17,4 +17,20 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  private
+  def current_artwork
+    @artwork = Artwork.find(params[:id])
+  end
+
+  def is_user
+    current_artwork
+    if current_user.id == @artwork.user_id
+      return true
+    end
+  end
+
+  def artwork_params
+    params.require(:artwork).permit(:name, :price, :stock, :category_id, :creator, :description)
+  end
 end
