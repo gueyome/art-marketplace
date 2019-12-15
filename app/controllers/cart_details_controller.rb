@@ -2,6 +2,8 @@ class CartDetailsController < ApplicationController
   before_action :authenticate_user!
   before_action :create_cart_for_current_user
   before_action :create_contact_for_current_user
+  before_action :current_line, only: [:update, :destroy]
+
   def index
   end
 
@@ -40,7 +42,6 @@ class CartDetailsController < ApplicationController
   end
 
   def update
-    @line = CartDetail.find(params[:id])
     @new_quantity = params[:quantity].to_i
     @variation = @line.quantity - @new_quantity
     @line.artwork.update(stock: @line.artwork.stock + @variation)
@@ -50,7 +51,6 @@ class CartDetailsController < ApplicationController
   end
 
   def destroy
-    @line = CartDetail.find(params[:id])
     @previous_quantity = @line.quantity
     @line.artwork.update(stock: @line.artwork.stock + @previous_quantity)
     if @line.destroy
@@ -58,4 +58,8 @@ class CartDetailsController < ApplicationController
       redirect_to user_cart_path(@current_user.id, current_user.cart.id)
     end
   end 
+    private
+    def current_line
+      @line = CartDetail.find(params[:id])
+    end
 end 
