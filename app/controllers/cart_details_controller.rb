@@ -16,19 +16,15 @@ class CartDetailsController < ApplicationController
   def create
     @cart = current_user.cart
     @artwork = Artwork.find(params[:artwork_id])
-    @quantity_chosen = params[:quantity].to_i
-    if @quantity_chosen <= @artwork.stock
+    if params[:quantity].to_i <= @artwork.stock
       if @cart.artworks.include?(@artwork)
           @artwork_line = @cart.cart_details.where(artwork_id: @artwork.id).first
-          @artwork_line.update(quantity: @artwork_line.quantity + @quantity_chosen)
-          @artwork.update(stock: @artwork.stock - @quantity_chosen)
+          @artwork_line.update(quantity: @artwork_line.quantity + params[:quantity].to_i)
+          @artwork.update(stock: @artwork.stock - params[:quantity].to_i)
       else
-        @cart_detail_line = CartDetail.new
-        @cart_detail_line.cart_id = @cart.id 
-        @cart_detail_line.artwork_id = @artwork.id 
-        @cart_detail_line.quantity = @quantity_chosen
+        @cart_detail_line = CartDetail.new(cart_id: @cart.id, artwork_id: @artwork.id, quantity: params[:quantity].to_i)
         @cart_detail_line.save
-        @artwork.update(stock: @artwork.stock - @quantity_chosen)
+        @artwork.update(stock: @artwork.stock - params[:quantity].to_i)
       end
       flash[:success] = "Added to the cart."
       redirect_to user_cart_path(@current_user.id, current_user.cart.id)
@@ -58,7 +54,7 @@ class CartDetailsController < ApplicationController
       redirect_to user_cart_path(@current_user.id, current_user.cart.id)
     end
   end
-  
+
   private
   def current_line
     @line = CartDetail.find(params[:id])
