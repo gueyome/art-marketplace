@@ -3,6 +3,7 @@ class ArtworksController < ApplicationController
   before_action :create_cart_for_current_user
   layout "artist_application", :only => [:new, :index, :edit]
   before_action :create_contact_for_current_user
+  before_action :is_user, only: [:edit, :update, :destroy]
   
   def index
     @my_artworks = Artwork.where(user_id: current_user.id)
@@ -33,7 +34,7 @@ class ArtworksController < ApplicationController
   end
 
   def update
-    @artwork.update(user_id: current_user.id, name: params[:name], price: params[:price], stock: params[:stock], category_id: params[:category_id], creator: params[:creator], description: params[:description])
+    @artwork.update(artwork_params.merge(user_id: current_user.id))
     flash[:success] = "Artwork successfully updated"
     redirect_to user_artworks_path(current_user.id)
   end
