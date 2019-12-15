@@ -19,7 +19,7 @@ class ArtworksController < ApplicationController
   end
 
   def create
-    @artwork = Artwork.new(user_id: current_user.id, artwork_params)
+    @artwork = Artwork.new(artwork_params.merge(user_id: current_user.id))
     if @artwork.save
       flash[:success] = "Artwork successfully created"
       redirect_to user_artworks_path(current_user.id)
@@ -35,7 +35,7 @@ class ArtworksController < ApplicationController
   end
 
   def update
-    @artwork.update(user_id: current_user.id, artwork_params)
+    @artwork.update(artwork_params.merge(user_id: current_user.id))
     flash[:success] = "Artwork successfully updated"
     redirect_to user_artworks_path(current_user.id)
   end
