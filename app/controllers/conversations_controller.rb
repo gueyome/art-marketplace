@@ -2,13 +2,19 @@ class ConversationsController < ApplicationController
   layout "artist_application"
 
   def index
-    @last_messages = last_messages(correspondents_of(current_user))
+    @correspondents = correspondents_of(current_user)
+    @last_messages = last_messages(@correspondents)
+    puts "#################"
+    puts @correspondents
+    puts @last_messages
   end
 
   def show
     @user1 = User.find(params[:user_id])
     @user2 = User.find(params[:id])
     @conversation = conversation_with(@user1, @user2)
+    puts "#################"
+    puts @conversation
   end
 
 
