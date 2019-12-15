@@ -89,7 +89,11 @@
 													</figure>
 													<% else %>
 													<figure>
-														<%= image_tag artwork.url_image, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
+														<% if artwork.url_image 
+															<%= image_tag artwork.url_image, alt: "" ,width: 297.5, height: 190,class: "owl-lazy", style: "opacity: 1;"%>
+														<% else %>
+														        <%= image_tag "artwork_generique.png", data: {src: "artwork_generique.png"}, alt: "",width: 297.5, height: 190, class: "lazy loaded"%>
+														<% end %>
 													</figure>
 
 													<% end %>
