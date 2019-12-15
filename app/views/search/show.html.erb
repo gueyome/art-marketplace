@@ -1,10 +1,14 @@
 <main class="mt-5" style="transform: none;">
   <div class="text-center">
-    <%if @artwork.avatar.attached?%>
-    <%= image_tag @artwork.avatar, alt: 'avatar', size: "440x440" %>
-    <%else%>
-    <<%= image_tag @artwork.url_image, data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded", style: "width: 440px" %>>
-      <%end%>
+    <% if @artwork.avatar.attached? %>
+      <%= image_tag @artwork.avatar, class: "card-img-top", height: "300"%>
+      <% else %>
+        <% if @artwork.url_image %>
+          <%= image_tag @artwork.url_image, class: "card-img-top", height: "300" %>
+        <% else %>
+          <%= image_tag "artwork_generique.png", class: "card-img-top", height: "300"%>
+      <% end %>
+    <% end %>
   </div>
   <div class="container margin_detail" style="transform: none;">
     <div class="detail_page_head clearfix">
