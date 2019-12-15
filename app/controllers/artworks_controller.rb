@@ -3,13 +3,13 @@ class ArtworksController < ApplicationController
   before_action :create_cart_for_current_user
   layout "artist_application", :only => [:new, :index, :edit]
   before_action :create_contact_for_current_user
-  before_action :current_artwork, only: :show
   
   def index
     @my_artworks = Artwork.where(user_id: current_user.id)
   end
 
   def show
+    current_artwork
   end
 
   def new
