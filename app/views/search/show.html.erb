@@ -11,7 +11,7 @@
           <% if @artwork.url_image %>
           <%= image_tag @artwork.url_image, class: "img-fluid"%>
           <% else %>
-          <%= image_tag "artwork_generique.png", class: "img-fluid"%>
+          <%= image_tag "artwork_generique.jpg", class: "img-fluid"%>
           <% end %>
           <% end %>
         </figure>
@@ -60,6 +60,9 @@
         <ul class="comments-list">
           <li class="mb-3">      
             <h3>Price : $ <%= @artwork.price %></h3>
+          </li>
+           <li class="mb-3">
+            <h3>Stock : <%= @artwork.stock %></h3>
           </li>
           <li class="mb-3">
             <h3>Category : <%= @artwork.category.name %></h3>
