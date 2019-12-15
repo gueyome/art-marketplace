@@ -43,11 +43,15 @@ Category.destroy_all
     elsif count == 2
         vv = "https://cdn.pixabay.com/photo/2017/09/12/22/06/background-2743840_1280.jpg"
         dd = "https://cdn.pixabay.com/photo/2013/02/13/16/12/gustave-courbet-81309_1280.jpg"
+        PrivateMessage.create(sender_id: u.id, receiver_id: u.id-1, content: "Hello Sir, I would be interested in buying your painting")
+        PrivateMessage.create(sender_id: u.id-1, receiver_id: u.id, content: "Super, do you need additional information?")
     elsif count == 3
         vv = "https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_1280.png"
         dd = "https://cdn.pixabay.com/photo/2016/01/20/21/41/drunkards-1152424_1280.jpg"
     elsif count == 4
         vv = "https://cdn.pixabay.com/photo/2017/07/23/11/46/statue-of-hercules-2531191_1280.jpg"
         dd = "https://cdn.pixabay.com/photo/2018/08/21/20/53/magritte-3622130_1280.jpg"
+        PrivateMessage.create(sender_id: u.id, receiver_id: u.id-1, content: "Hello Sir, I would be interested in buying your statue")
+        PrivateMessage.create(sender_id: u.id-1, receiver_id: u.id, content: "Super, do you need additional information?")
     end 
 end 
