@@ -20,7 +20,7 @@
               <% if artwork.image_url %>
                 <%= image_tag artwork.url_image, alt: "",class: "lazy loaded"%>
               <% else %>
-                <%= image_tag artwork_generique.png, alt:"", class: "lazy loaded" %>
+                <%= image_tag "artwork_generique.png", alt:"", class: "lazy loaded" %>
               <% end %>
             </figure>
             <div class="score"><strong><%= artwork.category.name %></strong></div>
