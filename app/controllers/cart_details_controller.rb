@@ -2,7 +2,6 @@ class CartDetailsController < ApplicationController
   before_action :authenticate_user!
   before_action :create_cart_for_current_user
   before_action :create_contact_for_current_user
-  before_action :is_user, only: [:update, :destroy]
   def index
   end
 
@@ -58,15 +57,5 @@ class CartDetailsController < ApplicationController
       flash[:success] = "Artwork successfully removed from the cart"
       redirect_to user_cart_path(@current_user.id, current_user.cart.id)
     end
-  end
-
-  private
-
-  def is_user
-    @artwork = Artwork.find(params[:id])
-    if current_user.id == @artwork.user_id
-      return true
-    end
-  end
-
-end
+  end 
+end 
