@@ -54,5 +54,9 @@ The global search on the site will be functional.
 5. The version that we will present to the jury
 100% functional platform with: - notice - payment - advanced research - client area - artist area - administrator area - real-time scanning - API to retrieve trends
 
+6. Access to admin
+email: admin@example.com
+password: password
+
 6. Our mentor
 Francois, Corsair session 5.
