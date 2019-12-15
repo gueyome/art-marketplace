@@ -2511,11 +2511,11 @@ ul#top_menu li a.login:before {
 
 .titi {
   background-image: url(https://cdn.pixabay.com/photo/2018/02/04/09/09/brushes-3129361_1280.jpg);
-
 }
+
 .hero_in.detail_page {
   width: 100%;
-  height: 450px;
+  height: 250px;
   position: relative;
   overflow: hidden;
   color: #fff;
