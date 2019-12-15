@@ -57,9 +57,10 @@ class CartDetailsController < ApplicationController
       flash[:success] = "Artwork successfully removed from the cart"
       redirect_to user_cart_path(@current_user.id, current_user.cart.id)
     end
-  end 
-    private
-    def current_line
-      @line = CartDetail.find(params[:id])
-    end
-end 
+  end
+  
+  private
+  def current_line
+    @line = CartDetail.find(params[:id])
+  end
+end
