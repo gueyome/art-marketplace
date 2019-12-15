@@ -49,9 +49,9 @@
 
 											<div class="col-md-8">
 												<% if @user.avatar.attached? %>
-												<%= image_tag @user.avatar, class: "img-fluid"%>
+												<%= image_tag @user.avatar, class: "img-fluid rounded", size: "750x500"%>
 												<% else %>
-												<%= image_tag "artist.jpg", class: "img-fluid", size: "750x500" %>
+												<%= image_tag "artist.jpg", class: "img-fluid rounded", size: "750x500" %>
 												<% end %>
 											</div>
 
@@ -116,78 +116,47 @@
 							</div>
 							<div id="collapse-C" class="collapse" role="tabpanel" aria-labelledby="heading-C">
 								<div class="card-body reviews">
-									<div class="row add_bottom_45 d-flex align-items-center">
-										<div class="col-md-3">
-											<div id="review_summary">
-												<strong>8.5</strong>
-												<em>Superb</em>
-												<small>Based on 4 reviews</small>
-											</div>
-										</div>
-									</div>
-
 									<div id="reviews">
-										<%  @testimonial.each do | testimonial |%>
+										<%  @testimonials.each do | testimonial |%>
 										<% if testimonial.artist_id == @user.id%>
-										<div class="review_card">
-											<div class="row">
-												<div class="col-md-2 user_info">
-													<figure><img src="img/avatar4.jpg" alt=""></figure>
-													<h5> Username </h5>
-												</div>
-												<div class="col-md-10 review_content">
-													<div class="clearfix add_bottom_15">
-														<span class="rating">8.5<small>/10</small> <strong>Rating average</strong></span>
-														<em>Created at <%= testimonial.created_at %></em>
-													</div>
-													<h4><%= testimonial.content%></h4>
-													<ul>
-														<li><a href="#0"><i class="icon_like"></i><span>Useful</span></a></li>
-														<li><a href="#0"><i class="icon_dislike"></i><span>Not useful</span></a></li>
-														<li><a href="#0"><i class="arrow_back"></i> <span>Reply</span></a></li>
-													</ul>
-												</div>
-											</div>
-											<% end%>
-											<% end %>
-											<!-- /row -->
-										</div>
-
 										<div class="row reply">
 											<div class="col-md-2 user_info">
-												<figure><img src="img/avatar.jpg" alt=""></figure>
+												<figure>
+													<% if testimonial.customer.avatar.attached? %>
+													<%= image_tag testimonial.customer.avatar%>
+													<% else %>
+													<%= image_tag "avatar.jpg"%>
+													<% end %>
+												</figure>
 											</div>
 											<div class="col-md-10">
 												<div class="review_content">
-													<strong>Reply from Foogra</strong>
-													<em>Published 3 minutes ago</em>
-													<p><br>Hi Monika,<br><br>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod
-														scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere
-														fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his.
-														Tollit molestie suscipiantur his et.<br><br>Thanks</p>
+													<strong><%= testimonial.customer.first_name%>, <%= testimonial.created_at%></strong>
+													<p class="mt-3"><%= testimonial.content%></p>
 												</div>
 											</div>
 										</div>
+										<% end %>
+										<% end %>
 										<!-- /reply -->
 									</div>
 									<!-- /review_card -->
 								</div>
-								<!-- /reviews -->
-								<div class="text-right"><a href="leave-review.html" class="btn_1">Leave a review</a></div>
-							<% if current_user%>
-							<% current_user.orders.each do | order |%>
-							<% order.order_details.each do | details | %>
-							<% if details.artwork.user_id == @user.id%>
-							<%= form_tag user_testimonials_path(params[:id]), method: "post" do %>
-							<input type="text" name="content" />
-							<input type="submit" value="Post a testimonial" />
-							<% end %>
-							<% end %>
-							<% end %>
-							<% end %>
-							<% end %>
+								<% if current_user%>
+								<% current_user.orders.each do | order |%>
+								<% order.order_details.each do | details | %>
+								<% if details.artwork.user_id == @user.id%>
+								<%= form_tag user_testimonials_path(params[:id]), method: "post" do %>
+								<div class="form-group">
+									<%= text_area_tag :content, nil, rows: 10, class: "form-control" %>
+								</div>
+								<%= submit_tag "Leave a review", class: "btn btn-sm btn-warning" %>
+								<% end %>
+								<% end %>
+								<% end %>
+								<% end %>
+								<% end %>
 							</div>
-							
 						</div>
 					</div>
 				</div>
@@ -199,7 +168,6 @@
 		<!-- /row -->
 	</div>
 	<!-- /container -->
-
 </main>
 <!-- /main -->
 
