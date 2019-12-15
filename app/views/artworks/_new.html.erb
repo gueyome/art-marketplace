@@ -1,32 +1,10 @@
 <div class="container-fluid">
   <!-- Breadcrumbs-->
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <%= link_to "My Profile", edit_user_path(current_user.id) %>
-    </li>
-    <li class="breadcrumb-item active">Create Artwork</li>
-  </ol>
 <div class="box_general padding_bottom">
   <div class="header_box version_2">
     <h2>Artwork details</h2>
   </div>
   <div class="row">
-    <div class="col-md-12 add_top_30">
-      <div class="row">
-        <div class="col-md-6">
-          <%= form_tag url_for(user_artworks_path(current_user.id)), method: "post" do %>
-          <div class="form-group">
-            <label>Name</label>
-            <%= text_field_tag 'name', @artwork.name, class: "form-control", placeholder: "Artwork name", type: "text" %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Price</label>
-            <%= number_field_tag 'price', @artwork.price, min: 0, class: "form-control", placeholder: "Artwork Price" %>
-          </div>
-        </div>
-      </div>
       <div class="col-md-8 add_top_30">
         <%= form_tag user_artworks_path(current_user.id), method: "post" do %>
         <div class="row">
@@ -84,4 +62,3 @@
       </div>
     </div>
   </div>
-<% end %>
