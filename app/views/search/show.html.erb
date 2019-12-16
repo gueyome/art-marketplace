@@ -1,58 +1,104 @@
-<main class="mt-5" style="transform: none;">
-  <div class="text-center">
-    <%if @artwork.avatar.attached?%>
-    <%= image_tag @artwork.avatar, alt: 'avatar', size: "440x440" %>
-    <%else%>
-    <<%= image_tag @artwork.url_image, data: {effect: "mfp-zoom-in"}, class: "img-fluid rounded", style: "width: 440px" %>>
-      <%end%>
-  </div>
-  <div class="container margin_detail" style="transform: none;">
-    <div class="detail_page_head clearfix">
+<!-- /page_header -->
 
-      <div class="title">
+<div class="container margin_30_40 mt-5">
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="singlepost">
+        <figure>
+          <% if @artwork.avatar.attached? %>
+          <%= image_tag @artwork.avatar, class: "img-fluid"%>
+          <% else %>
+          <% if @artwork.url_image %>
+          <%= image_tag @artwork.url_image, class: "img-fluid"%>
+          <% else %>
+          <%= image_tag "artwork_generique.jpg", class: "img-fluid"%>
+          <% end %>
+          <% end %>
+        </figure>
         <h1><%= @artwork.name %> - $ <%= @artwork.price %></h1>
-        <ul class="tags">
-          <li><%= link_to "#{@artwork.category.name}", category_path(@artwork.category.id)%></li>
-          <li><%= @artwork.user.username%></li>
-        </ul>
-      </div>
-      <div class="rating">
-        <div class="score"><span>Still available</span><strong><%= @artwork.stock %></strong></div>
-      </div>
-    </div>
-
-    <div class="mt-5 text-center">
-      <h2>The story behind this Masterpiece</h2>
-      <p>
-        <%= @artwork.description%>
-      </p>
-    </div>
-    <!-- FORM WORKING -->
-    <div class="container">
-      <% if check_stock(@artwork) %>
-        <%= form_tag cart_details_path(origin: "add", cart_id: "current_user.cart.id", artwork_id: @artwork.id), class: "col-6 offset-3", method: "post" do %>
-        <div class="row no-gutters custom-search-input">
-          <div class="col-lg-5 custom_select">
-            <%= select_tag(:quantity, options_for_select(1..@artwork.stock), {class: "wide", style: "display: none;"}) %>
-            <div class="nice-select wide" tabindex="0"><span class="current">1</span>
-              <ul class="list">
-                <% @artwork.stock.times do |index| %>
-                <li data-value=<%=index+1%> class="option"><%=index+1%></li>
-                <%end%>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <%= submit_tag "Ajouter au panier", data:{confirm: "Es-tu sûr?"} %>
+        <!-- /post meta -->
+        <div class="post-content">
+          <div class="dropcaps">
+            <p><%= @artwork.description %></p>
           </div>
         </div>
-        <% end %>
-      <% end %>
+        <!-- /post -->
+      </div>
+      <!-- /single-post -->
+
+
+      <hr>
+      <div class="">
+          <% if check_stock(@artwork) %>
+          <%= form_tag cart_details_path(origin: "add", cart_id: "current_user.cart.id", artwork_id: @artwork.id), class: "", method: "post" do %>
+          <div class="row no-gutters custom-search-input">
+            <div class="col-lg-5 custom_select">
+              <%= select_tag(:quantity, options_for_select(1..@artwork.stock), {class: "wide", style: "display: none;"}) %>
+              <div class="nice-select wide" tabindex="0"><span class="current">1</span>
+                <ul class="list">
+                  <% @artwork.stock.times do |index| %>
+                  <li data-value=<%=index+1%> class="option"><%=index+1%></li>
+                  <%end%>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <%= submit_tag "Ajouter au panier", data:{confirm: "Es-tu sûr?"} %>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
+        </div>
     </div>
-    <!-- FORM WORKING -->
+    <!-- /col -->
+
+    <aside class="col-lg-3">
+      <div class="widget">
+        <div class="widget-title first">
+          <h4>About this artwork</h4>
+        </div>
+        <ul class="comments-list">
+          <li class="mb-3">      
+            <h3>Price : $ <%= @artwork.price %></h3>
+          </li>
+           <li class="mb-3">
+            <h3>Stock : <%= @artwork.stock %></h3>
+          </li>
+          <li class="mb-3">
+            <h3>Category : <%= @artwork.category.name %></h3>
+          </li>
+          <li class="mb-3">
+            <h3>Artist : <%= @artwork.user.first_name %></h3>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- /widget -->
+      <div class="widget mt-5">
+          <div class="widget-title first">
+            <h4> Other Categories</h4>
+          </div>
+          <ul class="comments-list">
+            <% @categories.each do |category| %>
+            <li>
+              <div class="alignleft">
+                <%= link_to category_path(category.id) do%>
+                <%= image_tag category.url_image, alt: ""%>
+                <%end%>
+              </div>
+              <h3><%= link_to "#{category.name}",category_path(category.id)%></h3>
+              <p><%= category.artworks.size %> artworks</p>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      <!-- /widget -->
+    </aside>
+    <!-- /aside -->
   </div>
-  <!-- /container -->
-</main>
+  <!-- /row -->
+</div>
+<!-- /container -->
 <br>
 <br>
 <br>

@@ -2509,8 +2509,12 @@ ul#top_menu li a.login:before {
   filter: brightness(115%);
 }
 
-.titi {
+.user_back {
   background-image: url(https://cdn.pixabay.com/photo/2018/02/04/09/09/brushes-3129361_1280.jpg);
+}
+
+.cart_back {
+  background-image: url(https://cdn.pixabay.com/photo/2014/09/19/12/30/pencils-452238_960_720.jpg);
 }
 
 .hero_in.detail_page {
