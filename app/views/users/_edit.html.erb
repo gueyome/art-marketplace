@@ -27,7 +27,7 @@
       <div class="col-md-8 add_top_30">
         <div class="row">
           <div class="col-md-6">
-            <%= form_tag user_path(action: 'update'), method: "patch" do %>
+            <%= form_tag user_path(@user.id), method: "patch" do %>
             <div class="form-group">
               <label>First Name</label>
               <%= text_field_tag 'first_name', @user.first_name, class: "form-control", placeholder: "Your first name", type: "text" %>
