@@ -8,5 +8,6 @@ class SearchController < ApplicationController
 
   def show
     @artwork = Artwork.find(params[:id])
+    @categories = Category.all
   end
 end

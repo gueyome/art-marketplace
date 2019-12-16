@@ -1,13 +1,32 @@
 <div class="container-fluid">
-  <div class="text-center mt-5 mb-5">
-    <h1>My Cart</h1>
-  </div>
+    <div class="hero_in detail_page cart_back">
+        <div class="wrapper opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+    
+          <div class="container">
+            <div class="main_info text-center mb-5">
+              <h1 class="text-white">My Cart</h1>
+              <!-- /row -->
+            </div>
+            <!-- /main_info -->
+          </div>
+        </div>
+      </div>
   <div class="box_general pt-0">
     <div class="list_general">
       <%@cart.cart_details.each_with_index do |cart_detail, index|%>
       <ul>
         <li>
-          <figure><img src="img/item_1.jpg" alt=""></figure>
+          <figure>
+            <% if cart_detail.artwork.avatar.attached? %>
+              <%= image_tag cart_detail.artwork.avatar%>
+              <% else %>
+              <% if cart_detail.artwork.url_image %>
+              <%= image_tag cart_detail.artwork.url_image %>
+              <% else %>
+              <%= image_tag "artwork_generique.jpg"%>
+              <% end %>
+              <% end %>
+            </figure>
           <h4><%= cart_detail.artwork.name %></h4>
           <ul class="booking_list">
             <li>
@@ -21,7 +40,7 @@
             <li><strong>Amount :</strong>$<%= sum_line(cart_detail) %></li>
           </ul>
           <ul class="buttons">
-            <li><%= link_to "show", artwork_path(cart_detail.artwork_id), class: "btn_1 green approve"%></li>
+            <li><%= link_to "show", search_path(cart_detail.artwork_id), class: "btn_1 green approve"%></li>
             <li>
               <%= link_to "delete", cart_detail_path(cart_detail.id), class: "btn_1 bg-danger delete", data: {confirm: "Es-tu sur?", method: "delete"}%>
             </li>
@@ -50,7 +69,7 @@
       </article>
 
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Pay it Bambino"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="This Art deserves it"
         data-amount="<%= sum_cart?*100 %>" data-locale="auto">
         </script>
       <% end %>
