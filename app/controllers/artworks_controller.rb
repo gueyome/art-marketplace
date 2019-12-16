@@ -36,7 +36,7 @@ class ArtworksController < ApplicationController
   def update
     @artwork.update(artwork_params.merge(user_id: current_user.id))
     flash[:success] = "Artwork successfully updated"
-    redirect_to user_artworks_path(current_user.id)
+    redirect_to search_path(@artwork.id)
   end
 
   def destroy
