@@ -28,8 +28,13 @@ class UsersController < ApplicationController
     @user.update(first_name: params[:first_name], last_name: params[:last_name], username: params[:username])
     @user.contact.update(address: params[:address], description: params[:description], phone: params[:phone])
 
-    flash[:success] = "Your profile have been modified"
-    redirect_to edit_user_path(@user.id)
+    respond_to do |format|
+      format.js { }
+      format.html {
+        flash[:success] = "Your profile has been modified"
+        redirect_to edit_user_path(@user.id)}
+    end
+    
   end
 
   def destroy

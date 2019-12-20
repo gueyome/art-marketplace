@@ -9,13 +9,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="fixed-nav sticky-footer" id="page-top">
     <%= render "layouts/navbar_artist"%>
-    <body class="fixed-nav sticky-footer" id="page-top">
       <div class="content-wrapper">
         <%= render "layouts/flash" %>
         <%= yield %>
       </div>
-    </body>
   </body>
 </html>
