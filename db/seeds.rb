@@ -25,9 +25,9 @@ Category.destroy_all
 
 4.times do |index|  
     c = Category.create(name: Faker::Artist.name, url_image: vv)
-    u = User.create(username: "user#{index}", first_name: "firstname#{index}", last_name: "Lastname#{index}", email: "email#{index}@yopmail.com", password: "xaxaxa")
-    a = Artwork.create(name: "Artwork#{index}", description: "lorem "*100, price: rand(100..1000), stock: 10, category_id: rand(c.id-count..c.id), user_id: u.id, url_image: dd )
-    ctc = Contact.create(address: "#{index}rue de Paris", latitude: index, description: "description#{index}", longitude: index, phone: "123#{index}", user_id: u.id)
+    u = User.create(username: Faker::DcComics.hero, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: "email#{index}@yopmail.com", password: "xaxaxa")
+    a = Artwork.create(name: Faker::DcComics.title, description: Faker::GreekPhilosophers.quote + Faker::GreekPhilosophers.quote + Faker::GreekPhilosophers.quote + Faker::GreekPhilosophers.quote, price: rand(100..1000), stock: 10, category_id: rand(c.id-count..c.id), user_id: u.id, url_image: dd )
+    ctc = Contact.create(address: "#{index} rue de Paris", latitude: index, description: Faker::GreekPhilosophers.quote, longitude: index, phone: "+33 7 69 90 23 2#{index}", user_id: u.id)
     cr = Cart.create(user_id: u.id)
     o = Order.create(user_id: u.id, date: Time.now)
     pm = PrivateMessage.create(sender_id: u.id, receiver_id: User.all.first.id, content:"Content #{index}")
