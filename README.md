@@ -55,11 +55,7 @@ Global search online
 
 Notice - payment - advanced research - client area - artist area - administrator area - real-time scanning - API to retrieve trends
 
-5. Access to admin :
-email: adminus@example.com
-password: password
-
-6. To test payment order :
+5. To test payment order :
 card number: 4242 4242 4242 4242
 expiration date: any future date
 cvc: any 3 digits
