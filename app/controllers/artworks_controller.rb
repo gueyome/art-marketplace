@@ -24,7 +24,7 @@ class ArtworksController < ApplicationController
       flash[:success] = "Artwork successfully created"
       redirect_to user_artworks_path(current_user.id)
     else
-      flash[:error] = "Artwork has not been created"
+      flash[:error] = @artwork.errors.full_messages.first
       redirect_to new_user_artwork_path(current_user.id)
     end
   end

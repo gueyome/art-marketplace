@@ -10,7 +10,20 @@
             <!-- /main_info -->
           </div>
         </div>
-      </div>
+    </div>
+  <% if @cart.cart_details.length == 0 %>
+  <div class="header_box version_2 mt-3 text-center">
+    <h2>Votre panier est vide pour le moment</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+  <% else %>
   <div class="box_general pt-0">
     <div class="list_general">
       <%@cart.cart_details.each_with_index do |cart_detail, index|%>
@@ -76,4 +89,5 @@
       <!--FORM STRIPE-->
     </div>
   </div>
+  <%end%>
 </div>
