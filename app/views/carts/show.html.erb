@@ -49,25 +49,21 @@
               <%= submit_tag "Change quantity", class: "btn_1 bg-info" %>
               <% end %>
             </li>
-            <li><strong>Price :</strong>$<%= cart_detail.artwork.price %></li>
-            <li><strong>Amount :</strong>$<%= sum_line(cart_detail) %></li>
+            <li><strong>Unitary Price :</strong>$<%= cart_detail.artwork.price %></li>
+            <li><strong>Total Amount :</strong>$<%= sum_line(cart_detail) %></li>
           </ul>
           <ul class="buttons">
             <li><%= link_to "show", search_path(cart_detail.artwork_id), class: "btn_1 green approve"%></li>
             <li>
-              <%= link_to "delete", cart_detail_path(cart_detail.id), class: "btn_1 bg-danger delete", data: {confirm: "Es-tu sur?", method: "delete"}%>
+              <%= link_to "delete", cart_detail_path(cart_detail.id), class: "btn_1 bg-danger delete", data: {confirm: "Are you sure you want to remove this item from your cart?"}, method: "delete"%>
             </li>
           </ul>
         </li>
       </ul>
       <%end%>
-      <ul>
-        <li>
-          <h4>Total Amount</h4>
-        </li>
-      </ul>
     </div>
-    <div class="text-right">
+    <div class="text-center mt-3">
+      <h3>Confirm your order</h3>
       <!--FORM STRIPE-->
       <%= form_tag order_details_path, method: "post" do %>
       <article>
@@ -76,8 +72,8 @@
           <p><%= flash[:error] %></p>
         </div>
         <% end %>
-        <label class="amount">
-          <span class="text-dark">Amount : $<%= sum_cart? %></span>
+        <label class="amount mb-2">
+          <span class="text-dark">Total to pay : $<%= sum_cart? %></span>
         </label>
       </article>
 
@@ -87,6 +83,10 @@
         </script>
       <% end %>
       <!--FORM STRIPE-->
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
   </div>
   <%end%>
